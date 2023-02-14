@@ -1,5 +1,5 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+== Architecture Constraints / Restricciones de Arquitectura
 
 
 [role="arc42help"]
