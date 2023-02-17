@@ -1,19 +1,36 @@
 [[section-architecture-constraints]]
 == Architecture Constraints / Restricciones de Arquitectura
 
+=== Restricciones técnicas
+[options="header",cols="1,2"]
+|===
+|Restricción|Explicación
+| _SOLID_ |  _Nos permitirá almacenar los datos de los usuarios de forma segura en almacenes de datos descentralizados llamados Pods. Los usuarios podrán aceptar, o bien rechazar, el acceso a sus datos por parte de otros usuarios._
+| _Github_ |  _En él tendremos un repositorio remoto para el desarrollo del proyecto. Nos facilitará la gestión de las distintas tareas pendientes por realizar, así como llevar un control de versiones._
+| _React_ |  _La utilizaremos para la construcción del front-end del sistema._
+| _Node.js_ |  _Lo utilizaremos para la construcción del back-end del sistema._
+|===
 
-[role="arc42help"]
-****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+=== Organización
+[options="header",cols="1,2"]
+|===
+|Restricción|Explicación
+| _Equipo_ |  _El equipo es impuesto por la organización de la asignatura, tanto su tamaño como sus integrantes. Debemos intentar que las decisiones organizacionales sean lo más ágiles y fluidas posible._
+| _Planificación_ |  _El sistema debe cumplir los requisitos funcionales planteados antes de cada/la entrega de este._
+| _Control de versiones_ |  _Como decisión impuesta utilizaremos Git para llevar a cabo un control de versiones para gestionar el desarrollo del proyecto._
+| _Experiencia_ |  _Poseemos una baja experiencia en las tecnologías planteadas para la realización del proyecto._
+| _Reuniones_ |  _Realizaremos reuniones en cada clase de laboratorio (una vez a la semana). Si fuese necesario, acordaremos entre todos los integrantes del grupo alguna reunión extra._
+| _Pruebas_ |  _Realizaremos diferentes escenarios de pruebas para comprobar el funcionamiento del sistema._
+|===
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
-****
+=== Normas
+[options="header",cols="1,2"]
+|===
+|Restricción|Explicación
+| _Lenguaje_ |  _Todos los integrantes del grupo nos esforzaremos en aprender a utilizar de forma adecuada los diferentes lenguajes de programación citados a utilizar en el desarrollo del sistema._
+| _Código_ | _Nos esforzaremos en mantener el código limpio y bien documentado, de modo que este sea más fácil de entender y mantener._
+| _Arc42_ | _Como decisión impuesta seguiremos la plantilla Arc42 para la realización de la documentación del sistema._
+| _Accesibilidad_ |  _El sistema debe ser usable y accesible por cualquier usuario._
+| _Protección de datos_ |  _Debemos tener especial cuidado en el trato de los datos sensibles de los usuarios de nuestra aplicación._
+| _SOLID_ |  _Como decisión impuesta seguiremos las especificaciones Solid._
+|===
