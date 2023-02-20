@@ -2,7 +2,7 @@
 == System Scope and Context
 
 === Business Context
-image::images/business_context.png["Bussines context diagram"]
+image::business_context.png["Bussines context diagram"]
 Usuario: cliente principal de LoMap, interactúa con la aplicación y posee un POD. 
 
 POD: almacén de los datos personales de un único usuario, de manera que aumenta el nivel de privacidad y descentralización. 
@@ -12,7 +12,7 @@ BD: infraestructura persistente que almacena los lugares reconocidos por los usu
 OpenStreetMaps API: API del servicio externo de mapas utilizado para la localización geográfica de los lugares de interés. 
 
 === Technical Context
-image::images/technical_context.png["Technical context diagram"]
+image::technical_context.png["Technical context diagram"]
 WebClient: aplicación ejecutada en el lado del cliente, realiza peticiones y recibe respuestas html. 
 
 FrontEnd: front end que comparte red con el cliente, recibe peticiones y devuelve respuestas en html. Intermediario entre la lógica y el cliente. 
@@ -22,4 +22,3 @@ BackEnd: implementación de la lógica, así como de las conexiones a los almace
 BD: base de datos del servidor 
 
 POD: almacenamiento individual del usuario, personal y descentralizado. 
-
