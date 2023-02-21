@@ -1,13 +1,7 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
-[options="header"]
-.Lista de riesgos
-|===
-|Id|Riesgo|¿Por qué?|Medidas
-|1|Abandono del proyecto|Por causas controlables o no, un miembto del equipo puede abandonar el proyecto| Hacer un reparto sensato de tareas y mantenernos al día entre nosotros
-|2|Conocimientos SOLID insuficientes|Tecnología nueva para todos más allá de la teoría| Informarnos correctamente, buscar materiales, preguntar 
-|3|Lenguajes nuevos|Typescript o node son totalmente nuevos para casi todos los componentes del equipo| Ayudarnos entre nosotros, seguir tutoriales 
-|4|Falta de organización|No hacer un buen uso de las herramientas de git o una falta de comunicación puede generar retrasos innecesarios| Mantenerse atento a las notificaciones de GitHub, buscar interacción de todos los miembros del equipo
-|5|Falta de tiempo|Todos tenemos obligaciones fuera del proyecto| Organizar el tiempo de la mejor manera que podamos para mantenernos al día
-|===
+
+| Id | Riesgo | ¿Por qué? | Solución |
+|----|----|----|----|----|
+| 1 | Abandono del equipo | Una causa externa podría obligar a algún componente a abandonar el proyecto | Mantenernos al día y hacer un reparto sensato de tareas |
