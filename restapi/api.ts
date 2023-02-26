@@ -42,8 +42,9 @@ api.post(
   async (req: Request, res: Response): Promise<Response> => {
     let lat = req.body.lat;
     let lng = req.body.lng;
-    //let user: User = {name:name,email:email}
-    //users.push(user);
+    //let marker: Marker = {lat:nlatame,lng:lng}
+    //markers.push(marker);
+    console.log("POST request saving marker received");
     return res.sendStatus(200);
   }
 );
