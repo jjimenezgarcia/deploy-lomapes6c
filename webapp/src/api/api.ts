@@ -1,21 +1,14 @@
-import {User} from '../shared/shareddtypes';
 
-export async function addUser(user:User):Promise<boolean>{
+export async function addMarker(marker:{ lat:any, lng:any }):Promise<boolean>{
+    console.log('saving on database')
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/users/add', {
+    let response = await fetch(apiEndPoint+'/markers/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({'name':user.name, 'email':user.email})
+        body: JSON.stringify({'lat':marker.lat, 'lng':marker.lng})
       });
     if (response.status===200)
       return true;
     else
       return false;
-}
-
-export async function getUsers():Promise<User[]>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/users/list');
-    //The objects returned by the api are directly convertible to User objects
-    return response.json()
 }

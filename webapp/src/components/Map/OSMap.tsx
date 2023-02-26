@@ -1,9 +1,8 @@
 import 'leaflet/dist/leaflet.css';
-import L, { icon } from 'leaflet';
-import { MapContainer, TileLayer, Marker} from 'react-leaflet';
+import L from 'leaflet';
+import { MapContainer, TileLayer} from 'react-leaflet';
 import { useMapEvents } from 'react-leaflet';
 import {addMarker} from '../../api/api';
-import { LeafletMouseEvent } from 'leaflet';
 
 const markerIcon = L.icon({
   iconUrl:"https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png",
