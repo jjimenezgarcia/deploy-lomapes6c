@@ -33,4 +33,19 @@ api.post(
   }
 );
 
+
+api.post(
+  "/markers/add",[
+    check('lat').isLength({ min: 1 }).trim().escape(),
+    check('lng').isLength({ min: 1 }).trim().escape(),
+  ],
+  async (req: Request, res: Response): Promise<Response> => {
+    let lat = req.body.lat;
+    let lng = req.body.lng;
+    //let user: User = {name:name,email:email}
+    //users.push(user);
+    return res.sendStatus(200);
+  }
+);
+
 export default api;
