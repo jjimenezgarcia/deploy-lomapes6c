@@ -33,4 +33,20 @@ api.post(
   }
 );
 
+
+api.post(
+  "/markers/add",[
+    check('lat').isLength({ min: 1 }).trim().escape(),
+    check('lng').isLength({ min: 1 }).trim().escape(),
+  ],
+  async (req: Request, res: Response): Promise<Response> => {
+    let lat = req.body.lat;
+    let lng = req.body.lng;
+    //let marker: Marker = {lat:nlatame,lng:lng}
+    //markers.push(marker);
+    console.log("POST request saving marker received");
+    return res.sendStatus(200);
+  }
+);
+
 export default api;
