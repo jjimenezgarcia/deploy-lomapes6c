@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { OSMap } from "./components/Map/OSMap";
-import Header from "./components/Header/Header";
+import Header from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 

@@ -1,15 +1,15 @@
-import "./Header.css";
+import "./NavBar.css";
 
-export default function Header() {
+export default function NavBar() {
   return (
-    <header>
+    <nav>
       <div className="header_left">
         <img src="docs/images/lomapicon.png" alt="Logo"></img>
-        <h2>LoMap</h2>
+        <h2 className="site_title">LoMap</h2>
       </div>
-      <div className="header_mid">
+      <div>
         <ul className="list">
-          <li className="list_item">
+          <li className="list_item, active">
             <a href="#">Inicio</a>
           </li>
           <li className="list_item">
@@ -22,7 +22,7 @@ export default function Header() {
           </li>
         </ul>
       </div>
-      <div className="header_right">
+      <div>
         <ul className="list">
           <li className="list_item">
             <a href="#">Sign Up</a>
@@ -32,6 +32,6 @@ export default function Header() {
           </li>
         </ul>
       </div>
-    </header>
+    </nav>
   );
 }
