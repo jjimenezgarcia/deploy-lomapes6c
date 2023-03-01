@@ -19,7 +19,7 @@ api.post(
     let lngReq = req.body.lng;
     let marker: Marker = {lat:latReq ,lng:lngReq}
     console.log("got here");
-    //storeMarker(marker);
+    storeMarker(marker);
     console.log("POST request saving marker received");
     return res.sendStatus(200);
   }
