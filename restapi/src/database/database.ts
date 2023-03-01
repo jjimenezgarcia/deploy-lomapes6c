@@ -29,7 +29,7 @@ export async function storeMarker(marker: Marker){
   const collection = db.collection('markers');
 
   // Insertar el marcador en la base de datos
-  console.log(await collection.insertOne(marker));
+  await collection.insertOne(marker);
 
   // Cerrar la conexión
   client.close();
