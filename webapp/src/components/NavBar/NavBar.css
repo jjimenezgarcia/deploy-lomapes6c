@@ -34,12 +34,15 @@ nav ul {
 nav a {
   color: inherit;
   text-decoration: none;
-  height: 100%;
+  height: 3em;
   display: flex;
   align-items: center;
   padding: 0.25rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+}
+nav li {
+  border-radius: 1em;
 }
 
 nav li.active {
@@ -48,4 +51,5 @@ nav li.active {
 
 nav li:hover {
   background-color: #777;
+  transform: scale(1.1);
 }
