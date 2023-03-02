@@ -13,7 +13,9 @@ export default function WelcomePage() {
           con otros usuarios para que puedan añadir nuevos lugares de interés o
           comentar los ya existentes.
         </p>
-        <button>Comenzar</button>
+        <a className="comenzar" href="#">
+          Comenzar
+        </a>
       </div>
       <div>
         <img className="image" src={map} alt="Foto del mapa" />

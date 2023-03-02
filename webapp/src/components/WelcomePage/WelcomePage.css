@@ -22,8 +22,9 @@
   grid-row: span 2;
 }
 
-button {
+.comenzar {
   background-color: #333;
+  text-decoration: none;
   color: white;
   border: none;
   border-radius: 1em;
@@ -31,6 +32,11 @@ button {
   font-size: 1.5em;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+}
+
+.comenzar:hover {
+  background-color: #777;
+  transform: scale(1.1);
 }
 
 p {
