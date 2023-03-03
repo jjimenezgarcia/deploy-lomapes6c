@@ -1,6 +1,7 @@
 import React from "react";
 import "./WelcomePage.css";
 import map from "../../images/map.png";
+import { OSMap } from "../Map/OSMap";
 
 export default function WelcomePage() {
   return (
@@ -17,8 +18,8 @@ export default function WelcomePage() {
           Comenzar
         </a>
       </div>
-      <div>
-        <img className="image" src={map} alt="Foto del mapa" />
+      <div className="map">
+        <OSMap />
       </div>
     </div>
   );

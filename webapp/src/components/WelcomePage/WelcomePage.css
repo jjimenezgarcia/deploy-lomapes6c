@@ -7,9 +7,9 @@
   padding: 5em;
 }
 
-.image {
-  width: 80%;
-  height: 80%;
+.map {
+  width: 50%;
+  height: 25%;
   border: 2px solid white;
   border-radius: 1em;
   box-shadow: 0 0 20px #bbb6b6;

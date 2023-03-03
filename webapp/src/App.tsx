@@ -1,14 +1,14 @@
 import React from "react";
 import "./App.css";
 import { OSMap } from "./components/Map/OSMap";
-import Header from "./components/NavBar/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <NavBar />
       <WelcomePage />
       <Footer />
     </div>

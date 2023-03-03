@@ -21,6 +21,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 2rem;
+  width: 15%;
 }
 
 nav ul {
@@ -52,4 +53,11 @@ nav li.active {
 nav li:hover {
   background-color: #777;
   transform: scale(1.1);
+}
+
+nav img {
+  height: 20%;
+  width: 20%;
+  border-radius: 20%;
+  border: 2px solid black;
 }

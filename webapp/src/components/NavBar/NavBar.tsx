@@ -1,10 +1,11 @@
 import "./NavBar.css";
+import lomap_icon from "../../images/lomap-icon.png";
 
 export default function NavBar() {
   return (
     <nav>
       <div className="header_left">
-        <img src="docs/images/lomapicon.png" alt="Logo"></img>
+        <img src={lomap_icon} alt="Logo"></img>
         <h2 className="site_title">LoMap</h2>
       </div>
       <div>
