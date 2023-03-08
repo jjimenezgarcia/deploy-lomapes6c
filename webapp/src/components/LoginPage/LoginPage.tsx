@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./LoginPage.css";
 
 function LoginForm() {
 
@@ -19,17 +20,20 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Nombre de usuario:
-        <input type="text" value={username} onChange={handleUsernameChange} />
-      </label>
-      <label>
-        Contraseña:
-        <input type="password" value={password} onChange={handlePasswordChange} />
-      </label>
-      <button type="submit">Enviar</button>
-    </form>
+    <div className="login_page">
+      <form onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <p><label>
+          Nombre de usuario:
+          <input type="text" value={username} onChange={handleUsernameChange} />
+        </label></p>
+        <p><label>
+          Contraseña:
+          <input type="password" value={password} onChange={handlePasswordChange} />
+        </label></p>
+        <p><button type="submit">Enviar</button></p>
+      </form>
+    </div>
   );
 }
 
