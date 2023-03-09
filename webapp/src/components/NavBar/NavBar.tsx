@@ -1,5 +1,6 @@
 import "./NavBar.css";
 import lomap_icon from "../../images/lomap-icon.png";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -11,25 +12,25 @@ export default function NavBar() {
       <div>
         <ul className="list">
           <li className="list_item, active">
-            <a href="#">Inicio</a>
+            <Link to="/start">Inicio</Link>
           </li>
           <li className="list_item">
-            <a href="https://arquisoft.github.io/lomap_es6c/" target="_blank">
+            <Link to="https://arquisoft.github.io/lomap_es6c/" target="_blank">
               Documentación
-            </a>
+            </Link>
           </li>
           <li className="list_item">
-            <a href="#">Sobre Nosotros</a>
+            <Link to="/about">Sobre Nosotros</Link>
           </li>
         </ul>
       </div>
       <div>
         <ul className="list">
           <li className="list_item">
-            <a href="#">Sign Up</a>
+            <Link to="/signup">Sign Up</Link>
           </li>
           <li className="list_item">
-            <a href="#">Log In</a>
+            <Link to="/login">Log In</Link>
           </li>
         </ul>
       </div>
