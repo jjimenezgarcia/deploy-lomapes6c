@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./LoginPage.css";
+import lomap_icon from "../../images/lomap-icon.png";
 
 function LoginForm() {
 
@@ -20,19 +21,23 @@ function LoginForm() {
   };
 
   return (
-    <div className="login_page">
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <p><label>
-          Nombre de usuario:
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label></p>
-        <p><label>
-          Contraseña:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label></p>
-        <p><button type="submit">Enviar</button></p>
-      </form>
+    <div className="main_form">
+      <div className="login">
+        <img src={lomap_icon} alt="Logo"></img>
+        <h1>Log in</h1>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="form_field">
+            <input type="text" value={username} onChange={handleUsernameChange} placeholder="username" />
+          </div>
+          <div className="form_field">
+            <input type="password" value={password} onChange={handlePasswordChange} placeholder="••••••••" />
+          </div>
+          <div className="form_field">
+            <button type="submit">Enviar</button>
+          </div>
+        </form>
+        <p>¿No tienes una cuenta? <a href="#">Sign up</a></p>
+      </div>
     </div>
   );
 }

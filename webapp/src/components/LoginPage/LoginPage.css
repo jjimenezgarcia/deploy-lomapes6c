@@ -1,33 +1,57 @@
-.login_page {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    padding: 5em;
-    font-size: 1.5em;
+* {
+    box-sizing: border-box;
+}
+
+.main_form {
+    line-height: 1.5;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    max-width: 25rem;
 }
 
-p {
-    margin: 1em;
-    font-size: 0.75em;
+.login {
+    box-shadow: 0 0 100px #0000005d;
+    border-radius: 10%;
+    padding: 0.5rem 2rem;
 }
 
-input {
-    margin: 0.5em;
-    border-radius: 0.5em;
+input, button {
+    font: inherit;
+    color: #7e8ba3;
+    border: 1px solid #242c37;
+    border-radius: 999px;
+    background-color: transparent;
+    text-align: center;
+    outline: 0;
+    padding: .5rem 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 button {
-    border-radius: 1em;
-    padding: 4%;
-    margin: 1em;
-    font-size: 0.75em;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-        "Lucida Sans", Arial, sans-serif;
-    cursor: pointer;
-    background-color: rgb(71, 174, 93);
+    background-color: #ee7e51;
     color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+h1 {
+    margin: 0 0 1rem;
+}
+
+img {
+    height: auto;
+    width: 70%;
+    vertical-align: middle;
+    border: none;
+}
+
+a {
+    color: #e76430;
 }
