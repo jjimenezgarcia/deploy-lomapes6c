@@ -22,3 +22,32 @@ Motivate what you have decided and why you decided that way,
 based upon your problem statement, the quality goals and key constraints.
 Refer to details in the following sections.
 ****
+
+4.1. Decisiones Tecnológicas
+Las diferentes tecnologias utilizadas en nuestra aplicación serán las siguientes: 
+    - GitHub: herramienta que se utilizara para almacenar todo el código de nuestra aplicación y que nos servirá como control de versiones, 
+      además de otras funcionalidades que se explicarán posteriormente.
+    - SOLID: la aplicación seguira las pautas de SOLID para descentralizar los datos de los diferentes usuarios de la aplicación mediante pods.
+    - NodeJS: se escogió este entorno para desarrollar el backend de la aplicación , ya que permitira que esta sea facilmente escalable y rápida.
+    - React: se utilizara esta biblioteca para crear las interfaces de usuario para la aplicación, ya que permite hacer interfaces mas complejas 
+      al ser sus componentes independientes y, por tanto, reusables. 
+    - MondoDB: se ha decidido utilizar esta base de datos ya que se trata de una base de datos no relacional que cumple todos los requisitos 
+      necesarios para el correcto funcionamiento de la aplicación.
+
+4.2. Decisiones de calidad
+    - Uso de SOLID para asegurar la privacidad de los datos de todos los clientes.
+    - Se desea que esta aplicación sea usable, es decir, que todos los usuarios puedan interactuar con la aplicación de forma sencilla. Para ello 
+      la aplicación debe ser facil de entender y usar.
+    
+
+4.3. Decisiones organizativas
+    - Uso de ramas en GitHub: para el desarrollo del proyecto hemos decidido crear varias ramas, en principio hay una rama principal master de la
+      que salen otra dos que serian las de documentationDevelop (rama utilizada para la creacion y/o modificacion de la documentacion del proyecto)
+      y la rama develop (que sera utilizada para el propio desarrollo de la aplicación). En un futuro se crearan otras ramas para que cada integrante
+      del equipo pueda programar en la aplicación sin interrumpir el avance de los demas miembros del equipo.
+    - Uso de pull request y issues: se utilizaran las issues para indicar las diferentes tareas que se van a realizar respecto al desarrollo de la
+      aplicación, además se ha decidido usar pull requests para hacer los merges github, intentando que haya las colisiones o problemas al mezclar el
+      código ya que estas requests deben ser aceptadas por al menos un integrante del equipo.
+    - Uso de la Wiki de GitHub para dejar constancia de los temas tratados en las diferentes reuniones, así como sus asistentes y las diferentes 
+      decisiones que se hayan podido tomar en ella.
+    - Uso de un proyecto en GitHub donde se iran moviendo las diferentes issues en el backlog, indicando asi el estado actual de dicha tarea.
