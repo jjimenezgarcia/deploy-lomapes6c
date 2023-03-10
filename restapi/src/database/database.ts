@@ -6,7 +6,7 @@ var client: any;
 
 async function connectDatabase() {
   // Crear una instancia del cliente de MongoDB
-  client = new MongoClient('mongodb://192.168.1.10:27017');
+  client = new MongoClient('mongodb://mongodb:27017');
 
   try {
     // Conectar al servidor de MongoDB
