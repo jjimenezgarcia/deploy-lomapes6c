@@ -1,7 +1,6 @@
-import React from "react";
 import "./WelcomePage.css";
-import map from "../../images/map.png";
 import { OSMap } from "../Map/OSMap";
+import { Link } from "react-router-dom";
 
 export default function WelcomePage() {
   return (
@@ -14,9 +13,9 @@ export default function WelcomePage() {
           con otros usuarios para que puedan añadir nuevos lugares de interés o
           comentar los ya existentes.
         </p>
-        <a className="comenzar" href="#">
+        <Link className="comenzar" to="/signup">
           Comenzar
-        </a>
+        </Link>
       </div>
       <div className="map">
         <OSMap />
