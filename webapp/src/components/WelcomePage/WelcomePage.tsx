@@ -13,7 +13,7 @@ export default function WelcomePage() {
           con otros usuarios para que puedan añadir nuevos lugares de interés o
           comentar los ya existentes.
         </p>
-        <Link className="comenzar" to="/signup">
+        <Link className="comenzar" to="/login">
           Comenzar
         </Link>
       </div>

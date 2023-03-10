@@ -1,11 +1,10 @@
-import React from "react";
 import "./App.css";
-import { OSMap } from "./components/Map/OSMap";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 import MainMenu from "./components/MainMenu/MainMenu";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginForm from "./components/LoginPage/LoginPage";
 
 function App() {
   return (
@@ -24,7 +23,7 @@ function App() {
             }
           />
           <Route path="/about" element={<div>Sobre Nosotros</div>} />
-          <Route path="/login" element={<div>Log in</div>} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
       </Router>
     </div>
