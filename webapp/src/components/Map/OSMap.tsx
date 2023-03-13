@@ -13,18 +13,33 @@ async function saveMarker(markerData: any) {
   await addMarker(markerData);
 }
 
+async function saveComment(){
+  
+}
+
+
 export function OSMap() {
   function addMarker(lat: number, lng: number) {
     const newMarker = { lat, lng };
     saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos.
   }
 
+  function addComment(){ // mostraria el textarea para comentar y despues guardaria el comentario
+    let txt = document.getElementById("comment");
+    console.log("hola");
+    saveComment();
+  }
+
   function MyComponent() {
     const map = useMapEvents({
       click: (e) => {
         const { lat, lng } = e.latlng;
-        L.marker([lat, lng], { icon: markerIcon }).addTo(map);
+        let marker = L.marker([lat, lng], { icon: markerIcon, draggable:true });
+        marker.addTo(map);
+        marker.bindPopup(marker.getLatLng().toString()).openPopup();
+        let popup = L.popup().setLatLng([lat, lng]).setContent("<h3>Comentario:</h3><textarea id=comment></textarea>").openOn(map);
         addMarker(lat, lng);
+        
       },
     });
     return null;
