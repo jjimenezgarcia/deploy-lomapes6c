@@ -42,7 +42,10 @@ Caja blanca Front-end::
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
-| _..._ |  _..._
+| _MainMenu_ |  _Página inicial (menú principal) de la aplicación. En esta se muestran enlaces a otras páginas de la app para redireccionar al usuario._
+| _WelcomePage_ |  _Página de bienvenida a la aplicación. En esta se muestra el mapa y enlaces a otras páginas de la app para redireccionar al usuario._
+| _LoginPage_ |  _Permite al usuario de la aplicación iniciar sesión con su usuario y contraseña._
+| _SignupPage_ |  _Permite a un nuevo usuario de la aplicación registrarse con su usuario, email y contraseña._
 |===
 
 === Level 4
