@@ -15,10 +15,6 @@ async function saveMarker(markerData: any) {
   await addMarker(markerData);
 }
 
-async function saveComment(){
-  
-}
-
 
 export function OSMap(){
 
@@ -27,12 +23,6 @@ export function OSMap(){
       saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos. 
     }
 
-  function addComment(){ // mostraria el textarea para comentar y despues guardaria el comentario
-    const comment = document.getElementById("comment") as HTMLTextAreaElement;
-    console.log("entra");
-    console.log("valor:"+comment.value);
-    saveComment();
-  }
 
     function MyComponent() {
       const map = useMapEvents({
@@ -49,8 +39,10 @@ export function OSMap(){
         /* La siguiente linea es una marranada pero no sabia como meter el onclick al tener que pasarselo como parametro
            
         */
-        document.getElementsByName("btnComment").forEach(e => e.addEventListener("click",addComment));
-        addMarker(lat, lng, comment);     
+        document.getElementsByName("btnComment").forEach(btn => btn.addEventListener("click",function(){
+          addMarker(lat, lng, (document.getElementById("comment") as HTMLTextAreaElement).value);  
+        },false));
+           
         }
       });
       return null;
