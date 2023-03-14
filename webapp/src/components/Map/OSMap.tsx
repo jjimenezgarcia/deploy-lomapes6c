@@ -1,11 +1,11 @@
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import { MapContainer, TileLayer} from 'react-leaflet';
-import { useMapEvents } from 'react-leaflet';
-import {addMarker} from '../../api/api';
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
+import { useMapEvents } from "react-leaflet";
+import { addMarker } from "../../api/api";
 
 const markerIcon = L.icon({
-  iconUrl:"https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png",
+  iconUrl: "https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png",
   iconSize: [30, 30],
 });
 
@@ -32,14 +32,17 @@ export function OSMap(){
       return null;
     }
 
-    return (
-      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '700px' }}> 
+  return (
+    <MapContainer
+      center={[51.505, -0.09]}
+      zoom={13}
+      style={{ height: "700px", borderRadius: "inherit" }}
+    >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <MyComponent/>
-      </MapContainer>
-    );
-  }
-  
+      <MyComponent />
+    </MapContainer>
+  );
+}

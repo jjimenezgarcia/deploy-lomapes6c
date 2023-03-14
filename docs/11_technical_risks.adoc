@@ -1,17 +1,13 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
-
-[role="arc42help"]
-****
-.Contents
-A list of identified technical risks or technical debts, ordered by priority
-
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
-
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
-
-.Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
-****
+[options="header"]
+.Lista de riesgos
+|===
+|Id|Riesgo|¿Por qué?|Medidas
+|1|Abandono del proyecto|Por causas controlables o no, un miembto del equipo puede abandonar el proyecto| Hacer un reparto sensato de tareas y mantenernos al día entre nosotros
+|2|Conocimientos SOLID insuficientes|Tecnología nueva para todos más allá de la teoría| Informarnos correctamente, buscar materiales, preguntar 
+|3|Lenguajes nuevos|Typescript o node son totalmente nuevos para casi todos los componentes del equipo| Ayudarnos entre nosotros, seguir tutoriales 
+|4|Falta de organización|No hacer un buen uso de las herramientas de git o una falta de comunicación puede generar retrasos innecesarios| Mantenerse atento a las notificaciones de GitHub, buscar interacción de todos los miembros del equipo
+|5|Falta de tiempo|Todos tenemos obligaciones fuera del proyecto| Organizar el tiempo de la mejor manera que podamos para mantenernos al día
+|===
