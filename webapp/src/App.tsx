@@ -5,6 +5,7 @@ import WelcomePage from "./components/WelcomePage/WelcomePage";
 import MainMenu from "./components/MainMenu/MainMenu";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginForm from "./components/LoginPage/LoginPage";
+import SignupForm from "./components/SignupPage/SignupPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           />
           <Route path="/about" element={<div>Sobre Nosotros</div>} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignupForm />} />
         </Routes>
       </Router>
     </div>
