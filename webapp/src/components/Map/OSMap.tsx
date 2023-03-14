@@ -3,6 +3,8 @@ import L from "leaflet";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import { addMarker } from "../../api/api";
+import { Console } from "console";
+import { click } from "@testing-library/user-event/dist/click";
 
 const markerIcon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png",
@@ -25,8 +27,9 @@ export function OSMap() {
   }
 
   function addComment(){ // mostraria el textarea para comentar y despues guardaria el comentario
-    let txt = document.getElementById("comment");
-    console.log("hola");
+    const comment = document.getElementById("comment") as HTMLTextAreaElement;
+    console.log("entra");
+    console.log("valor:"+comment.value);
     saveComment();
   }
 
@@ -37,9 +40,15 @@ export function OSMap() {
         let marker = L.marker([lat, lng], { icon: markerIcon, draggable:true });
         marker.addTo(map);
         marker.bindPopup(marker.getLatLng().toString()).openPopup();
-        let popup = L.popup().setLatLng([lat, lng]).setContent("<h3>Comentario:</h3><textarea id=comment></textarea>").openOn(map);
-        addMarker(lat, lng);
+        let popup = L.popup()
+          .setLatLng([lat, lng])
+          .setContent("<h3>Comentario:</h3><textarea id=comment></textarea><button name=btnComment>Confirmar</button>").openOn(map);
         
+        /* La siguiente linea es una marranada pero no sabia como meter el onclick al tener que pasarselo como parametro
+           
+        */
+        document.getElementsByName("btnComment").forEach(e => e.addEventListener("click",addComment));
+        addMarker(lat, lng);     
       },
     });
     return null;
