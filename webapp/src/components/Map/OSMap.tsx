@@ -20,11 +20,12 @@ async function saveComment(){
 }
 
 
-export function OSMap() {
-  function addMarker(lat: number, lng: number) {
-    const newMarker = { lat, lng };
-    saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos.
-  }
+export function OSMap(){
+
+    function addMarker(lat: number, lng: number, comment: string) {
+      const newMarker = { lat, lng, comment};
+      saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos. 
+    }
 
   function addComment(){ // mostraria el textarea para comentar y despues guardaria el comentario
     const comment = document.getElementById("comment") as HTMLTextAreaElement;
@@ -33,13 +34,14 @@ export function OSMap() {
     saveComment();
   }
 
-  function MyComponent() {
-    const map = useMapEvents({
-      click: (e) => {
-        const { lat, lng } = e.latlng;
-        let marker = L.marker([lat, lng], { icon: markerIcon, draggable:true });
+    function MyComponent() {
+      const map = useMapEvents({
+        click: (e) => {
+          const comment = 'comentario' //TODO: implementar que se puedan añadir comentarios desde el front
+          const { lat, lng } = e.latlng;
+          let marker = L.marker([lat, lng], { icon: markerIcon, draggable:true });
         marker.addTo(map);
-        marker.bindPopup(marker.getLatLng().toString()).openPopup();
+          marker.bindPopup(marker.getLatLng().toString()).openPopup();
         let popup = L.popup()
           .setLatLng([lat, lng])
           .setContent("<h3>Comentario:</h3><textarea id=comment></textarea><button name=btnComment>Confirmar</button>").openOn(map);
@@ -48,11 +50,11 @@ export function OSMap() {
            
         */
         document.getElementsByName("btnComment").forEach(e => e.addEventListener("click",addComment));
-        addMarker(lat, lng);     
-      },
-    });
-    return null;
-  }
+        addMarker(lat, lng, comment);     
+        }
+      });
+      return null;
+    }
 
   return (
     <MapContainer
