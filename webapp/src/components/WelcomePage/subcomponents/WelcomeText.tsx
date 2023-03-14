@@ -1,10 +1,17 @@
 import { OSMap } from "../../Map/OSMap";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export default function WelcomeText() {
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
+
   return (
-    <div className="welcome_container">
-      <div className="welcome_left">
+    <div className="welcome_container top">
+      <div className="welcome_left" data-aos="fade-down">
         <h1>Bienvenido a LoMap</h1>
         <p>
           LoMap es una aplicación web que permite a los usuarios crear mapas de
@@ -16,7 +23,7 @@ export default function WelcomeText() {
           Comenzar
         </Link>
       </div>
-      <div className="map">
+      <div className="map" data-aos="fade-down">
         <OSMap />
       </div>
     </div>
