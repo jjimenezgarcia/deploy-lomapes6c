@@ -13,22 +13,24 @@ async function saveMarker(markerData: any) {
   await addMarker(markerData);
 }
 
-export function OSMap() {
-  function addMarker(lat: number, lng: number) {
-    const newMarker = { lat, lng };
-    saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos.
-  }
+export function OSMap(){
 
-  function MyComponent() {
-    const map = useMapEvents({
-      click: (e) => {
-        const { lat, lng } = e.latlng;
-        L.marker([lat, lng], { icon: markerIcon }).addTo(map);
-        addMarker(lat, lng);
-      },
-    });
-    return null;
-  }
+    function addMarker(lat: number, lng: number, comment: string) {
+      const newMarker = { lat, lng, comment};
+      saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos. 
+    }
+
+    function MyComponent() {
+      const map = useMapEvents({
+        click: (e) => {
+          const comment = 'comentario' //TODO: implementar que se puedan añadir comentarios desde el front
+          const { lat, lng } = e.latlng;
+          L.marker([lat, lng], { icon: markerIcon }).addTo(map);
+          addMarker(lat, lng, comment);
+        }
+      });
+      return null;
+    }
 
   return (
     <MapContainer
