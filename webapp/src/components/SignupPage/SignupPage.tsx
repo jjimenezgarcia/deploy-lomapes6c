@@ -1,28 +1,22 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from 'axios';
 import "./SignupPage.css";
 import lomap_icon from "../../images/lomap-icon.png";
-import { Link } from "react-router-dom";
 
 function SignupForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("{username: " + username + ", email: " + email + ", password: " + password + "}");
+    await axios.post('http://localhost:3000/signup', {
+      username: username,
+      email: email,
+      password: password
+    });
   };
 
   return (
@@ -35,7 +29,7 @@ function SignupForm() {
             <input
               type="text"
               value={username}
-              onChange={handleUsernameChange}
+              onChange={event => setUsername(event.target.value)}
               placeholder="username"
             />
           </div>
@@ -43,7 +37,7 @@ function SignupForm() {
             <input
               type="email"
               value={email}
-              onChange={handleEmailChange}
+              onChange={event => setEmail(event.target.value)}
               placeholder="hello@myemail.com"
             />
           </div>
@@ -51,7 +45,7 @@ function SignupForm() {
             <input
               type="password"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={event => setPassword(event.target.value)}
               placeholder="••••••••"
             />
           </div>

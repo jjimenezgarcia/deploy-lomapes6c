@@ -23,4 +23,19 @@ api.post(
   }
 );
 
+api.post("/login",
+    [check('username').isLength({min: 1}),
+    check('password').isLength({min: 1})],
+  async (req: Request, res: Response) => {
+    // ----- TO-DO -----
+});
+
+api.post("/signup",
+    [check('username').isLength({min: 1}),
+    check('email').isEmail().normalizeEmail(),
+    check('password').isLength({min: 1})],
+  async (req: Request, res: Response) => {
+    // ----- TO-DO -----
+});
+
 export default api;
