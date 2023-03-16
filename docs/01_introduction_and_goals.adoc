@@ -2,65 +2,30 @@
 == Introduction and Goals
 
 [role="arc42help"]
-****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
-
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
-**** 
 
 La petición del ayuntamiento de la ciudad de Bruselas es una aplicación que permita a sus ciudadanos tener un mapa 
-donde puedan colocar marcadores en distintos sitios (que pueden ser desde monumentos o lugares de la ciudad, hasta 
-tiendas, restaurantes o bares de esta). Los ciudadanos podrán crear sus propios mapas personalizados y compartirlos con sus amigos.
+donde puedan colocar marcadores en distintos sitios. Actualmente solo permite marcar sitios con un tipo de marcador pero posteriormente se podrán escoger diferentes tipos de marcadores dependiendo del lugar, los lugares posibles serán bares, restaurantes, monumentos, paisajes o miradores. Los ciudadanos podrán crear sus propios mapas personalizados y compartirlos con sus amigos.
 
 === Requirements Overview
 
 [role="arc42help"]
-****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
-
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
-
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
-
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
-****
-
 La aplicación deberá permitir a los usuarios añadir y visualizar en un mapa los diferentes marcadores dependiendo que tipo de lugar 
-sea.Estos marcadores pueden tener asociadas tanto comentarios, puntuaciones… como fotos en la ubicación del marcador.
+sea.Estos marcadores pueden tener asociadas tanto comentarios, puntuaciones y valoraciones, como fotos en la ubicación del marcador.
 
-Por otra parte, los distintos usuarios pueden compartir sus mapas o marcadores con sus amigos si así lo desean y ver las fotos, 
-comentarios, valoraciones… que este amigo ha publicado.
+Por otra parte, los distintos usuarios pueden compartir sus mapas(con el conjunto de marcadores que tenga asociado) con sus amigos si así lo desean y ver las fotos, 
+comentarios, valoraciones y todos los datos que este amigo ha publicado en los marcadores.
 
-La aplicación contará con un filtro para poder ver el mapa, por ejemplo, por categoría (si solo queremos ver las tiendas, o solo los 
-restaurantes…), solo los marcadores de los amigos...
+La aplicación contará con un filtro para poder ver el mapa, por ejemplo, por categoría (si solo queremos ver las tiendas, restaurantes o cualquiera de los tipos de marcadores enumerados anteriormente), solo los marcadores de los amigos o de un amigo en concreto. Esta funcionalidad todavia no está disponible pero se implementara en próximas versiones.
 
 === Quality Goals
+[options="header",cols="1,2"]
+|===
+|Objetivos|Descripcion
+| Privacidad | Se utlizará la metodologia SOLID para garantizar la seguridad de los datos del usuario, quien será quien nos de acceso a los datos que considere oportunos a través del uso un POD, que será privado e independiente para cada usuario
+| Usabilidad | La aplicación deberá ser intuitiva y sencilla de usar para el cliente
+| Eficiencia | Se buscara una buena eficiencia de la aplicación, cosa que mejorará a la experiencia del cliente
+|===
 
-[role="arc42help"]
-****
-.Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
-
-.Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …
-
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
-****
-
-El principal objetivo de la aplicación sería permitir que los ciudadanos puedan añadir lugares en un mapa(con las diferentes categorias propuestas). 
-Otra meta que va muy ligada al anterior seria poder ver dichos lugares en una ventana tipo mapa y, por ultimo, el siguiente objetivo más prioritario
-seria conceder a los usuarios la posibilidad de compartir sus mapas(con los diferentes marcadores de lugares que haya en ellos) con sus amigos. 
 
 === Stakeholders
 
