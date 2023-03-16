@@ -5,6 +5,7 @@ import WelcomePage from "./components/WelcomePage/WelcomePage";
 import MainMenu from "./components/MainMenu/MainMenu";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginForm from "./components/LoginPage/LoginPage";
+import { OSMap } from "./components/Map/OSMap";
 
 function App() {
   return (
@@ -18,6 +19,16 @@ function App() {
               <div>
                 <NavBar />
                 <WelcomePage />
+                <Footer />
+              </div>
+            }
+          />
+          <Route
+            path="/start/map"
+            element={
+              <div>
+                <NavBar />
+                <OSMap />
                 <Footer />
               </div>
             }

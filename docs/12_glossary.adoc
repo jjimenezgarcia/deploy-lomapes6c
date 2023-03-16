@@ -35,4 +35,14 @@ Potentially more columns in case you need translations.
 | POD          | Contenedor perteneciente a un usuario con sus datos que usaremos junto con SOLID
 
 | SOLID        | Aunque se nombre de la misma manera que los principios de SOLID de diseño de software propuesto por Robert C. Martin, no se refiere a estos, sino al proyecto de descentralización de datos en la web dirigido por Tim Berners-Lee
+| Chinchetas   | Cuando se habla de chinchetas, se refiere a un marcador en un mapa
+| API          | Se refiere a Application Programming Interface, que es una interfaz de programación de aplicaciones que define las interacciones entre diferentes componentes de un software
+| Back-end     | Se refiere a la parte que se encuentra en el servidor y que es invisible para el usuario
+| Front-end    | Se refiere a la parte que se encuentra en el cliente y que es visible para el usuario
+| Github       | Es una plataforma de desarrollo colaborativo para alojar proyectos utilizando el sistema de control de versiones Git
+| Git          | Es un sistema de control de versiones distribuido, diseñado para manejar todo, desde proyectos pequeños a muy grandes, con velocidad y eficiencia
+| MVC          | Se refiere a Modelo-Vista-Controlador, que es un patrón de arquitectura de software que separa los datos y la lógica de negocio de una aplicación de la interfaz de usuario
+| Stakeholders | Son las personas que tienen un interés en el proyecto y que pueden influir en el mismo
+| JSON         | Es un formato de texto ligero para el intercambio de datos
+| arc42        | Es un estándar de documentación de arquitectura de software
 |===
