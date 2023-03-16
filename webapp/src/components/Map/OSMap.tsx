@@ -3,6 +3,8 @@ import L from "leaflet";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import { addMarker } from "../../api/api";
+import { Console } from "console";
+import { click } from "@testing-library/user-event/dist/click";
 
 const markerIcon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png",
@@ -13,6 +15,7 @@ async function saveMarker(markerData: any) {
   await addMarker(markerData);
 }
 
+
 export function OSMap(){
 
     function addMarker(lat: number, lng: number, comment: string) {
@@ -20,13 +23,26 @@ export function OSMap(){
       saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos. 
     }
 
+
     function MyComponent() {
       const map = useMapEvents({
         click: (e) => {
           const comment = 'comentario' //TODO: implementar que se puedan añadir comentarios desde el front
           const { lat, lng } = e.latlng;
-          L.marker([lat, lng], { icon: markerIcon }).addTo(map);
-          addMarker(lat, lng, comment);
+          let marker = L.marker([lat, lng], { icon: markerIcon, draggable:true });
+        marker.addTo(map);
+          marker.bindPopup(marker.getLatLng().toString()).openPopup();
+        let popup = L.popup()
+          .setLatLng([lat, lng])
+          .setContent("<h3>Comentario:</h3><textarea id=comment></textarea><button name=btnComment>Confirmar</button>").openOn(map);
+        
+        /* La siguiente linea es una marranada pero no sabia como meter el onclick al tener que pasarselo como parametro
+           
+        */
+        document.getElementsByName("btnComment").forEach(btn => btn.addEventListener("click",function(){
+          addMarker(lat, lng, (document.getElementById("comment") as HTMLTextAreaElement).value);  
+        },false));
+           
         }
       });
       return null;
