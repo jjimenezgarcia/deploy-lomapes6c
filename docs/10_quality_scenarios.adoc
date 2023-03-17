@@ -75,4 +75,7 @@ Tabular or free form text.
 |Privacidad|Solamente el usuario puede acceder a sus datos personales ya que se almacenan en su Pod personal| Alta
 |Integridad|Los datos guardados siempre serán correctos| Media
 |Seguridad|La información sensible de los usuarios será protegida, además, se necesita autorización para acceder a ubicación y demás servicios| Alta
+|Mantenibilidad|Que sea susceptible y flexible a cambios| Media-Alta
+|Descentralización|Los datos de los usuarios no estan en un servidor central, esta fuertemente relacionado con la privacidad| Media
+|Buenas prácticas|La aplicación cumple con las buenas prácticas de desarrollo de software| Media
 |===
