@@ -1,27 +1,29 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import "./LoginPage.css";
+import "./SignupPage.css";
 import lomap_icon from "../../images/lomap-icon.png";
 
-function LoginForm() {
+function SignupForm() {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("{username: " + username + ", password: " + password + "}");
-    await axios.post('http://localhost:3000/login', {
+    console.log("{username: " + username + ", email: " + email + ", password: " + password + "}");
+    await axios.post('http://localhost:3000/signup', {
       username: username,
+      email: email,
       password: password
     });
-  }
+  };
 
   return (
     <div className="main_form">
-      <div className="login">
+      <div className="signup">
         <img src={lomap_icon} alt="Logo"></img>
-        <h1>Log in</h1>
+        <h1>Sign up</h1>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form_field">
             <input
@@ -29,6 +31,14 @@ function LoginForm() {
               value={username}
               onChange={event => setUsername(event.target.value)}
               placeholder="username"
+            />
+          </div>
+          <div className="form_field">
+            <input
+              type="email"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+              placeholder="hello@myemail.com"
             />
           </div>
           <div className="form_field">
@@ -44,11 +54,11 @@ function LoginForm() {
           </div>
         </form>
         <p>
-          ¿No tienes una cuenta? <Link to="/signup">Sign up</Link>
+          ¿Ya tienes una cuenta? <Link to="/login">Log in</Link>
         </p>
       </div>
     </div>
   );
 }
 
-export default LoginForm;
+export default SignupForm;
