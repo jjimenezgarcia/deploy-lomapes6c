@@ -33,5 +33,5 @@ Various options:
 
 |Base de datos|Usaremos MongoDB para tener una base de datos central para la aplicación | Escalabilidad, flexibilidad y fácil integración | No tiene esquema de datos, pueden existir datos duplicados y no soporta el uso de JOIN
 
-|OpenStreetMaps API|Para la generación de mapas utilizaremos esta API|Es gratuita|Tenemos que aprender a utilizarla
+|OpenStreetMaps API|Para la generación de mapas utilizaremos esta API|Es gratuita|Curva de aprendizaje
 |===
