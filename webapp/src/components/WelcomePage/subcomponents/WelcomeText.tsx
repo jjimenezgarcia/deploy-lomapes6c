@@ -1,4 +1,3 @@
-import { OSMap } from "../../Map/OSMap";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -19,13 +18,11 @@ export default function WelcomeText() {
           con otros usuarios para que puedan añadir nuevos lugares de interés o
           comentar los ya existentes.
         </p>
-        <Link className="comenzar" to="/login">
+        <Link className="comenzar" to="/user">
           Comenzar
         </Link>
       </div>
-      <div className="map" data-aos="fade-down">
-        <OSMap />
-      </div>
+      
     </div>
   );
 }

@@ -10,10 +10,19 @@ const UserLogin = () => {
     setCurrentUrl(window.location.href);
   }, [setCurrentUrl]);
 
+  const styles = {
+    border: '1px solid white',
+    borderRadius: 4,
+    fontFamily: 'Roboto, sans-serif',
+    color: 'white',
+    backgroundColor: 'white',
+  };
+
   return (
     <Container fixed>
       <FormGroup>
-        <TextField
+        <TextField 
+          style={styles}
           label="Identity Provider"
           placeholder="Identity Provider"
           type="url"
