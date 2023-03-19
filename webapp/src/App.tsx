@@ -8,9 +8,10 @@ import UserPage from "./components/pages/UserPage/UserPage";
 import { OSMap } from "./components/Map/OSMap";
 import { SessionProvider } from "@inrupt/solid-ui-react";
 function App() {
+
   return (
-    <SessionProvider>
     <div className="App">
+      <SessionProvider sessionId="logIn">
       <Router>
         <Routes>
           <Route path="/" element={<MainMenu />} />
@@ -38,8 +39,8 @@ function App() {
           <Route path="/user" element={<UserPage />} />
         </Routes>
       </Router>
+      </SessionProvider>
     </div>
-    </SessionProvider>
   );
 }
 

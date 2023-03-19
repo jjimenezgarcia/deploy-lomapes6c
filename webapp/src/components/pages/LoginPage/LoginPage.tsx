@@ -4,7 +4,6 @@ import lomap_icon from "../../../images/lomap-icon.png";
 import UserLogin from "../../User/UserLogin";
 
 function LoginForm() {
-
   return (
     <div className="main_form">
       <div className="login">
