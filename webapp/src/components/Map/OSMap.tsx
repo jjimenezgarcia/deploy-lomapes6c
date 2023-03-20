@@ -11,7 +11,7 @@ const markerIcon = L.icon({
   iconSize: [30, 30],
 });
 
-async function saveMarker(markerData: any) {
+export async function saveMarker(markerData: any) {
   await addMarker(markerData);
 }
 
