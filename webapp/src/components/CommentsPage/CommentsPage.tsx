@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { saveMarker } from "../Map/OSMap";
 
-function CommentsForm(lat:number, lng:number) {
+function CommentsPage() {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const [markerType, setMarkerType] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    //Hay que pasar lat y lng desde OSMap hasta aqui
+    const lat=0;
+    const lng=0;
     const newMarker = { lat, lng, title, comment, markerType };
     saveMarker(newMarker);
   };
@@ -48,4 +51,4 @@ function CommentsForm(lat:number, lng:number) {
   );
 }
 
-export default CommentsForm;
+export default CommentsPage;

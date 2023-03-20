@@ -1,10 +1,9 @@
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import L, { LatLng } from "leaflet";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import { addMarker } from "../../api/api";
-import { Console } from "console";
-import { click } from "@testing-library/user-event/dist/click";
+import CommentsPage from "../CommentsPage/CommentsPage";
 
 const markerIcon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png",
@@ -24,11 +23,11 @@ export function OSMap() {
   function MyComponent() {
     const map = useMapEvents({
       click: (e) => {
-        const comment = "comentario"; //TODO: implementar que se puedan añadir comentarios desde el front
+        //const comment = "comentario"; 
         const { lat, lng } = e.latlng;
         let marker = L.marker([lat, lng], {
           icon: markerIcon,
-          draggable: true,
+          draggable: false,
         });
         marker.addTo(map);
         marker.bindPopup(marker.getLatLng().toString()).openPopup();
@@ -39,9 +38,10 @@ export function OSMap() {
           )
           .openOn(map);
 
-        /* La siguiente linea es una marranada pero no sabia como meter el onclick al tener que pasarselo como parametro
-           
-        */
+        // Se mostraria el formulario desde el que completaria todos los datos del marcador
+        
+        
+        //Una vez funcione el formulario anterior esto se puede eliminar
         document.getElementsByName("btnComment").forEach((btn) =>
           btn.addEventListener(
             "click",
