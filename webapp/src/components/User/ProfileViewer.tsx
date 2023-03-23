@@ -1,6 +1,7 @@
 import { useSession, CombinedDataProvider, Image, LogoutButton, Text } from "@inrupt/solid-ui-react";
 import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@mui/material";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
+import { Link } from "react-router-dom";
 
 const ProfileViewer = () => {
   const { session } = useSession();
@@ -31,6 +32,9 @@ const ProfileViewer = () => {
           Logout
         </Button>
       </LogoutButton>
+      <Link to="/start">
+            Mi mapa
+      </Link>
     </Container>
   );
 }
