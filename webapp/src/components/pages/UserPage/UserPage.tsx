@@ -5,8 +5,6 @@ import { useSession } from "@inrupt/solid-ui-react";
 const UserPage = () => {
   //With this we can control the login status for solid
   const { session } = useSession();
-  
-  console.log('1');
 
   return(
     <>
