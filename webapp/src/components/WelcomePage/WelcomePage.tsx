@@ -11,11 +11,15 @@ export default function WelcomePage() {
 
   return (
     <div className="welcome_page">
-      {(!session.info.isLoggedIn) ? <WelcomeText/> 
+      {(!session.info.isLoggedIn) ? 
+                <> 
+                      <WelcomeText/>
+                      <WelcomeSolid /> 
+                </>
                     : <div className="map" data-aos="fade-down">
                          <OSMap />
                       </div>}
-      <WelcomeSolid />
+      
     </div>
   );
 }
