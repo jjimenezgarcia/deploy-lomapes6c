@@ -43,7 +43,7 @@ services:
   mongo:
     image: mongo
     container_name: mongodb
-    hostname: our-mongodb
+    hostname: mongodb
     restart: always
     networks:
       - backend
@@ -55,7 +55,7 @@ services:
     image: mongo-express:latest 
     hostname: mongo-express 
     environment: 
-      ME_CONFIG_MONGODB_SERVER: our-mongodb
+      ME_CONFIG_MONGODB_SERVER: mongodb
     ports:
       - 8081:8081
     networks:
