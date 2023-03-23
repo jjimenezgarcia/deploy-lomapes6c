@@ -47,7 +47,22 @@ services:
     restart: always
     networks:
       - backend
+      - mongo-network
 
+  mongo-express: 
+    depends_on:
+      - mongo
+    image: mongo-express:latest 
+    hostname: mongo-express 
+    environment: 
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    ports:
+      - 8081:8081
+    networks:
+      - mongo-network
+  
 networks:
   backend:
+    driver: bridge
+  mongo-network:
     driver: bridge
