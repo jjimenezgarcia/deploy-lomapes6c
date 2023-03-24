@@ -4,6 +4,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import { addMarker } from "../../api/api";
 import CommentsPage from "../CommentsPage/CommentsPage";
+import { useState } from "react";
 
 const markerIcon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png",
@@ -15,6 +16,8 @@ export async function saveMarker(markerData: any) {
 }
 
 export function OSMap() {
+  const [markerForm,setMarkerForm] = useState(false);
+
   function addMarker(lat: number, lng: number, comment: string) {
     const newMarker = { lat, lng, comment };
     saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos.
@@ -31,7 +34,8 @@ export function OSMap() {
         });
         marker.addTo(map);
         marker.bindPopup(marker.getLatLng().toString()).openPopup();
-        let popup = L.popup().setContent("<CommentsPage/>").openOn(map);
+
+        setMarkerForm(true);
         /*
         let popup = L.popup()
           .setLatLng([lat, lng])
@@ -71,6 +75,7 @@ export function OSMap() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <MyComponent />
+      {markerForm && <CommentsPage/>}
     </MapContainer>
   );
 }

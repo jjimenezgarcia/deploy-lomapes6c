@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { saveMarker } from "../Map/OSMap";
-import "../LoginPage/LoginPage.css";
+import "./CommentsPage.css";
 
 
 export default function CommentsPage() {
@@ -23,15 +23,17 @@ export default function CommentsPage() {
           <form className="form" onSubmit={handleSubmit}>
             <h1>Crear marcador</h1>
             <div className="form_field">
+              <label htmlFor="markerTitle">Titulo del marcador:</label>
               <input
+                id="markerTitle"
                 type="text"
                 value={title}
                 onChange={event => setTitle(event.target.value)}
-                placeholder="Titulo del marcador"
+                placeholder="Titulo de ejemplo"
               />
             </div>
             <div className="form_field">
-              <label htmlFor="marker-options">Tipo de marcador:</label>
+              <label htmlFor="marker-options">Tipo de marcador</label>
               <select name="marker-options" id="marker-options" onChange={event => setMarkerType(event.target.value)}>
                   <option value="restaurant">Bar o restaurante</option>
                   <option value="monument">Monumento</option>
@@ -39,9 +41,7 @@ export default function CommentsPage() {
               </select>
             </div>
             <div className="form_field">
-              <textarea id="comment" onChange={event => setComment(event.target.value)}>
-
-              </textarea>
+              <textarea id="comment" onChange={event => setComment(event.target.value)} placeholder="Escribe tu comentario aquí"></textarea>
             </div>
             
             <div className="form_field">
