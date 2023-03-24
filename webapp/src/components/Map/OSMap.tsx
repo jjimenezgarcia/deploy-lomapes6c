@@ -31,16 +31,15 @@ export function OSMap() {
         });
         marker.addTo(map);
         marker.bindPopup(marker.getLatLng().toString()).openPopup();
+        let popup = L.popup().setContent("<CommentsPage/>").openOn(map);
+        /*
         let popup = L.popup()
           .setLatLng([lat, lng])
           .setContent(
             "<h3>Comentario:</h3><textarea id=comment></textarea><button name=btnComment>Confirmar</button>"
           )
           .openOn(map);
-
-        // Se mostraria el formulario desde el que completaria todos los datos del marcador
-        
-        
+        */
         //Una vez funcione el formulario anterior esto se puede eliminar
         document.getElementsByName("btnComment").forEach((btn) =>
           btn.addEventListener(
