@@ -1,13 +1,9 @@
 .popupContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: left;
     gap: 2rem;
-    padding: 5em;
+    padding: 15px;
     position: absolute;
-    margin-top: 3em;
-    margin-bottom: 0em;
+    margin-top: 0.5em;
     z-index: 1050;
     right: 0;
     background-color: #333;
@@ -24,22 +20,6 @@ label {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
     color: #bbb6b6;
-}
-
-button {
-  font: inherit;
-  border: 1px solid white;
-  border-radius: 999px;
-  background-color: transparent;
-  text-align: center;
-  outline: 0;
-  padding: 0.5rem 1rem;
-  width: 100%;
-  margin-bottom: 1rem;
-  background-color: #ee7e51;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 textarea {
