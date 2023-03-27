@@ -22,15 +22,8 @@ export default function NavBar() {
           <li className="list_item">
             <Link to="/about">Sobre Nosotros</Link>
           </li>
-        </ul>
-      </div>
-      <div>
-        <ul className="list">
           <li className="list_item">
-            <Link to="/signup">Sign Up</Link>
-          </li>
-          <li className="list_item">
-            <Link to="/login">Log In</Link>
+            <Link to="/user">Profile</Link>
           </li>
         </ul>
       </div>

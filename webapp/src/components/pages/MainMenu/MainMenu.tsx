@@ -20,8 +20,8 @@ export default function MainMenu() {
           <Link to="/about" className="menu-item">
             Sobre Nosotros
           </Link>
-          <Link to="/login" className="menu-item">
-            Log in
+          <Link to="/user" className="menu-item">
+            Profile
           </Link>
         </div>
         <div id="menu-background-pattern"></div>
