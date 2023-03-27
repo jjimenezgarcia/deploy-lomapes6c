@@ -1,32 +1,41 @@
 import { useState } from "react";
 import { LoginButton } from "@inrupt/solid-ui-react";
 import { Button, TextField, FormGroup, Container } from "@mui/material";
+import { fontWeight } from "@mui/system";
 
 const UserLogin = () => {
   const [idp, setIdp] = useState("https://inrupt.net");
 
   const styles = {
-    border: '1px solid white',
-    borderRadius: 4,
     fontFamily: 'Roboto, sans-serif',
-    color: 'white',
+    color: '#d7dce4',
+    borderRadius: '1em',
     backgroundColor: 'white',
+    marginTop: '0.5rem',
+    marginBottom: '1rem'
+  };
+
+  const buttonStyle = {
+    backgroundColor: '#ee7e51',
+    color: 'white',
+    fontWeight: 'bold',
+    cursor: 'pointer'
   };
 
   return (
     <Container fixed>
       <FormGroup>
-        <TextField 
+        <TextField
           style={styles}
-          label="Identity Provider"
           placeholder="Identity Provider"
           type="url"
           value={idp}
           onChange={(e) => setIdp(e.target.value)}
           InputProps={{
+            readOnly: true,
             endAdornment: (
               <LoginButton oidcIssuer={idp} redirectUrl={"http://localhost:3000/start"}>
-                <Button variant="contained" color="primary">
+                <Button style={buttonStyle} variant="contained" color="primary">
                   Login
                   </Button>
               </LoginButton>

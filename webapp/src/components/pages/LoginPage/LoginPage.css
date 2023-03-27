@@ -35,13 +35,6 @@ button {
   margin-bottom: 1rem;
 }
 
-button {
-  background-color: #ee7e51;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 h1 {
   margin: 0 0 1rem;
 }
@@ -53,8 +46,4 @@ img {
   margin-top: 1em;
   border: none;
   border-radius: 2em;
-}
-
-a {
-  color: #e76430;
 }
