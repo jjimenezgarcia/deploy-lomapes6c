@@ -1,0 +1,33 @@
+.popupContainer {
+    display: flex;
+    gap: 2rem;
+    padding: 15px;
+    position: absolute;
+    margin-top: 0.5em;
+    z-index: 1050;
+    right: 0;
+    background-color: #333;
+    border: 2px solid white;
+    border-radius: 1em;
+}
+
+h1 {
+    color: white;
+}
+
+label {
+    font-size: 1em;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    color: #bbb6b6;
+}
+
+textarea {
+	width: 100%;
+	height: calc(100% - 40px); /* Restamos el doble de padding del formulario para que el textarea ocupe todo el alto de la pantalla */
+	resize: both;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 15px;
+}
