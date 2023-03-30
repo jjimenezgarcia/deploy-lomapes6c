@@ -8,11 +8,18 @@ const ProfileViewer = () => {
   const { webId } = session.info;
 
   if(!webId) return null;
+
+  const buttonStyle = {
+    marginTop:'2em',
+    backgroundColor: '#ee7e51',
+    color: 'white',
+    fontWeight: 'bold'
+  };
   
   return (
     <Container fixed>
       <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
-        <Card style={{ maxWidth: 480 }}>
+        <Card style={{padding:'1.5em', marginTop:'3em', marginBottom:'2em'}}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               <Text property={FOAF.name.iri.value} />
@@ -21,20 +28,19 @@ const ProfileViewer = () => {
               <Text property={VCARD.role.iri.value} />
             </Typography>
           </CardContent>
-
           <CardActionArea style={{ justifyContent: "center", display: "flex" }}>
             <Image property={VCARD.hasPhoto.iri.value} width={480} />
           </CardActionArea>
         </Card>
       </CombinedDataProvider>
-      <LogoutButton >
-        <Button style={{ marginTop: 20 }} variant="contained" color="primary">
+      <Link to="/start" style={{color: "#ee7e51", fontWeight: 'bold'}}>
+        Mi mapa
+      </Link>
+      <LogoutButton>
+        <Button style={buttonStyle} variant="contained" color="primary">
           Logout
         </Button>
       </LogoutButton>
-      <Link to="/start">
-            Mi mapa
-      </Link>
     </Container>
   );
 }
