@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { LoginButton } from "@inrupt/solid-ui-react";
 import { Button, TextField, FormGroup, Container } from "@mui/material";
-import { fontWeight } from "@mui/system";
 
 const UserLogin = () => {
   const [idp, setIdp] = useState("https://inrupt.net");
