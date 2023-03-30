@@ -35,6 +35,10 @@ button {
   margin-bottom: 1rem;
 }
 
+label {
+  color: #b2b2b2;
+}
+
 button {
   background-color: #ee7e51;
   color: white;

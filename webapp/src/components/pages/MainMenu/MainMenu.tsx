@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default function MainMenu() {
   return (
     <div>
-      (
       <div id="menu">
         <div id="menu-items">
           <Link to="/start" className="menu-item">
@@ -27,7 +26,6 @@ export default function MainMenu() {
         <div id="menu-background-pattern"></div>
         <div id="menu-background-image"></div>
       </div>
-      )
     </div>
   );
 }

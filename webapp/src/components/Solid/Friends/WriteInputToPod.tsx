@@ -11,7 +11,7 @@ const WriteInputToPod = () => {
   }
 
   const podUrl =
-    webId.replace("profile/card#me", "") + "public/courses/Person1";
+    webId.replace("profile/card#me", "") + "private/courses/Person1";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

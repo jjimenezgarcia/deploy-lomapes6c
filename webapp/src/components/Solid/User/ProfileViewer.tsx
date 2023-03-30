@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
 import { Link } from "react-router-dom";
-import WriteInputToPod from "../Friends/WriteInputToPod";
+import RequestFriendship from "../Friends/RequestFriendship";
 
 const ProfileViewer = () => {
   const { session } = useSession();
@@ -25,7 +25,7 @@ const ProfileViewer = () => {
 
   return (
     <Container fixed>
-      <WriteInputToPod />
+      <RequestFriendship />
 
       <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
         <Card style={{ maxWidth: 480 }}>
@@ -54,6 +54,9 @@ const ProfileViewer = () => {
         </Button>
       </LogoutButton>
       <Link to="/start">Mi mapa</Link>
+      <Button style={{ marginTop: 20 }} variant="contained" color="primary">
+        <Link to="/friends">Amigos</Link>
+      </Button>
     </Container>
   );
 };
