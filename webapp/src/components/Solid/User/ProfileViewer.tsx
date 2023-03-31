@@ -1,11 +1,26 @@
-import { useSession, CombinedDataProvider, Image, LogoutButton, Text } from "@inrupt/solid-ui-react";
-import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@mui/material";
+import {
+  useSession,
+  CombinedDataProvider,
+  Image,
+  LogoutButton,
+  Text,
+} from "@inrupt/solid-ui-react";
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  Container,
+  Typography,
+} from "@mui/material";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
 import { Link } from "react-router-dom";
+import RequestFriendship from "../Friends/RequestFriendship";
 
 const ProfileViewer = () => {
   const { session } = useSession();
   const { webId } = session.info;
+
 
   if(!webId) return null;
 
@@ -18,13 +33,20 @@ const ProfileViewer = () => {
   
   return (
     <Container fixed>
+      <RequestFriendship />
+
       <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
         <Card style={{padding:'1.5em', marginTop:'3em', marginBottom:'2em'}}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               <Text property={FOAF.name.iri.value} />
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ display: "flex", alignItems: "center" }}
+            >
               <Text property={VCARD.role.iri.value} />
             </Typography>
           </CardContent>
@@ -41,8 +63,11 @@ const ProfileViewer = () => {
           Logout
         </Button>
       </LogoutButton>
+      <Button style={{ marginTop: 20 }} variant="contained" color="primary">
+        <Link to="/friends">Amigos</Link>
+      </Button>
     </Container>
   );
-}
+};
 
 export default ProfileViewer;

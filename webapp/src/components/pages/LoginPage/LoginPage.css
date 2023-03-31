@@ -21,6 +21,31 @@
   padding: 0.5rem 2rem;
 }
 
+input,
+button {
+  font: inherit;
+  color: #d7dce4;
+  border: 1px solid white;
+  border-radius: 999px;
+  background-color: transparent;
+  text-align: center;
+  outline: 0;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+label {
+  color: #b2b2b2;
+}
+
+button {
+  background-color: #ee7e51;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 h1 {
   margin: 0 0 1rem;
 }
