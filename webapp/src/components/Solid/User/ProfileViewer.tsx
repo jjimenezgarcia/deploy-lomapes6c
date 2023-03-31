@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
 import { Link } from "react-router-dom";
-import RequestFriendship from "../Friends/RequestFriendship";
 
 const ProfileViewer = () => {
   const { session } = useSession();
@@ -33,8 +32,6 @@ const ProfileViewer = () => {
   
   return (
     <Container fixed>
-      <RequestFriendship />
-
       <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
         <Card style={{padding:'1.5em', marginTop:'3em', marginBottom:'2em'}}>
           <CardContent>
@@ -63,7 +60,7 @@ const ProfileViewer = () => {
           Logout
         </Button>
       </LogoutButton>
-      <Button style={{ marginTop: 20 }} variant="contained" color="primary">
+      <Button style={buttonStyle} variant="contained" color="primary">
         <Link to="/friends">Amigos</Link>
       </Button>
     </Container>

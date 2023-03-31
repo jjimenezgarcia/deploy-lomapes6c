@@ -2,7 +2,6 @@ import LoginForm from "../../pages/LoginPage/LoginPage";
 import { useSession } from "@inrupt/solid-ui-react";
 import writeDataToNewDataSet from "../WriteToPod";
 import React, { useState } from "react";
-import { redirect } from "react-router-dom";
 
 const RequestFriendship = () => {
   const REQUESTS_URI = "private/friends/requests/";
