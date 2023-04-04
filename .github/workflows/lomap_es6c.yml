@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [master]
   push:
-    branches: [campa-CI]
+    branches: [campa-ci]
 
 jobs:
   unit-test-webapp:
