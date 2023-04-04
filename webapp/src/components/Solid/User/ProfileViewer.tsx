@@ -25,8 +25,6 @@ const ProfileViewer = () => {
 
   return (
     <Container fixed>
-      <RequestFriendship />
-
       <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
         <Card style={{ maxWidth: 480 }}>
           <CardContent>
