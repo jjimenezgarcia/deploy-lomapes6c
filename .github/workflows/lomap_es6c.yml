@@ -5,8 +5,6 @@ on:
     types: [published]
   pull_request:
     branches: [master]
-  push:
-    branches: [campa-ci]
 
 jobs:
   unit-test-webapp:
