@@ -47,4 +47,79 @@ describe('user ', () => {
         const response:Response = await request(app).post('/api/users/add').send({name: username,email: email}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
+
+    
+    /**
+     * Test that default web page shows correctly
+     */
+    it('principal page shows correctly',async () => {
+        const response:Response = await request(app).get('/');
+        expect(response.statusCode).toBe(200);
+    });
+
+    /**
+     * Test that init page works correctly
+     */
+    it('init page shows correctly',async () => {
+        
+    });
+
+    /**
+     * Test that start button works correctly
+     */
+    it('start button works correctly',async () => {
+        
+    });
+    
+    /**
+     * Test that log in redirects correctly
+     */
+    it('can log in correctly', async ()=>{
+        let username:string = 'Saulserra';
+        let contraseña:string = 'Contraseña123';
+        const response:Response = await request(app).get('/api/login');
+        expect(response.statusCode).toBe(200);
+    });
+
+    /**
+     * Test that sign up redirect correctly
+     */
+    it('can sign up correctly', async () => {
+
+    });
+
+    /**
+     * Test that users can see documentation page
+     */
+    it('documentation shows correctly',async () => {
+        
+    });
+
+    /**
+     * Test that a user can see the map when he is loged in
+     */
+    it('map works correctly when log in',async () => {
+
+    });
+
+    /**
+     * Test that a user can see his profile
+     */
+    it('can see profile when log in',async () => {
+        
+    });
+
+    /**
+     * Test that a user can see about page
+     */
+    it('can see about page',async () => {
+        
+    });
+
+    /**
+     * Test that a user can add a marker in the map
+     */
+    it('can add markers correctly', async () => {
+        
+    });
 });
