@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { saveMarker } from "../Map/OSMap";
 import "./CommentsPage.css";
+import { addMarker } from "../../api/api";
+import { Marker } from "../Map/OSMap";
 
+async function saveMarker(markerData: any) {
+  await addMarker(markerData);
+}
 
 export default function CommentsPage() {
   const [title, setTitle] = useState("");
@@ -9,11 +13,14 @@ export default function CommentsPage() {
   const [markerType, setMarkerType] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    //Hay que pasar lat y lng desde OSMap hasta aqui
-    const lat=0;
-    const lng=0;
-    const newMarker = { lat, lng, title, comment, markerType };
-    saveMarker(newMarker);
+    event.preventDefault();
+    const target = event.target as typeof event.target & {
+      markerTitle: { value: string };
+      markerType: { value: string };
+      comment: { value: string };
+    }
+
+    console.log(target.comment.value);
   };
 
   return (
