@@ -8,6 +8,7 @@ import UserPage from "./components/pages/UserPage/UserPage";
 import { OSMap } from "./components/Map/OSMap";
 import { SessionProvider } from "@inrupt/solid-ui-react";
 import RequestFriendship from "./components/Solid/Friends/RequestFriendship";
+import About from "./components/About/About";
 function App() {
   return (
     <div className="App">
@@ -35,7 +36,7 @@ function App() {
                 </div>
               }
             />
-            <Route path="/about" element={<div>Sobre Nosotros</div>} />
+            <Route path="/about" element={<About/>} />
             <Route path="/user" element={<UserPage />} />
             <Route path="/friends" element={<RequestFriendship />} />
           </Routes>
