@@ -36,7 +36,14 @@ function App() {
                 </div>
               }
             />
-            <Route path="/about" element={<About/>} />
+            <Route path="/about" element={
+                <div>
+                  <NavBar /> 
+                  <About />
+                  <Footer />
+                </div>
+              } 
+            />
             <Route path="/user" element={<UserPage />} />
             <Route path="/friends" element={<RequestFriendship />} />
           </Routes>
