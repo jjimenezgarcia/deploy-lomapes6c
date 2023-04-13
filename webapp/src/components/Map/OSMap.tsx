@@ -65,18 +65,37 @@ export function OSMap() {
     return null;
   }
 
+  const cancelMarker = () => {
+    setMarkerForm(false);
+  };
+
   return (
-    <MapContainer
-      center={[51.505, -0.09]}
-      zoom={13}
-      style={{ height: "700px", borderRadius: "inherit" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <MyComponent />
-      {markerForm && <CommentsPage />}
-    </MapContainer>
+    <div>
+      <MapContainer
+        center={[51.505, -0.09]}
+        zoom={13}
+        style={{ height: "700px", borderRadius: "inherit" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <MyComponent />
+      </MapContainer>
+      {markerForm && (
+        <div>
+          <CommentsPage />
+          <div className="form_field">
+            <button
+              type="button"
+              onClick={cancelMarker}
+              style={{ width: "25%" }}
+            >
+              Cancelar marcador
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
