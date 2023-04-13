@@ -7,9 +7,10 @@ import {
     setThing,
     saveSolidDatasetAt,
   } from "@inrupt/solid-client";
+import { Marker } from "../../components/Map/OSMap";
 
 // podUrl must be correct for the moment
-async function writeDataToNewDataSet(podUrl: string, thingName: string, thingTitle: string, rdfType: string) {
+export async function writeDataToNewDataSet(podUrl: string, thingName: string, thingTitle: string, rdfType: string) {
 
     const session = getDefaultSession();
 
@@ -31,4 +32,34 @@ async function writeDataToNewDataSet(podUrl: string, thingName: string, thingTit
     );
   }
 
-export default writeDataToNewDataSet
+export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfType: string) {
+
+  const session = getDefaultSession();
+
+  // Crear un dataset vacío
+  let courseSolidDataset = createSolidDataset();
+
+  // Create a new Thing type Person
+  const newThing = buildThing(createThing({ name: marker.title }))
+    .addStringNoLocale(SCHEMA_INRUPT.name, marker.title)
+    .addStringNoLocale(SCHEMA_INRUPT.latitude, marker.lat.toString())
+    .addStringNoLocale(SCHEMA_INRUPT.longitude, marker.lng.toString())
+    .addStringNoLocale(SCHEMA_INRUPT.text, marker.comment)
+    .addStringNoLocale(SCHEMA_INRUPT.model, marker.type) // TODO: es el tipo de marker, camiarlo a un atributo apropiado
+    .addStringNoLocale(SCHEMA_INRUPT.description, JSON.stringify(marker))
+    .addUrl(RDF.type, rdfType)
+    
+  if (marker.score <= 10 && marker.score >= 0) {
+    newThing.addStringNoLocale(SCHEMA_INRUPT.value, marker.score.toString())
+  }
+
+  const thingToAdd = newThing.build()
+
+  courseSolidDataset = setThing(courseSolidDataset, thingToAdd);
+
+  const savedSolidDataset = await saveSolidDatasetAt(
+      podUrl,
+      courseSolidDataset,
+      { fetch: session.fetch } // fetch from authenticated Session
+  );
+} 
