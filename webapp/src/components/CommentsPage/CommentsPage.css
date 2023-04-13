@@ -2,7 +2,7 @@
     display: flex;
     gap: 2rem;
     padding: 15px;
-    position: absolute;
+    
     margin-top: 0.5em;
     z-index: 1050;
     right: 0;

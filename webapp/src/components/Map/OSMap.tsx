@@ -22,6 +22,11 @@ export function OSMap() {
   const [markerForm, setMarkerForm] = useState(false);
   const [cords, setCords] = useState<number[]>([0, 0]);
 
+  function addMarker(lat: number, lng: number, comment: string, score: string) {
+    const newMarker = { lat, lng, comment, score };
+    saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos.
+  }
+
   function MyComponent() {
     const map = useMapEvents({
       click: (e) => {
@@ -40,18 +45,37 @@ export function OSMap() {
     return null;
   }
 
+  const cancelMarker = () => {
+    setMarkerForm(false);
+  };
+
   return (
-    <MapContainer
-      center={[51.505, -0.09]}
-      zoom={13}
-      style={{ height: "700px", borderRadius: "inherit" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <MyComponent />
-      {markerForm && <CommentsPage lat={cords} />}
-    </MapContainer>
+    <div>
+      <MapContainer
+        center={[51.505, -0.09]}
+        zoom={13}
+        style={{ height: "700px", borderRadius: "inherit" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <MyComponent />
+      </MapContainer>
+      {markerForm && (
+        <div>
+          <CommentsPage lat={cords} />
+          <div className="form_field">
+            <button
+              type="button"
+              onClick={cancelMarker}
+              style={{ width: "25%" }}
+            >
+              Cancelar marcador
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

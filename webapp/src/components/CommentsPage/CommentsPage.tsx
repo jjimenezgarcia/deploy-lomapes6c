@@ -13,6 +13,7 @@ export default function CommentsPage(props: any) {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const [markerType, setMarkerType] = useState("");
+  const [score, setScore] = useState(0);
 
   const writeMarkerToPod = async (
     title: string,
@@ -52,6 +53,7 @@ export default function CommentsPage(props: any) {
       markerTitle: { value: string };
       markerType: { value: string };
       comment: { value: string };
+      score: { value: string };
     };
 
     console.log(target.comment.value);
@@ -92,6 +94,18 @@ export default function CommentsPage(props: any) {
                 onChange={(event) => setComment(event.target.value)}
                 placeholder="Escribe tu comentario aquí"
               ></textarea>
+            </div>
+
+            <div>
+              <label htmlFor="score">Puntuación:</label>
+              <input
+                id="score"
+                type="number"
+                value={score}
+                onChange={(event) => setScore(parseInt(event.target.value))}
+                min="0"
+                max="10"
+              />
             </div>
 
             <div className="form_field">
