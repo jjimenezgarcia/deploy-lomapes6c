@@ -15,25 +15,27 @@ import {
 } from "@mui/material";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
 import { Link } from "react-router-dom";
+import ReadFromPodComponent from "./ReadFromPodComponent";
 
 const ProfileViewer = () => {
   const { session } = useSession();
   const { webId } = session.info;
 
-
-  if(!webId) return null;
+  if (!webId) return null;
 
   const buttonStyle = {
-    marginTop:'2em',
-    backgroundColor: '#ee7e51',
-    color: 'white',
-    fontWeight: 'bold'
+    marginTop: "2em",
+    backgroundColor: "#ee7e51",
+    color: "white",
+    fontWeight: "bold",
   };
-  
+
   return (
     <Container fixed>
       <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
-        <Card style={{padding:'1.5em', marginTop:'3em', marginBottom:'2em'}}>
+        <Card
+          style={{ padding: "1.5em", marginTop: "3em", marginBottom: "2em" }}
+        >
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               <Text property={FOAF.name.iri.value} />
@@ -52,7 +54,7 @@ const ProfileViewer = () => {
           </CardActionArea>
         </Card>
       </CombinedDataProvider>
-      <Link to="/start" style={{color: "#ee7e51", fontWeight: 'bold'}}>
+      <Link to="/start" style={{ color: "#ee7e51", fontWeight: "bold" }}>
         Mi mapa
       </Link>
       <LogoutButton>
@@ -62,6 +64,9 @@ const ProfileViewer = () => {
       </LogoutButton>
       <Button style={buttonStyle} variant="contained" color="primary">
         <Link to="/friends">Amigos</Link>
+      </Button>
+      <Button style={buttonStyle} variant="contained" color="primary">
+        <Link to="/markers">Ver mis marcadores</Link>
       </Button>
     </Container>
   );
