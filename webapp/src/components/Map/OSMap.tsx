@@ -16,17 +16,17 @@ export async function saveMarker(markerData: any) {
 }
 
 export function OSMap() {
-  const [markerForm,setMarkerForm] = useState(false);
+  const [markerForm, setMarkerForm] = useState(false);
 
-  function addMarker(lat: number, lng: number, comment: string) {
-    const newMarker = { lat, lng, comment };
+  function addMarker(lat: number, lng: number, comment: string, score: string) {
+    const newMarker = { lat, lng, comment, score };
     saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos.
   }
 
   function MyComponent() {
     const map = useMapEvents({
       click: (e) => {
-        //const comment = "comentario"; 
+        //const comment = "comentario";
         const { lat, lng } = e.latlng;
         let marker = L.marker([lat, lng], {
           icon: markerIcon,
@@ -53,7 +53,8 @@ export function OSMap() {
                 lat,
                 lng,
                 (document.getElementById("comment") as HTMLTextAreaElement)
-                  .value
+                  .value,
+                (document.getElementById("score") as HTMLTextAreaElement).value
               );
             },
             false
@@ -64,18 +65,37 @@ export function OSMap() {
     return null;
   }
 
+  const cancelMarker = () => {
+    setMarkerForm(false);
+  };
+
   return (
-    <MapContainer
-      center={[51.505, -0.09]}
-      zoom={13}
-      style={{ height: "700px", borderRadius: "inherit" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <MyComponent />
-      {markerForm && <CommentsPage/>}
-    </MapContainer>
+    <div>
+      <MapContainer
+        center={[51.505, -0.09]}
+        zoom={13}
+        style={{ height: "700px", borderRadius: "inherit" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <MyComponent />
+      </MapContainer>
+      {markerForm && (
+        <div>
+          <CommentsPage />
+          <div className="form_field">
+            <button
+              type="button"
+              onClick={cancelMarker}
+              style={{ width: "25%" }}
+            >
+              Cancelar marcador
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
