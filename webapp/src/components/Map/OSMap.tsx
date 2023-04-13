@@ -42,10 +42,6 @@ export function OSMap() {
     return null;
   }
 
-  const cancelMarker = () => {
-    setMarkerForm(false);
-  };
-
   return (
 
       <div className="map">
@@ -64,15 +60,6 @@ export function OSMap() {
       {markerForm && (
         <div className="comment">
           <CommentsPage lat={cords} />
-          <div>
-            <button
-              type="button"
-              onClick={cancelMarker}
-              style={{ width: "25%" }}
-            >
-              Cancelar marcador
-            </button>
-          </div>
         </div>
       )}
     </div>

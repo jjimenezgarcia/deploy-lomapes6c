@@ -66,6 +66,8 @@ export default function CommentsPage(props: any) {
       markerType,
       rating
     );
+
+    setMarkerForm(false);
   };
 
   const [rating, setRating] = useState(0)
@@ -78,6 +80,14 @@ export default function CommentsPage(props: any) {
    const handleRating = (rate: number) => {
     setRating(rate)
   }
+
+  const [markerForm, setMarkerForm] = useState(true);
+
+  const cancelMarker = () => {
+    setMarkerForm(false);
+  };
+
+  if(!markerForm) return null;
 
   return (
     <div className="popupContainer">
@@ -133,8 +143,18 @@ export default function CommentsPage(props: any) {
             <button type="submit">Enviar</button>
             </div>
           </form>
+          <div className="cancel_button">
+            <button
+              type="button"
+              onClick={cancelMarker}
+              style={{ width: "25%" }}
+            >
+              Cancelar marcador
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    
   );
 }
