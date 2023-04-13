@@ -3,19 +3,27 @@
 
 [role="arc42help"]
 
-La petición del ayuntamiento de la ciudad de Bruselas es una aplicación que permita a sus ciudadanos tener un mapa 
-donde puedan colocar marcadores en distintos sitios. Actualmente solo permite marcar sitios con un tipo de marcador pero posteriormente se podrán escoger diferentes tipos de marcadores dependiendo del lugar, los lugares posibles serán bares, restaurantes, monumentos, paisajes o miradores. Los ciudadanos podrán crear sus propios mapas personalizados y compartirlos con sus amigos.
+La petición del ayuntamiento de la ciudad de Bruselas es una aplicación que permita a sus ciudadanos tener un mapa donde puedan colocar marcadores en distintos sitios. Actualmente solo permite marcar sitios con diferentes tipos de marcadores dependiendo del lugar, los lugares posibles serán bares, restaurantes, monumentos, paisajes o tiendas. Los ciudadanos podrán crear sus propios mapas personalizados y compartirlos con sus amigos.
+
 
 === Requirements Overview
 
 [role="arc42help"]
-La aplicación deberá permitir a los usuarios añadir y visualizar en un mapa los diferentes marcadores dependiendo que tipo de lugar 
-sea.Estos marcadores pueden tener asociadas tanto comentarios, puntuaciones y valoraciones, como fotos en la ubicación del marcador.
+==== Requisitos de alto nivel:
+* La aplicación permitirá a los usuarios visualizar un mapa donde estos podrán añadir diferentes marcadores.
+* Permitirá añadir diferentes tipos de marcadores dependiendo de si este se trata de un restaurante, un bar, un monumento, un paisaje o una tienda.
+* En la creacion de estos marcadores se permitirá añadir comentarios o valoraciones, puntuaciones, fotos de estos lugares.
+* La aplicación permitirá agregar amigos.
+* Se podrá compartir los distintos marcadores con los amigos del usuario donde estos podrán ver las valoraciones, fotos, etc que este marcador tiene asociadas.
+* El sistema permitirá utilizar filtros dentro del mapa ya sea por tipo de marcador o por amigo.
 
-Por otra parte, los distintos usuarios pueden compartir sus mapas(con el conjunto de marcadores que tenga asociado) con sus amigos si así lo desean y ver las fotos, 
-comentarios, valoraciones y todos los datos que este amigo ha publicado en los marcadores.
+==== Requisitos opcionales
+* Permitir crear rutas de marcadores.
+* Permitir comparar mapas por categorias o tipos de marcadores.
+* Permitir que los distintos establecimientos tengan un POD donde los usuarios se puedan conectar.
+* Crear un mapa en conjunto, es decir, tener la posibilidad de que varios usuarios añadan marcadores a un mismo mapa.
+* Añadir roles entre los diferentes usuarios, como pueden ser: ciudadano, turista y dueño de negocio.
 
-La aplicación contará con un filtro para poder ver el mapa, por ejemplo, por categoría (si solo queremos ver las tiendas, restaurantes o cualquiera de los tipos de marcadores enumerados anteriormente), solo los marcadores de los amigos o de un amigo en concreto. Esta funcionalidad todavia no está disponible pero se implementara en próximas versiones.
 
 === Quality Goals
 [options="header",cols="1,2"]
