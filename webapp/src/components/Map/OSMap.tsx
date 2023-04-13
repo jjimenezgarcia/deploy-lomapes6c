@@ -19,12 +19,14 @@ const markerIcon = L.icon({
 });
 
 export function OSMap() {
-  const [markerForm,setMarkerForm] = useState(false);
+  const [markerForm, setMarkerForm] = useState(false);
+  const [cords, setCords] = useState<number[]>([0, 0]);
 
   function MyComponent() {
     const map = useMapEvents({
       click: (e) => {
         const { lat, lng } = e.latlng;
+        setCords([lat, lng]);
         let marker = L.marker([lat, lng], {
           icon: markerIcon,
           draggable: false,
@@ -49,7 +51,7 @@ export function OSMap() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <MyComponent />
-      {markerForm && <CommentsPage/>}
+      {markerForm && <CommentsPage lat={cords} />}
     </MapContainer>
   );
 }

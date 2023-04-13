@@ -2,15 +2,49 @@ import React, { useState } from "react";
 import "./CommentsPage.css";
 import { addMarker } from "../../api/api";
 import { Marker } from "../Map/OSMap";
+import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
+import { writeMarkerToDataSet } from "../Solid/WriteToPod";
 
 async function saveMarker(markerData: any) {
   await addMarker(markerData);
 }
 
-export default function CommentsPage() {
+export default function CommentsPage(props: any) {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const [markerType, setMarkerType] = useState("");
+
+  const writeMarkerToPod = async (
+    title: string,
+    comment: string,
+    markerType: number
+  ) => {
+    const markerData: Marker = {
+      lat: props.lat[0],
+      lng: props.lat[1],
+      comment: comment,
+      title: title.replace(" ", "_"),
+      type: markerType,
+    };
+
+    const session = getDefaultSession();
+    const { webId } = session.info;
+
+    if (!webId) {
+      return null;
+    }
+
+    const podUrl =
+      webId.replace("profile/card#me", "") +
+      "public/markers/" +
+      markerData.title;
+
+    await writeMarkerToDataSet(
+      podUrl,
+      markerData,
+      "https://schema.org/location"
+    );
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -18,9 +52,10 @@ export default function CommentsPage() {
       markerTitle: { value: string };
       markerType: { value: string };
       comment: { value: string };
-    }
+    };
 
     console.log(target.comment.value);
+    writeMarkerToPod(target.markerTitle.value, target.comment.value, 1);
   };
 
   return (
@@ -35,22 +70,30 @@ export default function CommentsPage() {
                 id="markerTitle"
                 type="text"
                 value={title}
-                onChange={event => setTitle(event.target.value)}
+                onChange={(event) => setTitle(event.target.value)}
                 placeholder="Titulo de ejemplo"
               />
             </div>
             <div className="form_field">
               <label htmlFor="marker-options">Tipo de marcador</label>
-              <select name="marker-options" id="marker-options" onChange={event => setMarkerType(event.target.value)}>
-                  <option value="restaurant">Bar o restaurante</option>
-                  <option value="monument">Monumento</option>
-                  <option value="landscape">Paisaje / Mirador</option>
+              <select
+                name="marker-options"
+                id="marker-options"
+                onChange={(event) => setMarkerType(event.target.value)}
+              >
+                <option value="restaurant">Bar o restaurante</option>
+                <option value="monument">Monumento</option>
+                <option value="landscape">Paisaje / Mirador</option>
               </select>
             </div>
             <div className="form_field">
-              <textarea id="comment" onChange={event => setComment(event.target.value)} placeholder="Escribe tu comentario aquí"></textarea>
+              <textarea
+                id="comment"
+                onChange={(event) => setComment(event.target.value)}
+                placeholder="Escribe tu comentario aquí"
+              ></textarea>
             </div>
-            
+
             <div className="form_field">
               <button type="submit">Enviar</button>
             </div>
@@ -58,6 +101,5 @@ export default function CommentsPage() {
         </div>
       </div>
     </div>
-        
   );
 }
