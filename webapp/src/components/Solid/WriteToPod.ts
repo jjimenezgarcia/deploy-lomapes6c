@@ -48,9 +48,14 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
     //.addStringNoLocale(SCHEMA_INRUPT., marker.type)
     .addStringNoLocale(SCHEMA_INRUPT.description, JSON.stringify(marker))
     .addUrl(RDF.type, rdfType)
-    .build();
+    
+  if (marker.score <= 10 && marker.score >= 0) {
+    newThing.addStringNoLocale(SCHEMA_INRUPT.value, marker.score.toString())
+  }
 
-  courseSolidDataset = setThing(courseSolidDataset, newThing);
+  const thingToAdd = newThing.build()
+
+  courseSolidDataset = setThing(courseSolidDataset, thingToAdd);
 
   const savedSolidDataset = await saveSolidDatasetAt(
       podUrl,

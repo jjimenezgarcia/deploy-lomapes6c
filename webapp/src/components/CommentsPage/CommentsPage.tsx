@@ -13,7 +13,7 @@ export default function CommentsPage(props: any) {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const [markerType, setMarkerType] = useState("");
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(-1);
 
   const writeMarkerToPod = async (
     title: string,
@@ -26,6 +26,7 @@ export default function CommentsPage(props: any) {
       comment: comment,
       title: title.replace(" ", "_"),
       type: markerType,
+      score: score,
     };
 
     const session = getDefaultSession();
@@ -56,7 +57,6 @@ export default function CommentsPage(props: any) {
       score: { value: string };
     };
 
-    console.log(target.comment.value);
     writeMarkerToPod(target.markerTitle.value, target.comment.value, 1);
   };
 
@@ -103,7 +103,6 @@ export default function CommentsPage(props: any) {
                 type="number"
                 value={score}
                 onChange={(event) => setScore(parseInt(event.target.value))}
-                min="0"
                 max="10"
               />
             </div>

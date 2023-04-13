@@ -11,6 +11,7 @@ export interface Marker {
   comment: string;
   title: string;
   type: number;
+  score: number;
 }
 
 const markerIcon = L.icon({
@@ -21,11 +22,6 @@ const markerIcon = L.icon({
 export function OSMap() {
   const [markerForm, setMarkerForm] = useState(false);
   const [cords, setCords] = useState<number[]>([0, 0]);
-
-  function addMarker(lat: number, lng: number, comment: string, score: string) {
-    const newMarker = { lat, lng, comment, score };
-    saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos.
-  }
 
   function MyComponent() {
     const map = useMapEvents({
