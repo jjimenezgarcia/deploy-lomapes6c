@@ -45,7 +45,7 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
     .addStringNoLocale(SCHEMA_INRUPT.latitude, marker.lat.toString())
     .addStringNoLocale(SCHEMA_INRUPT.longitude, marker.lng.toString())
     .addStringNoLocale(SCHEMA_INRUPT.text, marker.comment)
-    //.addStringNoLocale(SCHEMA_INRUPT., marker.type)
+    .addStringNoLocale(SCHEMA_INRUPT.model, marker.type) // TODO: es el tipo de marker, camiarlo a un atributo apropiado
     .addStringNoLocale(SCHEMA_INRUPT.description, JSON.stringify(marker))
     .addUrl(RDF.type, rdfType)
     

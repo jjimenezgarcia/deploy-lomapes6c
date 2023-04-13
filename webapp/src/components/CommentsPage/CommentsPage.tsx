@@ -5,6 +5,7 @@ import { Marker } from "../Map/OSMap";
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 import { writeMarkerToDataSet } from "../Solid/WriteToPod";
 
+// TODO: ver si se puede eliminar esta funcion
 async function saveMarker(markerData: any) {
   await addMarker(markerData);
 }
@@ -12,13 +13,13 @@ async function saveMarker(markerData: any) {
 export default function CommentsPage(props: any) {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
-  const [markerType, setMarkerType] = useState("");
+  const [markerType, setMarkerType] = useState("restaurant");
   const [score, setScore] = useState(-1);
 
   const writeMarkerToPod = async (
     title: string,
     comment: string,
-    markerType: number
+    markerType: string
   ) => {
     const markerData: Marker = {
       lat: props.lat[0],
@@ -50,14 +51,18 @@ export default function CommentsPage(props: any) {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const target = event.target as typeof event.target & {
       markerTitle: { value: string };
-      markerType: { value: string };
       comment: { value: string };
       score: { value: string };
     };
 
-    writeMarkerToPod(target.markerTitle.value, target.comment.value, 1);
+    writeMarkerToPod(
+      target.markerTitle.value,
+      target.comment.value,
+      markerType
+    );
   };
 
   return (
@@ -81,7 +86,10 @@ export default function CommentsPage(props: any) {
               <select
                 name="marker-options"
                 id="marker-options"
-                onChange={(event) => setMarkerType(event.target.value)}
+                value={markerType}
+                onChange={(event) => {
+                  setMarkerType(event.target.value);
+                }}
               >
                 <option value="restaurant">Bar o restaurante</option>
                 <option value="monument">Monumento</option>
@@ -91,6 +99,7 @@ export default function CommentsPage(props: any) {
             <div className="form_field">
               <textarea
                 id="comment"
+                value={comment}
                 onChange={(event) => setComment(event.target.value)}
                 placeholder="Escribe tu comentario aquí"
               ></textarea>

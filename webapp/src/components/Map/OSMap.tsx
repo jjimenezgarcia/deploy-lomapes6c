@@ -10,7 +10,7 @@ export interface Marker {
   lng: number;
   comment: string;
   title: string;
-  type: number;
+  type: string;
   score: number;
 }
 
