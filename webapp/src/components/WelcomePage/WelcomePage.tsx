@@ -14,8 +14,7 @@ export default function WelcomePage() {
         <>
           <div className="welcome_text" data-aos="fade-down">
             <WelcomeText />
-          </div>
-          <div
+            <div
             className="arrow"
             onClick={() =>
               document
@@ -23,7 +22,8 @@ export default function WelcomePage() {
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           ></div>
-          <div id="solid">
+          </div>
+          <div className="solid" id="solid">
             <WelcomeSolid />
           </div>
         </>

@@ -1,3 +1,4 @@
+import "./OSMap.css";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { MapContainer, TileLayer } from "react-leaflet";
@@ -46,22 +47,24 @@ export function OSMap() {
   };
 
   return (
-    <div>
-      <MapContainer
-        center={[51.505, -0.09]}
-        zoom={13}
-        style={{ height: "700px", borderRadius: "inherit" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <MyComponent />
-      </MapContainer>
+
+      <div className="map">
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={13}
+          style={{ height: "700px", borderRadius: "inherit" }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {!markerForm && <MyComponent />}
+          
+        </MapContainer>
       {markerForm && (
-        <div>
+        <div className="comment">
           <CommentsPage lat={cords} />
-          <div className="form_field">
+          <div>
             <button
               type="button"
               onClick={cancelMarker}

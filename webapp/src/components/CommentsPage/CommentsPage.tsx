@@ -4,6 +4,8 @@ import { addMarker } from "../../api/api";
 import { Marker } from "../Map/OSMap";
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 import { writeMarkerToDataSet } from "../Solid/WriteToPod";
+import { Rating } from 'react-simple-star-rating'
+import { Link } from "react-router-dom";
 
 // TODO: ver si se puede eliminar esta funcion
 async function saveMarker(markerData: any) {
@@ -14,12 +16,12 @@ export default function CommentsPage(props: any) {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const [markerType, setMarkerType] = useState("restaurant");
-  const [score, setScore] = useState(-1);
 
   const writeMarkerToPod = async (
     title: string,
     comment: string,
-    markerType: string
+    markerType: string,
+    rating: number
   ) => {
     const markerData: Marker = {
       lat: props.lat[0],
@@ -27,7 +29,7 @@ export default function CommentsPage(props: any) {
       comment: comment,
       title: title.replace(" ", "_"),
       type: markerType,
-      score: score,
+      score: rating,
     };
 
     const session = getDefaultSession();
@@ -55,15 +57,27 @@ export default function CommentsPage(props: any) {
     const target = event.target as typeof event.target & {
       markerTitle: { value: string };
       comment: { value: string };
-      score: { value: string };
+      rating: { value: number };
     };
 
     writeMarkerToPod(
       target.markerTitle.value,
       target.comment.value,
-      markerType
+      markerType,
+      rating
     );
   };
+
+  const [rating, setRating] = useState(0)
+
+  const onPointerEnter = () => console.log('Enter')
+  const onPointerLeave = () => console.log('Leave')
+  const onPointerMove = (value: number, index: number) => console.log(value, index)
+
+   // Catch Rating value
+   const handleRating = (rate: number) => {
+    setRating(rate)
+  }
 
   return (
     <div className="popupContainer">
@@ -107,17 +121,16 @@ export default function CommentsPage(props: any) {
 
             <div>
               <label htmlFor="score">Puntuación:</label>
-              <input
-                id="score"
-                type="number"
-                value={score}
-                onChange={(event) => setScore(parseInt(event.target.value))}
-                max="10"
+              <Rating
+                onClick={handleRating}
+                onPointerEnter={onPointerEnter}
+                onPointerLeave={onPointerLeave}
+                onPointerMove={onPointerMove}
               />
             </div>
 
             <div className="form_field">
-              <button type="submit">Enviar</button>
+            <button type="submit">Enviar</button>
             </div>
           </form>
         </div>
