@@ -61,11 +61,10 @@ El único idioma de la aplicación será el castellano, ya que no hay planes de 
 
 
 === Seguridad
-La seguridad de la aplicación es una caracteristica muy importante de la que se hay de preocupar, sobre todo en cuanto lo
-que se refiere a la información sensible de los usuarios. En este caso, serán ellos mismos quienes tengan el control de todos sus datos mediante los pods, llevando a que la aplicación no guarde datos privados del usuario. 
+La seguridad de la aplicación es una caracteristica muy importante de la que se hay de preocupar, sobre todo en cuanto lo que se refiere a la información sensible de los usuarios. En este caso, serán ellos mismos quienes tengan el control de todos sus datos mediante los pods, llevando a que la aplicación no guarde datos privados del usuario. 
 
 === Persistencia
 Se utilizara la base de datos no relacional MongoDB para ciertos datos que haya que guardar, que puedan ser comunes.
 
 === Testeabilidad
-La aplicación será testeada para comprobar y asegurar su correcto funcionamiento y ante cualquier nueva implementación se deberán realizar una serie de pruebas, tanto de funcionamiento como de usabilidad(tiempos de respuesta del usuario...).
+La aplicación será testeada para comprobar y asegurar su correcto funcionamiento y ante cualquier nueva implementación se deberán realizar una serie de funcionalidad y rendiminto.

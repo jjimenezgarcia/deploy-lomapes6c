@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginPage.css";
 import lomap_icon from "../../../images/lomap-icon.png";
-import UserLogin from "../../User/UserLogin";
+import UserLogin from "../../Solid/User/UserLogin";
 
 function LoginForm() {
   return (
@@ -11,7 +11,7 @@ function LoginForm() {
         <h1>Log in</h1>
         <form className="form">
           <div className="form_field">
-           <UserLogin />
+            <UserLogin />
           </div>
         </form>
       </div>
