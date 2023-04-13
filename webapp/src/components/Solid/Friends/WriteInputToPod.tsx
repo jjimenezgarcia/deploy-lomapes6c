@@ -1,5 +1,7 @@
+
 import React from "react";
 import writeDataToNewDataSet from "../WriteToPod";
+
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 
 // Esto es un ejemplo de commo escribir en un pod usando la funciond e writeDataToNewDataSet
