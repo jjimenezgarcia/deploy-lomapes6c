@@ -16,17 +16,17 @@ export async function saveMarker(markerData: any) {
 }
 
 export function OSMap() {
-  const [markerForm,setMarkerForm] = useState(false);
+  const [markerForm, setMarkerForm] = useState(false);
 
-  function addMarker(lat: number, lng: number, comment: string) {
-    const newMarker = { lat, lng, comment };
+  function addMarker(lat: number, lng: number, comment: string, score: string) {
+    const newMarker = { lat, lng, comment, score };
     saveMarker(newMarker); // Llama a la función saveMarker para guardar el nuevo marcador en la base de datos.
   }
 
   function MyComponent() {
     const map = useMapEvents({
       click: (e) => {
-        //const comment = "comentario"; 
+        //const comment = "comentario";
         const { lat, lng } = e.latlng;
         let marker = L.marker([lat, lng], {
           icon: markerIcon,
@@ -53,7 +53,8 @@ export function OSMap() {
                 lat,
                 lng,
                 (document.getElementById("comment") as HTMLTextAreaElement)
-                  .value
+                  .value,
+                (document.getElementById("score") as HTMLTextAreaElement).value
               );
             },
             false
@@ -75,7 +76,7 @@ export function OSMap() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <MyComponent />
-      {markerForm && <CommentsPage/>}
+      {markerForm && <CommentsPage />}
     </MapContainer>
   );
 }
