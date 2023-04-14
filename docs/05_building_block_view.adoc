@@ -24,9 +24,11 @@ Caja blanca LoMap::
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
-| _Back-end_ |  _Contiene todo lo necesario para que la aplicación funcione adecuadamante. Se comunica con el Front-end para obtener aquellos datos proporcionados por el usuario, los procesa y realiza las operaciones comentadas más adelante._
-| _Front-end_ |  _Contiene las interfaces de usuario. Permite que los usuarios finales de la aplicación puedan interactuar con esta. Además, a través de ella se recopilan datos del usuario._
-| _POD_ | _Almacén de datos para cada usuario de la aplicación. Es externo al sistema._
+| _Back-end_ |  _Contiene todo lo necesario para que la aplicación funcione adecuadamante. Se comunica con el Front-end para obtener aquellos datos proporcionados por el cliente, los procesa y realiza las operaciones comentadas más adelante._
+| _Front-end_ |  _Contiene las interfaces de usuario. Permite que los clientes finales de la aplicación puedan interactuar con esta. Además, a través de ella se recopilan datos del cliente._
+| _POD_ | _Almacén de datos para cada cliente de la aplicación. El cliente posee el control absoluto de sus datos privados. Es externo al sistema._
+| _Base de Datos_ | _Utilizamos MongoDB como almacén de datos central para la aplicación._
+| _OpenStreetMaps API_ | _Nos permite generar los mapas._
 |===
 
 === Level 2
@@ -42,16 +44,8 @@ Caja blanca Front-end::
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
-| _MainMenu_ |  _Página inicial (menú principal) de la aplicación. En esta se muestran enlaces a otras páginas de la app para redireccionar al usuario {Inicio, Documentación, Sobre Nosotros y Perfil}._
-| _WelcomePage_ |  _Página de bienvenida a la aplicación. En esta se muestra el mapa del usuario, en el case de que tenga la sesión iniciada, o información de la app y un enlace a Solid._
-| _LoginPage_ |  _Permite al usuario de la aplicación dirigirse a la página de Inrupt para iniciar sesión, o registrarse._
-| _UserPage_ |  _Página del usuario con sesión iniciada dónde puede ver sus datos almacenados por la app._
-|===
-
-=== Level 4
-Caja blanca POD::
-[options="header",cols="1,2"]
-|===
-|Nombre|Responsabilidad
-| _..._ |  _..._
+| _MainMenu_ |  _Página inicial (menú principal) de la aplicación. En esta se muestran enlaces a otras páginas de la app para redireccionar al cliente {Inicio, Documentación, Sobre Nosotros y Perfil}._
+| _WelcomePage_ |  _Página de bienvenida a la aplicación. En esta se muestra el mapa del cliente, en el case de que tenga la sesión iniciada, o información de la aplicación y un enlace a Solid._
+| _LoginPage_ |  _Permite al cliente de la aplicación dirigirse a la página de Inrupt para iniciar sesión o registrarse._
+| _UserPage_ |  _Página del cliente con sesión iniciada dónde puede ver sus datos almacenados por la app._
 |===
