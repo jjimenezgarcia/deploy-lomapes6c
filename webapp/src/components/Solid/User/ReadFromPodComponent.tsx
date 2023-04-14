@@ -4,8 +4,6 @@ import { readFromDataSet } from "../ReadFromPod";
 export default function ReadFromPodComponent() {
   const [markers, setMarkers] = useState([] as any);
 
-  console.log(markers);
-
   if (markers.length > 0) {
     markers.map((marker: any) => {
       console.log(marker);

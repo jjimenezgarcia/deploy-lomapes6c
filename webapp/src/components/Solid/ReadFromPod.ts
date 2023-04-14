@@ -6,6 +6,11 @@ import {
   import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
   import { SCHEMA_INRUPT } from "@inrupt/vocab-common-rdf";
 
+
+  function isData(element : any, index : number, array: any) { 
+    return (element != "No data"); 
+ }
+
   export async function readFromDataSet() {
 
     // Obtener la sesion actual y su webId
@@ -36,8 +41,13 @@ import {
             const data = getThingAll(thingDataset).map((thing) => {
                 const thingData = getStringNoLocale(thing, SCHEMA_INRUPT.description)
                 return thingData ? JSON.parse(thingData) : "No data";
-            })
-        return data
+            }).filter(isData)
+            let finalData = new Array()
+            data.forEach( (element : any ) => finalData.push(element))
+            
+            console.log(finalData)
+
+        return data.shift()
       })
 
       // Queda quitar el primer elemento del array porque no es un marcador sino el dataset y no sirve para nada
