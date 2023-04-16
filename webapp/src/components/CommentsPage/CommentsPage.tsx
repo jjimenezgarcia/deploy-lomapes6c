@@ -85,7 +85,7 @@ export default function CommentsPage(props: any) {
   const [markerForm, setMarkerForm] = useState(true);
 
   const cancelMarker = () => {
-    setMarkerForm(false);
+    props.onChange();
   };
 
   if(!markerForm) return null;
