@@ -43,7 +43,7 @@ export function OSMap() {
   }
 
   return (
-
+ 
       <div className="map">
         <MapContainer
           center={[51.505, -0.09]}
