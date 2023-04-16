@@ -24,6 +24,10 @@ export function OSMap() {
   const [markerForm, setMarkerForm] = useState(false);
   const [cords, setCords] = useState<number[]>([0, 0]);
 
+  function cancelMarker() {
+    setMarkerForm(false);
+  }
+
   function MyComponent() {
     const map = useMapEvents({
       click: (e) => {
@@ -33,10 +37,11 @@ export function OSMap() {
           icon: markerIcon,
           draggable: false,
         });
-        marker.addTo(map);
-        marker.bindPopup(marker.getLatLng().toString()).openPopup();
 
         setMarkerForm(true);
+
+        marker.addTo(map);
+        marker.bindPopup(marker.getLatLng().toString()).openPopup();
       },
     });
     return null;
@@ -62,7 +67,7 @@ export function OSMap() {
         </MapContainer>
       {markerForm && (
         <div className="comment">
-          <CommentsPage key={markerForm} lat={cords} onChange={exitComments}/>
+          <CommentsPage key={markerForm} lat={cords} onSubmit={exitComments} onChange={cancelMarker}/>
         </div>
       )}
     </div>

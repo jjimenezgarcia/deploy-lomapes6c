@@ -68,7 +68,7 @@ export default function CommentsPage(props: any) {
     );
 
     // quitar componente comentarios
-    props.onChange();
+    props.onSubmit();
   };
 
   const [rating, setRating] = useState(0)
@@ -82,13 +82,10 @@ export default function CommentsPage(props: any) {
     setRating(rate)
   }
 
-  const [markerForm, setMarkerForm] = useState(true);
 
   const cancelMarker = () => {
     props.onChange();
   };
-
-  if(!markerForm) return null;
 
   return (
     <div className="popupContainer">
