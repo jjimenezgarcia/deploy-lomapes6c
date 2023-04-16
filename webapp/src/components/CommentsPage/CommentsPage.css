@@ -2,7 +2,6 @@
     display: flex;
     gap: 2rem;
     padding: 15px;
-    
     margin-top: 0.5em;
     z-index: 1050;
     right: 0;
@@ -11,6 +10,9 @@
     border-radius: 1em;
 }
 
+.cancel_button {
+    width: 70%;
+}
 h1 {
     color: white;
 }

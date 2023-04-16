@@ -1,3 +1,4 @@
+import "./OSMap.css";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { MapContainer, TileLayer } from "react-leaflet";
@@ -23,6 +24,10 @@ export function OSMap() {
   const [markerForm, setMarkerForm] = useState(false);
   const [cords, setCords] = useState<number[]>([0, 0]);
 
+  function cancelMarker() {
+    setMarkerForm(false);
+  }
+
   function MyComponent() {
     const map = useMapEvents({
       click: (e) => {
@@ -32,44 +37,37 @@ export function OSMap() {
           icon: markerIcon,
           draggable: false,
         });
-        marker.addTo(map);
-        marker.bindPopup(marker.getLatLng().toString()).openPopup();
 
         setMarkerForm(true);
+
+        marker.addTo(map);
+        marker.bindPopup(marker.getLatLng().toString()).openPopup();
       },
     });
     return null;
   }
 
-  const cancelMarker = () => {
+  function exitComments() {
     setMarkerForm(false);
-  };
+  }
 
   return (
-    <div>
-      <MapContainer
-        center={[51.505, -0.09]}
-        zoom={13}
-        style={{ height: "700px", borderRadius: "inherit" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <MyComponent />
-      </MapContainer>
+      <div className="map">
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={13}
+          style={{ height: "700px", borderRadius: "inherit" }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {!markerForm && <MyComponent />}
+          
+        </MapContainer>
       {markerForm && (
-        <div>
-          <CommentsPage lat={cords} />
-          <div className="form_field">
-            <button
-              type="button"
-              onClick={cancelMarker}
-              style={{ width: "25%" }}
-            >
-              Cancelar marcador
-            </button>
-          </div>
+        <div className="comment">
+          <CommentsPage key={markerForm} lat={cords} onSubmit={exitComments} onChange={cancelMarker}/>
         </div>
       )}
     </div>
