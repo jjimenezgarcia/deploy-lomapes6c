@@ -42,8 +42,11 @@ export function OSMap() {
     return null;
   }
 
+  function exitComments() {
+    setMarkerForm(false);
+  }
+
   return (
- 
       <div className="map">
         <MapContainer
           center={[51.505, -0.09]}
@@ -59,7 +62,7 @@ export function OSMap() {
         </MapContainer>
       {markerForm && (
         <div className="comment">
-          <CommentsPage lat={cords} />
+          <CommentsPage key={markerForm} lat={cords} onChange={exitComments}/>
         </div>
       )}
     </div>

@@ -67,7 +67,8 @@ export default function CommentsPage(props: any) {
       rating
     );
 
-    setMarkerForm(false);
+    // quitar componente comentarios
+    props.onChange();
   };
 
   const [rating, setRating] = useState(0)
