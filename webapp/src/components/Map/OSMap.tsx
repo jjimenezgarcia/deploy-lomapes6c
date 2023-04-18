@@ -70,8 +70,10 @@ export function OSMap() {
 
   return (
     <div>
-      <ShowMyMarkers />
       <div className="map">
+      <div className="button_marker">
+        <ShowMyMarkers />
+      </div>
         <MapContainer
           center={[51.505, -0.09]}
           zoom={13}
