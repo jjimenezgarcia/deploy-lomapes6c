@@ -45,15 +45,21 @@ import {
             let finalData = new Array()
             data.forEach( (element : any ) => finalData.push(element))
             
-            console.log(finalData)
 
-        return data.shift()
+        return finalData
       })
 
-      // Queda quitar el primer elemento del array porque no es un marcador sino el dataset y no sirve para nada
 
-      // Quitar el log cuando funciones del todo
-      //console.log(markers)
+      // Crear una nueva lista
+      let newMarkers = new Array()
 
-      return markers
+      for(let i = 0; i < markers.length; i++){
+        markers[i].then((array: any) => {
+          array.forEach((object: any) => {
+            newMarkers.push(object)
+          });
+        });
+      }
+
+      return newMarkers
     }
