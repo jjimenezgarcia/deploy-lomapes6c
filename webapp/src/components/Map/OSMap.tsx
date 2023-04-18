@@ -5,6 +5,10 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import CommentsPage from "../CommentsPage/CommentsPage";
 import { useState } from "react";
+import ShowMyMarkers from "./Markers/ShowMyMarkers";
+import { readFromDataSet } from "../Solid/ReadFromPod";
+
+var map: L.Map;
 
 export interface Marker {
   lat: number;
@@ -13,6 +17,19 @@ export interface Marker {
   title: string;
   type: string;
   score: number;
+}
+
+export function ShowMarkers(promise: any) {
+  promise.then((array: any) => {
+    array.forEach((element: any) => {
+      let marker = L.marker([element.lat, element.lng], {
+        icon: markerIcon,
+        draggable: false,
+      });
+      marker.addTo(map);
+      marker.bindPopup(element.comment).openPopup();
+    });
+  });
 }
 
 const markerIcon = L.icon({
@@ -29,7 +46,7 @@ export function OSMap() {
   }
 
   function MyComponent() {
-    const map = useMapEvents({
+    map = useMapEvents({
       click: (e) => {
         const { lat, lng } = e.latlng;
         setCords([lat, lng]);
@@ -52,6 +69,8 @@ export function OSMap() {
   }
 
   return (
+    <div>
+      <ShowMyMarkers />
       <div className="map">
         <MapContainer
           center={[51.505, -0.09]}
@@ -63,13 +82,18 @@ export function OSMap() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {!markerForm && <MyComponent />}
-          
         </MapContainer>
-      {markerForm && (
-        <div className="comment">
-          <CommentsPage key={markerForm} lat={cords} onSubmit={exitComments} onChange={cancelMarker}/>
-        </div>
-      )}
+        {markerForm && (
+          <div className="comment">
+            <CommentsPage
+              key={markerForm}
+              lat={cords}
+              onSubmit={exitComments}
+              onChange={cancelMarker}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
