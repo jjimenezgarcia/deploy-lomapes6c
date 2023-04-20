@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { clear } from "console";
 import { useState } from "react";
 import { readFromDataSet } from "../../../../Solid/ReadFromPod";
 import { clearMarkers, ShowMarkersFulfilledPromise } from "../../../OSMap";
