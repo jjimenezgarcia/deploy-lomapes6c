@@ -8,7 +8,7 @@ import { useState } from "react";
 import MarkersButton from "./Markers/MarkersButton/MarkersButton";
 import { FilterRestaurant } from "./Markers/Filters/Restaurant/FilterRestaurant";
 import { FilterMonument } from "./Markers/Filters/Monument/FilterMonument";
-import { FilterLandscape } from "./Markers/Filters/Landscape/FilterMonument";
+import { FilterLandscape } from "./Markers/Filters/Landscape/FilterLandscape";
 var map: L.Map;
 
 export interface Marker {
@@ -41,7 +41,6 @@ export function ShowMarkersFulfilledPromise(array: any[] | null) {
 export function clearMarkers() {
   map.eachLayer(function (layer) {
     if (layer instanceof L.Marker) {
-      console.log(layer);
       map.removeLayer(layer);
     }
   });
