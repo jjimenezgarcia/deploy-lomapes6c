@@ -81,7 +81,6 @@ export function OSMap() {
 
   function exitComments() {
     setMarkerForm(false);
-    
   }
 
   return (

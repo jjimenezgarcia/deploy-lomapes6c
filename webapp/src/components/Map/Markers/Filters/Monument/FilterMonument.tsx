@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
+import { clear } from "console";
 import { useState } from "react";
 import { readFromDataSet } from "../../../../Solid/ReadFromPod";
-import { ShowMarkersFulfilledPromise } from "../../../OSMap";
+import { clearMarkers, ShowMarkersFulfilledPromise } from "../../../OSMap";
 import { filterByType } from "../Filter";
 import "../FilterButton.css"
 
@@ -11,6 +12,7 @@ export function FilterMonument() {
       <div>
         <button className="filter-monument"
           onClick={async () => {
+            clearMarkers();
             setMarkers(readFromDataSet());
             ShowMarkersFulfilledPromise(await filterByType(markers, "monument"));
           }}
