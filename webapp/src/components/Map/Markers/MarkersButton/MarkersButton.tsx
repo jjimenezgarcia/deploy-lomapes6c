@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useState } from "react";
-import { readFromDataSet } from "../../Solid/ReadFromPod";
-import { ShowMarkers } from "../OSMap";
-import "./ShowMyMarkers.css";
-export default function ShowMyMarkers() {
+import { readFromDataSet } from "../../../Solid/ReadFromPod";
+import { ShowMarkers } from "../../OSMap";
+import "./MarkersButton.css";
+
+export default function Markers() {
   const [markers, setMarkers] = useState(readFromDataSet());
 
   return (

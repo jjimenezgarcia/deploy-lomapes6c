@@ -5,9 +5,10 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import CommentsPage from "../CommentsPage/CommentsPage";
 import { useState } from "react";
-import ShowMyMarkers from "./Markers/ShowMyMarkers";
-import { readFromDataSet } from "../Solid/ReadFromPod";
-
+import MarkersButton from "./Markers/MarkersButton/MarkersButton";
+import { FilterRestaurant } from "./Markers/Filters/Restaurant/FilterRestaurant";
+import { FilterMonument } from "./Markers/Filters/Monument/FilterMonument";
+import { FilterLandscape } from "./Markers/Filters/Landscape/FilterLandscape";
 var map: L.Map;
 
 export interface Marker {
@@ -21,14 +22,27 @@ export interface Marker {
 
 export function ShowMarkers(promise: any) {
   promise.then((array: any) => {
-    array.forEach((element: any) => {
-      let marker = L.marker([element.lat, element.lng], {
-        icon: markerIcon,
-        draggable: false,
-      });
-      marker.addTo(map);
-      marker.bindPopup(element.comment).openPopup();
+    ShowMarkersFulfilledPromise(array);
+  });
+}
+
+export function ShowMarkersFulfilledPromise(array: any[] | null) {
+  if(!array) return;
+  array.forEach((element: any) => {
+    let marker = L.marker([element.lat, element.lng], {
+      icon: markerIcon,
+      draggable: false,
     });
+    marker.addTo(map);
+    marker.bindPopup(element.comment).openPopup();
+  });
+}
+
+export function clearMarkers() {
+  map.eachLayer(function (layer) {
+    if (layer instanceof L.Marker) {
+      map.removeLayer(layer);
+    }
   });
 }
 
@@ -71,8 +85,13 @@ export function OSMap() {
   return (
     <div>
       <div className="map">
+      <div className="filters">
+        <FilterRestaurant />
+        <FilterMonument />
+        <FilterLandscape/>
+      </div>
       <div className="button_marker">
-        <ShowMyMarkers />
+        <MarkersButton />
       </div>
         <MapContainer
           center={[51.505, -0.09]}
