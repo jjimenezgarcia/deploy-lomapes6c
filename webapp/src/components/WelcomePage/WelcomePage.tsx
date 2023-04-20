@@ -14,16 +14,16 @@ export default function WelcomePage() {
         <>
           <div className="welcome_text" data-aos="fade-down">
             <WelcomeText />
+            <div
+              className="arrow"
+              onClick={() =>
+                document
+                  .getElementById("solid")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            ></div>
           </div>
-          <div
-            className="arrow"
-            onClick={() =>
-              document
-                .getElementById("solid")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          ></div>
-          <div id="solid">
+          <div className="solid" id="solid">
             <WelcomeSolid />
           </div>
         </>
