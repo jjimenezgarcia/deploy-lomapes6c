@@ -146,12 +146,13 @@ import {
       let content
       // This fires after the blob has been read/loaded.
       reader.addEventListener('loadend', (e) => {
-          content = e.target?.result
-          return parseContent(content)
+          content = parseContent(e.target?.result)
       });
 
       // Start reading the blob as text.
       reader.readAsText(file);
+
+      console.log(content)
       
     } catch (err) {
       console.error(err);
