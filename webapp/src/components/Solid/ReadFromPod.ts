@@ -28,7 +28,7 @@ import {
     }
 
     // Obtener la url del dataset de marcadores
-    const datasetUrl = friendUrl.replace("profile/card#me", "") + "public/markers/"
+    const datasetUrl = friendUrl.substring(0, friendUrl.length + 1 - "profile/card#me".length) + "/public/markers/"
 
     // Obtenemos la url de cada marcador
     const myDataset = await getSolidDataset(
@@ -41,17 +41,13 @@ import {
           thing.url,
           { fetch: session.fetch }          // fetch from authenticated session
         );
-
         // Devolvemos un JSON con los datos o un string con el mensaje de 'No data'
           const data = getThingAll(thingDataset).map((thing) => {
               const thingData = getStringNoLocale(thing, SCHEMA_INRUPT.description)
               return thingData ? JSON.parse(thingData) : "No data";
           }).filter(isData)
-          let finalData = new Array()
-          data.forEach( (element : any ) => finalData.push(element))
-          
 
-      return finalData
+      return data
     })
 
 
@@ -143,16 +139,21 @@ import {
 
       const reader = new FileReader();
 
-      let content
-      // This fires after the blob has been read/loaded.
-      reader.addEventListener('loadend', (e) => {
-          content = parseContent(e.target?.result)
+      // Wrap the event listener in a Promise
+      const contentPromise = new Promise<string>((resolve) => {
+        reader.addEventListener("loadend", (e) => {
+          const content : any = parseContent(e.target?.result);
+          resolve(content);
+        });
       });
 
       // Start reading the blob as text.
       reader.readAsText(file);
 
-      console.log(content)
+      // Wait for the Promise to resolve before returning the content.
+    const content = await contentPromise;
+
+    return content;
       
     } catch (err) {
       console.error(err);
@@ -169,9 +170,14 @@ import {
 
     let friends = new Array()
     prefixes.forEach((e : string) => {
-      const url = e.split(": ")[1]
+      let url = e.split(": ")[1]
+      url = url.replace("<", "")
+      url = url.replace(">", "")
+      url = url.substring(0, url.length - 1)
       friends.push(url)
     })
+
+    friends.shift()
 
     return friends
   }
