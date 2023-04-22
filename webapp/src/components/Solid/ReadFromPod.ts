@@ -1,12 +1,8 @@
 import {
-  getContentType,
-  getFile,
+    getFile,
     getSolidDataset,
-    getSourceUrl,
     getStringNoLocale,
-    getThing,
     getThingAll,
-    isRawData,
   } from "@inrupt/solid-client";
   import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
   import { SCHEMA_INRUPT } from "@inrupt/vocab-common-rdf";
@@ -36,7 +32,7 @@ import {
         { fetch: session.fetch }          // fetch from authenticated session
       );
       // Obtener los datos de cada marcador
-    const markers = getThingAll(myDataset).map( async (thing) => {
+    const markers =  getThingAll(myDataset).map( async (thing) => {
       const thingDataset = await getSolidDataset(
           thing.url,
           { fetch: session.fetch }          // fetch from authenticated session
@@ -61,8 +57,8 @@ import {
           });
         });
       }
-
-      return newMarkers
+      
+      return newMarkers;
     }
 
     export async function readFromDataSet() {
@@ -92,15 +88,13 @@ import {
           );
   
           // Devolvemos un JSON con los datos o un string con el mensaje de 'No data'
-            const data = getThingAll(thingDataset).map((thing) => {
-                const thingData = getStringNoLocale(thing, SCHEMA_INRUPT.description)
-                return thingData ? JSON.parse(thingData) : "No data";
-            }).filter(isData)
-            let finalData = new Array()
-            data.forEach( (element : any ) => finalData.push(element))
+          const data = getThingAll(thingDataset).map((thing) => {
+            const thingData = getStringNoLocale(thing, SCHEMA_INRUPT.description)
+            return thingData ? JSON.parse(thingData) : "No data";
+        }).filter(isData)
             
   
-        return finalData
+        return data;
       })
   
   
@@ -114,7 +108,6 @@ import {
             });
           });
         }
-  
         return newMarkers
       }
 

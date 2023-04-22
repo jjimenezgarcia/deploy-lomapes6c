@@ -3,14 +3,23 @@ import WelcomeText from "./subcomponents/WelcomeText";
 import WelcomeSolid from "./subcomponents/WelcomeSolid";
 import {
   OSMap,
-  ShowMarkersMultidimensional,
+  ShowMarkersFulfilledPromise,
 } from "../../Map/OSMap";
 import "aos/dist/aos.css";
 import { useSession } from "@inrupt/solid-ui-react";
-import { getFriendsFromPod, readFromFriendDataSet } from "../../Solid/ReadFromPod";
+import { getFriendsFromPod, readFromDataSet, readFromFriendDataSet } from "../../Solid/ReadFromPod";
+import { useState } from "react";
 
 export default function WelcomePage() {
   const { session } = useSession();
+  const [markers, setMarkers] = useState(readFromDataSet());
+  
+  function readFromFriend(url: string){
+    setMarkers(readFromFriendDataSet(url));
+    markers.then((array: any) => {
+      ShowMarkersFulfilledPromise(array);
+    });
+  }
 
   return (
     <div className="welcome_page">
@@ -34,17 +43,14 @@ export default function WelcomePage() {
       ) : (
         <div className="map-container">
           <button
-            onClick={async () => {
+            onClick={() => {
               try {
-                const friends: any = await getFriendsFromPod();
-                const promises: Promise<any>[] = friends.flatMap((e: any) => {
-                  return readFromFriendDataSet(e);
+                getFriendsFromPod().then((friends: any) => {
+                  friends.forEach((friend: any) => {
+                    readFromFriend(friend);
+                  });
                 });
-                const arrays: any[] = await Promise.all(promises);
-                console.log(arrays);
-                ShowMarkersMultidimensional(arrays);
               } catch (error) {
-                // Handle errors here
                 console.log(error);
               }
             }}

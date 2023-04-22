@@ -26,17 +26,9 @@ export function ShowMarkersFromPromise(promise: any) {
   });
 }
 
-export function ShowMarkersMultidimensional(array: any) {
-  array.forEach((element: any) => {
-    console.log(element);
-    ShowMarkersFulfilledPromise(element);
-  });
-}
-
 export function ShowMarkersFulfilledPromise(array: any[] | null) {
-  if (!array) return;
+  if (array === null) return;
   array.forEach((element: any) => {
-    console.log(element);
     let marker = L.marker([element.lat, element.lng], {
       icon: markerIcon,
       draggable: false,
