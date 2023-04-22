@@ -1,12 +1,25 @@
 import "./WelcomePage.css";
 import WelcomeText from "./subcomponents/WelcomeText";
 import WelcomeSolid from "./subcomponents/WelcomeSolid";
-import { OSMap } from "../Map/OSMap";
+import {
+  OSMap,
+  ShowMarkersFulfilledPromise,
+} from "../../Map/OSMap";
 import "aos/dist/aos.css";
 import { useSession } from "@inrupt/solid-ui-react";
+import { getFriendsFromPod, readFromDataSet, readFromFriendDataSet } from "../../Solid/ReadFromPod";
+import { useState } from "react";
 
 export default function WelcomePage() {
   const { session } = useSession();
+  const [markers, setMarkers] = useState(readFromDataSet());
+  
+  function readFromFriend(url: string){
+    setMarkers(readFromFriendDataSet(url));
+    markers.then((array: any) => {
+      ShowMarkersFulfilledPromise(array);
+    });
+  }
 
   return (
     <div className="welcome_page">
@@ -29,6 +42,21 @@ export default function WelcomePage() {
         </>
       ) : (
         <div className="map-container">
+          <button
+            onClick={() => {
+              try {
+                getFriendsFromPod().then((friends: any) => {
+                  friends.forEach((friend: any) => {
+                    readFromFriend(friend);
+                  });
+                });
+              } catch (error) {
+                console.log(error);
+              }
+            }}
+          >
+            Amigos
+          </button>
           <div className="map" data-aos="fade-down">
             <OSMap />
           </div>

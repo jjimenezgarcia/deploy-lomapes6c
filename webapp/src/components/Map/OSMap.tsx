@@ -20,14 +20,14 @@ export interface Marker {
   score: number;
 }
 
-export function ShowMarkers(promise: any) {
+export function ShowMarkersFromPromise(promise: any) {
   promise.then((array: any) => {
     ShowMarkersFulfilledPromise(array);
   });
 }
 
 export function ShowMarkersFulfilledPromise(array: any[] | null) {
-  if(!array) return;
+  if (array === null) return;
   array.forEach((element: any) => {
     let marker = L.marker([element.lat, element.lng], {
       icon: markerIcon,
@@ -85,14 +85,14 @@ export function OSMap() {
   return (
     <div>
       <div className="map">
-      <div className="filters">
-        <FilterRestaurant />
-        <FilterMonument />
-        <FilterLandscape/>
-      </div>
-      <div className="button_marker">
-        <MarkersButton />
-      </div>
+        <div className="filters">
+          <FilterRestaurant />
+          <FilterMonument />
+          <FilterLandscape />
+        </div>
+        <div className="button_marker">
+          <MarkersButton />
+        </div>
         <MapContainer
           center={[51.505, -0.09]}
           zoom={13}
