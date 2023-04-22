@@ -1,7 +1,11 @@
 import "./WelcomePage.css";
 import WelcomeText from "./subcomponents/WelcomeText";
 import WelcomeSolid from "./subcomponents/WelcomeSolid";
-import { OSMap, ShowMarkers, ShowMarkersFromPromise } from "../Map/OSMap";
+import {
+  OSMap,
+  ShowMarkersFromPromise,
+  ShowMarkersMultidimensional,
+} from "../Map/OSMap";
 import "aos/dist/aos.css";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getFriendsFromPod, readFromFriendDataSet } from "../Solid/ReadFromPod";
@@ -9,7 +13,6 @@ import { useState } from "react";
 
 export default function WelcomePage() {
   const { session } = useSession();
-  const [markers, setMarkers] = useState(new Array());
 
   return (
     <div className="welcome_page">
@@ -36,15 +39,12 @@ export default function WelcomePage() {
             onClick={async () => {
               try {
                 const friends: any = await getFriendsFromPod();
-                const promises: Promise<any>[] = friends.map((e: any) => {
+                const promises: Promise<any>[] = friends.flatMap((e: any) => {
                   return readFromFriendDataSet(e);
                 });
                 const arrays: any[] = await Promise.all(promises);
                 console.log(arrays);
-                const markersToSet: any[] = arrays.flat();
-                console.log(markersToSet);
-                await ShowMarkers(markersToSet);
-                setMarkers(markersToSet);
+                ShowMarkersMultidimensional(arrays);
               } catch (error) {
                 // Handle errors here
                 console.log(error);
