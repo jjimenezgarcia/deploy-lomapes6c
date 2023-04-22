@@ -1,10 +1,10 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-import WelcomePage from "./components/WelcomePage/WelcomePage";
-import MainMenu from "./components/pages/MainMenu/MainMenu";
+import WelcomePage from "./components/Pages/WelcomePage/WelcomePage";
+import MainMenu from "./components/Pages/MainMenu/MainMenu";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import UserPage from "./components/pages/UserPage/UserPage";
+import UserPage from "./components/Pages/UserPage/UserPage";
 import { OSMap } from "./components/Map/OSMap";
 import { SessionProvider } from "@inrupt/solid-ui-react";
 import RequestFriendship from "./components/Solid/Friends/RequestFriendship";

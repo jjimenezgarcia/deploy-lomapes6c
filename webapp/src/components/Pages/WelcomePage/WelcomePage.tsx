@@ -3,13 +3,11 @@ import WelcomeText from "./subcomponents/WelcomeText";
 import WelcomeSolid from "./subcomponents/WelcomeSolid";
 import {
   OSMap,
-  ShowMarkersFromPromise,
   ShowMarkersMultidimensional,
-} from "../Map/OSMap";
+} from "../../Map/OSMap";
 import "aos/dist/aos.css";
 import { useSession } from "@inrupt/solid-ui-react";
-import { getFriendsFromPod, readFromFriendDataSet } from "../Solid/ReadFromPod";
-import { useState } from "react";
+import { getFriendsFromPod, readFromFriendDataSet } from "../../Solid/ReadFromPod";
 
 export default function WelcomePage() {
   const { session } = useSession();
