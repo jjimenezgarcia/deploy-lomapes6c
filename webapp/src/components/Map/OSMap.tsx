@@ -5,6 +5,11 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import CommentsPage from "../CommentsPage/CommentsPage";
 import { useState } from "react";
+import MarkersButton from "./Markers/MarkersButton/MarkersButton";
+import { FilterRestaurant } from "./Markers/Filters/Restaurant/FilterRestaurant";
+import { FilterMonument } from "./Markers/Filters/Monument/FilterMonument";
+import { FilterLandscape } from "./Markers/Filters/Landscape/FilterLandscape";
+var map: L.Map;
 
 export interface Marker {
   lat: number;
@@ -13,6 +18,32 @@ export interface Marker {
   title: string;
   type: string;
   score: number;
+}
+
+export function ShowMarkersFromPromise(promise: any) {
+  promise.then((array: any) => {
+    ShowMarkersFulfilledPromise(array);
+  });
+}
+
+export function ShowMarkersFulfilledPromise(array: any[] | null) {
+  if (array === null) return;
+  array.forEach((element: any) => {
+    let marker = L.marker([element.lat, element.lng], {
+      icon: markerIcon,
+      draggable: false,
+    });
+    marker.addTo(map);
+    marker.bindPopup(element.comment).openPopup();
+  });
+}
+
+export function clearMarkers() {
+  map.eachLayer(function (layer) {
+    if (layer instanceof L.Marker) {
+      map.removeLayer(layer);
+    }
+  });
 }
 
 const markerIcon = L.icon({
@@ -29,7 +60,7 @@ export function OSMap() {
   }
 
   function MyComponent() {
-    const map = useMapEvents({
+    map = useMapEvents({
       click: (e) => {
         const { lat, lng } = e.latlng;
         setCords([lat, lng]);
@@ -52,7 +83,16 @@ export function OSMap() {
   }
 
   return (
+    <div>
       <div className="map">
+        <div className="filters">
+          <FilterRestaurant />
+          <FilterMonument />
+          <FilterLandscape />
+        </div>
+        <div className="button_marker">
+          <MarkersButton />
+        </div>
         <MapContainer
           center={[51.505, -0.09]}
           zoom={13}
@@ -63,13 +103,18 @@ export function OSMap() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {!markerForm && <MyComponent />}
-          
         </MapContainer>
-      {markerForm && (
-        <div className="comment">
-          <CommentsPage key={markerForm} lat={cords} onSubmit={exitComments} onChange={cancelMarker}/>
-        </div>
-      )}
+        {markerForm && (
+          <div className="comment">
+            <CommentsPage
+              key={markerForm}
+              lat={cords}
+              onSubmit={exitComments}
+              onChange={cancelMarker}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

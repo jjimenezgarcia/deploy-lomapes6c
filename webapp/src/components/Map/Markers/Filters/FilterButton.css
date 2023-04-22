@@ -1,0 +1,38 @@
+.filter-restaurant {
+    background-color: white;
+    border: none;
+    padding: 5px 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filter-monument {
+    background-color: white;
+    border: none;
+    padding: 5px 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .filter-landscape {
+    background-color: white;
+    border: none;
+    padding: 5px 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Estilos de animación al hacer clic */
+  button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+  
+  /* Estilos de animación al hacer clic */
+  button:active {
+    background-color: #e0e0e0;
+    transform: scale(0.95);
+  }

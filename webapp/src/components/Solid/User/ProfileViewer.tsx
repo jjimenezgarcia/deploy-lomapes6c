@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
 import { Link } from "react-router-dom";
-import ReadFromPodComponent from "./ReadFromPodComponent";
 
 const ProfileViewer = () => {
   const { session } = useSession();
@@ -64,9 +63,6 @@ const ProfileViewer = () => {
       </LogoutButton>
       <Button style={buttonStyle} variant="contained" color="primary">
         <Link to="/friends">Amigos</Link>
-      </Button>
-      <Button style={buttonStyle} variant="contained" color="primary">
-        <Link to="/markers">Ver mis marcadores</Link>
       </Button>
     </Container>
   );
