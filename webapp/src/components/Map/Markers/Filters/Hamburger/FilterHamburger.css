@@ -4,25 +4,11 @@ body {
   text-align: center;
 }
 
-a {
-  color: inherit;
-}
-
-h1, h2, h3, h4 {
-  margin: 0;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-h1 {
-  font-size: 3em;
-}
-
 .menu {
   filter: url("#shadowed-goo");
 }
 
-.menu-item, .menu-open-button {
+.menu-item-hamburger, .menu-open-button {
   background: cornflowerblue;
   border-radius: 100%;
   width: 80px;
@@ -76,23 +62,22 @@ h1 {
   transform: translate3d(0, 0, 0) rotate(-45deg);
 }
 
-.menu-item:hover {
+.menu-item-hamburger:hover {
   background: white;
-  color: #ff4081;
 }
-.menu-item:nth-child(3) {
+.menu-item-hamburger:nth-child(3) {
   transition-duration: 70ms;
 }
-.menu-item:nth-child(4) {
+.menu-item-hamburger:nth-child(4) {
   transition-duration: 130ms;
 }
-.menu-item:nth-child(5) {
+.menu-item-hamburger:nth-child(5) {
   transition-duration: 190ms;
 }
-.menu-item:nth-child(6) {
+.menu-item-hamburger:nth-child(6) {
   transition-duration: 250ms;
 }
-.menu-item:nth-child(7) {
+.menu-item-hamburger:nth-child(7) {
   transition-duration: 310ms;
 }
 
@@ -114,26 +99,26 @@ h1 {
   transform: scale(0.8, 0.8) translate3d(0, 0, 0);
 }
 
-.menu-open:checked ~ .menu-item {
+.menu-open:checked ~ .menu-item-hamburger {
   transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
 }
-.menu-open:checked ~ .menu-item:nth-child(3) {
+.menu-open:checked ~ .menu-item-hamburger:nth-child(3) {
   transition-duration: 160ms;
-  transform: translate3d(70px, 70px, 0);
+  transform: translate3d(77.60px, 85.2491px, 0);
 }
-.menu-open:checked ~ .menu-item:nth-child(4) {
+.menu-open:checked ~ .menu-item-hamburger:nth-child(4) {
   transition-duration: 240ms;
-  transform: translate3d(77.18543px, 85.2491px, 0);
-}
-.menu-open:checked ~ .menu-item:nth-child(5) {
-  transition-duration: 320ms;
   transform: translate3d(0.09158px, 114.99996px, 0);
 }
-.menu-open:checked ~ .menu-item:nth-child(6) {
-  transition-duration: 400ms;
+.menu-open:checked ~ .menu-item-hamburger:nth-child(5) {
+  transition-duration: 320ms;
   transform: translate3d(-77.04956px, 85.37192px, 0);
 }
-.menu-open:checked ~ .menu-item:nth-child(7) {
-  transition-duration: 480ms;
+.menu-open:checked ~ .menu-item-hamburger:nth-child(6) {
+  transition-duration: 400ms;
   transform: translate3d(-114.40705px, 11.66307px, 0);
+}
+.menu-open:checked ~ .menu-item-hamburger:nth-child(7) {
+  transition-duration: 480ms;
+  transform: translate3d(-77.04956px, -62.04956px, 0);
 }

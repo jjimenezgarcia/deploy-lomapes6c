@@ -1,17 +1,12 @@
 
-import { useState } from "react";
+import GetFriendMarkers from "../../../../Solid/Friends/ShowFriendMarkers";
+import Markers from "../../MarkersButton/MarkersButton";
 import { FilterLandscape } from "../Landscape/FilterLandscape";
 import { FilterMonument } from "../Monument/FilterMonument";
 import { FilterRestaurant } from "../Restaurant/FilterRestaurant";
 import "./FilterHamburger.css"
 
 export default function FilterHamburger(){
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
-  };
 
   return (
     <div>
@@ -23,7 +18,12 @@ export default function FilterHamburger(){
     <span className="hamburger hamburger-3"></span>
   </label>
 
-  <a className="menu-item"> <FilterRestaurant /> </a>
+  
+  <div className="menu-item-hamburger"> <Markers /> </div>
+  <div className="menu-item-hamburger"> <FilterRestaurant /> </div>
+  <div className="menu-item-hamburger"> <FilterMonument /> </div>
+  <div className="menu-item-hamburger"> <FilterLandscape /> </div>
+  <div className="menu-item-hamburger"> <GetFriendMarkers /> </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
     <defs>

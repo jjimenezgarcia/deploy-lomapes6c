@@ -1,32 +1,10 @@
-.filter-restaurant {
+.filter-button {
     position: relative;
     background-color: whitesmoke;
     border: none;
     padding: 5px 5px;
     height: 80px;
     width: 80px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button-image{
-    margin-top: -30px;
-  }
-  
-  .filter-monument {
-    background-color: white;
-    border: none;
-    padding: 5px 5px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease;
-  }
-
-  .filter-landscape {
-    background-color: white;
-    border: none;
-    padding: 5px 5px;
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s ease;
@@ -42,4 +20,8 @@
   button:active {
     background-color: #e0e0e0;
     transform: scale(0.95);
+  }
+
+  .filter-button-image{
+    margin-top: -15px;
   }
