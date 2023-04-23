@@ -9,6 +9,7 @@ import MarkersButton from "./Markers/MarkersButton/MarkersButton";
 import { FilterRestaurant } from "./Markers/Filters/Restaurant/FilterRestaurant";
 import { FilterMonument } from "./Markers/Filters/Monument/FilterMonument";
 import { FilterLandscape } from "./Markers/Filters/Landscape/FilterLandscape";
+import FilterHamburger from "./Markers/Filters/Hamburger/FilterHamburger";
 var map: L.Map;
 
 export interface Marker {
@@ -86,9 +87,7 @@ export function OSMap() {
     <div>
       <div className="map">
         <div className="filters">
-          <FilterRestaurant />
-          <FilterMonument />
-          <FilterLandscape />
+         <FilterHamburger />
         </div>
         <div className="button_marker">
           <MarkersButton />
