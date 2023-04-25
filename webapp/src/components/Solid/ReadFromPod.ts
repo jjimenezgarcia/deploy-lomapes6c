@@ -1,11 +1,14 @@
 import {
     getFile,
+    getThing,
     getSolidDataset,
     getStringNoLocale,
     getThingAll,
+    getUrlAll
   } from "@inrupt/solid-client";
   import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
   import { SCHEMA_INRUPT } from "@inrupt/vocab-common-rdf";
+  import { FOAF } from "@inrupt/vocab-common-rdf";
 
 
   function isData(element : any, index : number, array: any) { 
@@ -60,6 +63,32 @@ import {
       
       return newMarkers;
     }
+
+    //Devuevle los amigos de usuario registrado
+export async function getAllFriendsFromPod() {
+
+  // Obtener la sesion actual y su webId
+  const session = getDefaultSession();
+  const { webId } = session.info;
+
+  // Comprobar que la sesion es válida
+  if (!webId) {
+    return null;
+  }
+  const profile = getThing(await getSolidDataset( webId.split("#")[0]), webId)
+  if (profile !== null) {
+    let friendsURL = getUrlAll(profile, FOAF.knows);
+
+    friendsURL.shift() // We have to extract the first one because it is the user
+
+    console.log(friendsURL)
+
+    return friendsURL;
+  } else {
+    return null
+  }
+
+}
 
     export async function readFromDataSet() {
 

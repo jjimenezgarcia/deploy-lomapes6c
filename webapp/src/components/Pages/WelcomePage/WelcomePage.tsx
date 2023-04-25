@@ -1,20 +1,22 @@
 import "./WelcomePage.css";
 import WelcomeText from "./subcomponents/WelcomeText";
 import WelcomeSolid from "./subcomponents/WelcomeSolid";
-import {
-  OSMap,
-  ShowMarkersFulfilledPromise,
-} from "../../Map/OSMap";
+import { OSMap, ShowMarkersFulfilledPromise } from "../../Map/OSMap";
 import "aos/dist/aos.css";
 import { useSession } from "@inrupt/solid-ui-react";
-import { getFriendsFromPod, readFromDataSet, readFromFriendDataSet } from "../../Solid/ReadFromPod";
+import {
+  getAllFriendsFromPod,
+  getFriendsFromPod,
+  readFromDataSet,
+  readFromFriendDataSet,
+} from "../../Solid/ReadFromPod";
 import { useState } from "react";
 
 export default function WelcomePage() {
   const { session } = useSession();
   const [markers, setMarkers] = useState(readFromDataSet());
-  
-  function readFromFriend(url: string){
+
+  function readFromFriend(url: string) {
     setMarkers(readFromFriendDataSet(url));
     markers.then((array: any) => {
       ShowMarkersFulfilledPromise(array);
@@ -45,6 +47,7 @@ export default function WelcomePage() {
           <button
             onClick={() => {
               try {
+                getAllFriendsFromPod(); // TODO refaactor para usar esto
                 getFriendsFromPod().then((friends: any) => {
                   friends.forEach((friend: any) => {
                     readFromFriend(friend);
