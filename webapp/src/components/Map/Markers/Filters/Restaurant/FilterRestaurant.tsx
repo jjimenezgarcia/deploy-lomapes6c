@@ -9,14 +9,14 @@ export function FilterRestaurant() {
     const [markers, setMarkers] = useState(readFromDataSet());
     return (
       <div>
-        <button className="filter-restaurant"
+        <button className="filter-button" 
           onClick={async () => {
             clearMarkers();
             setMarkers(readFromDataSet());
             ShowMarkersFromPromise(filterByType(markers, "restaurant"));
           }}
         >
-        <img src="https://img.icons8.com/color/512/restaurant-.png" />
+          <img className = "filter-button-image" src="https://img.icons8.com/color/512/restaurant-.png" />
         </button>
       </div>
     );
