@@ -1,6 +1,7 @@
 import "./WelcomePage.css";
 import WelcomeText from "./subcomponents/WelcomeText";
 import WelcomeSolid from "./subcomponents/WelcomeSolid";
+
 import {
   OSMap,
 } from "../../Map/OSMap";
