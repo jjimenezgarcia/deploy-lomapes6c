@@ -34,7 +34,7 @@ const UserLogin = () => {
             readOnly: true,
             endAdornment: (
               <LoginButton oidcIssuer={idp} redirectUrl={"http://localhost:3000/start"}>
-                <Button style={buttonStyle} variant="contained" color="primary">
+                <Button name="LOGIN" style={buttonStyle} variant="contained" color="primary">
                   Login
                   </Button>
               </LoginButton>

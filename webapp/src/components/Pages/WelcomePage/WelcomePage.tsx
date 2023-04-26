@@ -1,25 +1,15 @@
 import "./WelcomePage.css";
 import WelcomeText from "./subcomponents/WelcomeText";
 import WelcomeSolid from "./subcomponents/WelcomeSolid";
-import { OSMap, ShowMarkersFulfilledPromise } from "../../Map/OSMap";
+
+import {
+  OSMap,
+} from "../../Map/OSMap";
 import "aos/dist/aos.css";
 import { useSession } from "@inrupt/solid-ui-react";
-import {
-  readFromDataSet,
-  readFromFriendDataSet,
-} from "../../Solid/ReadFromPod";
-import { useState } from "react";
 
 export default function WelcomePage() {
   const { session } = useSession();
-  const [markers, setMarkers] = useState(readFromDataSet());
-
-  function readFromFriend(url: string) {
-    setMarkers(readFromFriendDataSet(url));
-    markers.then((array: any) => {
-      ShowMarkersFulfilledPromise(array);
-    });
-  }
 
   return (
     <div className="welcome_page">

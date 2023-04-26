@@ -5,10 +5,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import CommentsPage from "../CommentsPage/CommentsPage";
 import { useState } from "react";
-import MarkersButton from "./Markers/MarkersButton/MarkersButton";
-import { FilterRestaurant } from "./Markers/Filters/Restaurant/FilterRestaurant";
-import { FilterMonument } from "./Markers/Filters/Monument/FilterMonument";
-import { FilterLandscape } from "./Markers/Filters/Landscape/FilterLandscape";
+import FilterHamburger from "./Markers/Filters/Hamburger/FilterHamburger";
 var map: L.Map;
 
 export interface Marker {
@@ -34,13 +31,14 @@ export function ShowMarkersFulfilledPromise(array: any[] | null) {
       draggable: false,
     });
     marker.addTo(map);
-    marker.bindPopup(element.comment).openPopup();
+    marker.bindPopup(element.tile).openPopup();
   });
 }
 
 export function clearMarkers() {
   map.eachLayer(function (layer) {
     if (layer instanceof L.Marker) {
+      console.log(layer);
       map.removeLayer(layer);
     }
   });
@@ -64,21 +62,22 @@ export function OSMap() {
       click: (e) => {
         const { lat, lng } = e.latlng;
         setCords([lat, lng]);
-        let marker = L.marker([lat, lng], {
-          icon: markerIcon,
-          draggable: false,
-        });
 
         setMarkerForm(true);
-
-        marker.addTo(map);
-        marker.bindPopup(marker.getLatLng().toString()).openPopup();
       },
     });
     return null;
   }
 
-  function exitComments() {
+  function submit() {
+    let marker = L.marker([cords[0], cords[1]], {
+      icon: markerIcon,
+      draggable: false,
+    });
+
+    marker.addTo(map);
+    marker.bindPopup(marker.getLatLng().toString()).openPopup();
+
     setMarkerForm(false);
   }
 
@@ -86,12 +85,7 @@ export function OSMap() {
     <div>
       <div className="map">
         <div className="filters">
-          <FilterRestaurant />
-          <FilterMonument />
-          <FilterLandscape />
-        </div>
-        <div className="button_marker">
-          <MarkersButton />
+         <FilterHamburger />
         </div>
         <MapContainer
           center={[51.505, -0.09]}
@@ -109,7 +103,7 @@ export function OSMap() {
             <CommentsPage
               key={markerForm}
               lat={cords}
-              onSubmit={exitComments}
+              onSubmit={submit}
               onChange={cancelMarker}
             />
           </div>

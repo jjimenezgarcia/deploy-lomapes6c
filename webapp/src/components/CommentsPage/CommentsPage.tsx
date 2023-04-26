@@ -7,6 +7,7 @@ import { writeMarkerToDataSet } from "../Solid/WriteToPod";
 import { Rating } from "react-simple-star-rating";
 import { createAclForMarker } from "../Solid/Permissions";
 
+
 // TODO: ver si se puede eliminar esta funcion
 async function saveMarker(markerData: any) {
   await addMarker(markerData);
@@ -91,6 +92,13 @@ export default function CommentsPage(props: any) {
 
   return (
     <div className="popupContainer">
+       <div>
+            <button className="cancel_button"
+              onClick={cancelMarker}
+            >
+              <img className="cancel-button-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fimg%2Fmatt-icons_cancel.png&f=1&nofb=1&ipt=a1d797bc36ec42f99a52e4084bffc7c616bf0eee54d60f835aa29f7ba578a938&ipo=images" alt="" />
+            </button>
+          </div>
       <div className="main_form">
         <div className="commentform" id="formulario">
           <form className="form" onSubmit={handleSubmit}>
@@ -143,15 +151,6 @@ export default function CommentsPage(props: any) {
               <button type="submit">Enviar</button>
             </div>
           </form>
-          <div className="cancel_button">
-            <button
-              type="button"
-              onClick={cancelMarker}
-              style={{ width: "25%" }}
-            >
-              Cancelar marcador
-            </button>
-          </div>
         </div>
       </div>
     </div>
