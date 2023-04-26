@@ -21,3 +21,13 @@ Scenario: El usuario accede a la página de inicio de sesión
   Given Un acceso a la app por un usuario
   When Tras hacer click en el botón Profile
   Then El usuario es redirigido a la página de inicio de sesión
+
+Scenario: El usuario accede a la página de Solid
+  Given Un acceso a la página de bienvenida de la app por un usuario
+  When Tras hacer click en el icono de Solid
+  Then El usuario es redirigido a la página de Solid
+
+Scenario: El usuario accede a la página de documentación
+  Given Un acceso a la app por un usuario
+  When Tras hacer click en el botón Documentación
+  Then El usuario es redirigido a la página de documentación
