@@ -1,5 +1,6 @@
 import * as solid from '@inrupt/solid-client'
 import { getMarkersUrl, getSessionWebID } from './Session';
+import { getMyMarkers, readFromDataSet } from './ReadFromPod';
 
 // Crear una acl
 export const createAclForMarkers = async () => {
@@ -98,13 +99,13 @@ export const addFriendPermissionsToMarker = async (friendWebId: string, datasetU
       console.log("Permisos de escritura y lectura dados a un amigo")
 
     } catch (error) {
-      console.log(error)
+      createAclForMarker(datasetUrl)
     }
   
   }
 
 // Quitar los permisos de lectura y escritura a un amigo
-export const removeFriendPermissions = async (friendWebId: string, datasetUrl : string) => {
+export const removeFriendPermissionsToMarkers = async (friendWebId: string, datasetUrl : string) => {
     
   const {session} = getSessionWebID()
 
@@ -125,4 +126,26 @@ export const removeFriendPermissions = async (friendWebId: string, datasetUrl : 
       console.log(error)
     }
     
+}
+
+export const removeFriendPermissionsForAllMarkers = async (friendWebId: string) => {
+  const markers = await getMyMarkers()
+
+  if (markers !== undefined) {
+    markers.forEach(async (marker) => {
+      await removeFriendPermissionsToMarkers(friendWebId, marker)
+    })
+  }
+}
+
+export const addFriendPermissionsForAllMarkers = async (friendWebId: string) => {
+  const markers = await getMyMarkers()
+
+  
+
+  if (markers !== undefined) {
+    markers.forEach(async (marker) => {
+      await addFriendPermissionsToMarker(friendWebId, marker)
+    })
+  }
 }

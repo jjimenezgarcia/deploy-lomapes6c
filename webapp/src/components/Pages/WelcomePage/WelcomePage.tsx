@@ -5,19 +5,10 @@ import { OSMap, ShowMarkersFulfilledPromise } from "../../Map/OSMap";
 import "aos/dist/aos.css";
 import { useSession } from "@inrupt/solid-ui-react";
 import {
-  getAllFriendsFromPod,
-  getFriendsFromPod,
   readFromDataSet,
   readFromFriendDataSet,
 } from "../../Solid/ReadFromPod";
 import { useState } from "react";
-import {
-  addFriendPermissionsToMarker,
-  createAclForMarker,
-  deleteAclForDataset,
-  deleteAclForMarker,
-  removeFriendPermissions,
-} from "../../Solid/Permissions";
 
 export default function WelcomePage() {
   const { session } = useSession();
@@ -51,32 +42,6 @@ export default function WelcomePage() {
         </>
       ) : (
         <div className="map-container">
-          <button
-            onClick={() => {
-              try {
-                getFriendsFromPod().then((friends: any) => {
-                  friends.forEach((friend: any) => {
-                    readFromFriend(friend);
-                  });
-                });
-              } catch (error) {
-                console.log(error);
-              }
-            }}
-          >
-            Amigos
-          </button>
-
-          <button
-            onClick={() => {
-              removeFriendPermissions(
-                "https://campa.inrupt.net/profile/card#me",
-                "https://campito.inrupt.net/public/markers/prueba1"
-              );
-            }}
-          >
-            Agregar ACL
-          </button>
           <div className="map" data-aos="fade-down">
             <OSMap />
           </div>

@@ -6,9 +6,11 @@ import {
     getThingAll,
     getUrlAll
   } from "@inrupt/solid-client";
+import * as solid from '@inrupt/solid-client'
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 import { SCHEMA_INRUPT } from "@inrupt/vocab-common-rdf";
 import { FOAF } from "@inrupt/vocab-common-rdf";
+import { getMarkersUrl, getSessionWebID } from "./Session";
 
 
 function isData(element : any, index : number, array: any) { 
@@ -65,7 +67,7 @@ export async function readFromFriendDataSet(friendUrl : string) {
   }
 
   //Devuevle los amigos de usuario registrado
-export async function getAllFriendsFromPod() {
+export async function getAllFriendsFromPod() { 
 
 // Obtener la sesion actual y su webId
 const session = getDefaultSession();
@@ -81,8 +83,6 @@ if (profile !== null) {
 
   friendsURL.shift() // We have to extract the first one because it is the user
 
-  console.log(friendsURL)
-
   return friendsURL;
 } else {
   return null
@@ -90,55 +90,55 @@ if (profile !== null) {
 
 }
 
-  export async function readFromDataSet() {
+export async function readFromDataSet() {
 
-    // Obtener la sesion actual y su webId
-    const session = getDefaultSession();
-    const { webId } = session.info;
+  // Obtener la sesion actual y su webId
+  const session = getDefaultSession();
+  const { webId } = session.info;
 
-    // Comprobar que la sesion es válida
-    if (!webId) {
-      return null;
-    }
+  // Comprobar que la sesion es válida
+  if (!webId) {
+    return null;
+  }
 
-    // Obtener la url del dataset de marcadores
-    const datasetUrl = webId.replace("profile/card#me", "") + "public/markers/"
+  // Obtener la url del dataset de marcadores
+  const datasetUrl = webId.replace("profile/card#me", "") + "public/markers/"
 
-    // Obtenemos la url de cada marcador
-    const myDataset = await getSolidDataset(
-        datasetUrl,
+  // Obtenemos la url de cada marcador
+  const myDataset = await getSolidDataset(
+      datasetUrl,
+      { fetch: session.fetch }          // fetch from authenticated session
+    );
+    // Obtener los datos de cada marcador
+  const markers = getThingAll(myDataset).map( async (thing) => {
+    const thingDataset = await getSolidDataset(
+        thing.url,
         { fetch: session.fetch }          // fetch from authenticated session
       );
-      // Obtener los datos de cada marcador
-    const markers = getThingAll(myDataset).map( async (thing) => {
-      const thingDataset = await getSolidDataset(
-          thing.url,
-          { fetch: session.fetch }          // fetch from authenticated session
-        );
 
-        // Devolvemos un JSON con los datos o un string con el mensaje de 'No data'
-        const data = getThingAll(thingDataset).map((thing) => {
-          const thingData = getStringNoLocale(thing, SCHEMA_INRUPT.description)
-          return thingData ? JSON.parse(thingData) : "No data";
-      }).filter(isData)
-          
+      // Devolvemos un JSON con los datos o un string con el mensaje de 'No data'
+      const data = getThingAll(thingDataset).map((thing) => {
+        const thingData = getStringNoLocale(thing, SCHEMA_INRUPT.description)
+        return thingData ? JSON.parse(thingData) : "No data";
+    }).filter(isData)
+        
 
-      return data;
-    })
+    return data;
+  })
 
 
-      // Crear una nueva lista
-      let newMarkers = new Array()
+    // Crear una nueva lista
+    let newMarkers = new Array()
 
-      for(let i = 0; i < markers.length; i++){
-        markers[i].then((array: any) => {
-          array.forEach((object: any) => {
-            newMarkers.push(object)
-          });
+    for(let i = 0; i < markers.length; i++){
+      markers[i].then((array: any) => {
+        array.forEach((object: any) => {
+          newMarkers.push(object)
         });
-      }
-      return newMarkers
+      });
     }
+    return newMarkers
+  }
 
 export async function getFriendsFromPod() {
   // Obtener la sesion actual y su webId
@@ -202,4 +202,33 @@ function parseContent(content: any){
   friends.shift()
 
   return friends
+}
+
+// Get my markers
+export async function getMyMarkers() {
+  const {session, webId} = getSessionWebID()
+
+  const markersDatasetUrl = getMarkersUrl(webId);
+
+  try {
+
+    const myDataset = await solid.getSolidDataset(markersDatasetUrl, { fetch: session.fetch });
+    
+    const markersDirectory = solid.getThingAll(myDataset);
+    if (markersDirectory != null) {
+      let markers = new Array()
+
+      markersDirectory.forEach((marker) => {
+        markers.push(marker.url)
+      })
+
+      markers.shift()
+
+      return markers
+    } else {
+      throw new Error("No markers found")
+    }
+  } catch (error) {
+    console.log(error)
+  }
 }
