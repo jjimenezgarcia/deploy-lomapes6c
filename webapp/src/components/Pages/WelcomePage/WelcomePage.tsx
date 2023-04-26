@@ -11,7 +11,13 @@ import {
   readFromFriendDataSet,
 } from "../../Solid/ReadFromPod";
 import { useState } from "react";
-import { deleteAclForDataset } from "../../Solid/Friends/FriendsPermissions";
+import {
+  addFriendPermissionsToMarker,
+  createAclForMarker,
+  deleteAclForDataset,
+  deleteAclForMarker,
+  removeFriendPermissions,
+} from "../../Solid/Permissions";
 
 export default function WelcomePage() {
   const { session } = useSession();
@@ -59,6 +65,17 @@ export default function WelcomePage() {
             }}
           >
             Amigos
+          </button>
+
+          <button
+            onClick={() => {
+              removeFriendPermissions(
+                "https://campa.inrupt.net/profile/card#me",
+                "https://campito.inrupt.net/public/markers/prueba1"
+              );
+            }}
+          >
+            Agregar ACL
           </button>
           <div className="map" data-aos="fade-down">
             <OSMap />

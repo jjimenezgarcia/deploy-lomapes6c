@@ -5,7 +5,7 @@ import { Marker } from "../Map/OSMap";
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 import { writeMarkerToDataSet } from "../Solid/WriteToPod";
 import { Rating } from "react-simple-star-rating";
-import { createAclForMarkers } from "../Solid/Friends/FriendsPermissions";
+import { createAclForMarker } from "../Solid/Permissions";
 
 // TODO: ver si se puede eliminar esta funcion
 async function saveMarker(markerData: any) {
@@ -39,18 +39,18 @@ export default function CommentsPage(props: any) {
       return null;
     }
 
-    const podUrl =
+    const markerUrl =
       webId.replace("profile/card#me", "") +
       "public/markers/" +
       markerData.title;
 
     await writeMarkerToDataSet(
-      podUrl,
+      markerUrl,
       markerData,
       "https://schema.org/location"
     );
 
-    createAclForMarkers();
+    createAclForMarker(markerUrl);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

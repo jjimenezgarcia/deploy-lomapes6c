@@ -11,4 +11,8 @@ export const getSessionWebID = () => {
     }
   
     return {session, webId}
-  }
+}
+
+export const getMarkersUrl = (webId : string) => {
+  return webId.replace("profile/card#me", "") + "public/markers/"
+}
