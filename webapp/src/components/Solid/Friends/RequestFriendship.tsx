@@ -1,6 +1,4 @@
-
 import { useSession } from "@inrupt/solid-ui-react";
-import { writeDataToNewDataSet } from "../WriteToPod";
 
 import React, { useState } from "react";
 import LoginForm from "../../Pages/LoginPage/LoginPage";

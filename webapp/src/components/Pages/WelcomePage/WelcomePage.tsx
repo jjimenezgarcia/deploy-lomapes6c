@@ -11,6 +11,7 @@ import {
   readFromFriendDataSet,
 } from "../../Solid/ReadFromPod";
 import { useState } from "react";
+import { deleteAclForDataset } from "../../Solid/Friends/FriendsPermissions";
 
 export default function WelcomePage() {
   const { session } = useSession();
@@ -47,7 +48,6 @@ export default function WelcomePage() {
           <button
             onClick={() => {
               try {
-                getAllFriendsFromPod(); // TODO refaactor para usar esto
                 getFriendsFromPod().then((friends: any) => {
                   friends.forEach((friend: any) => {
                     readFromFriend(friend);
