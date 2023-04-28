@@ -6,45 +6,44 @@
 Motivación::
 A continuación, se pretende dar una visión general del sistema por medio de una abstracción de su estructura de modo que sea fácil de entender.
 
-Building Blocks contenidos::
-En el sistema interactúan dos tipos de actores:
-  - Usario: Utiliza el sistema (mediante el uso de la vista 'usuario' del sistema). Es el propietario de su POD.
-  - Administrador: Se encarga de administrar el sistema (mediante el uso de la vista 'administrador' del sistema).
-
-Caja blanca actores del sistema::
-[options="header",cols="1,2"]
-|===
-|Nombre|Responsabilidad
-| _Usuario_ |  _Utiliza el sistema (mediante el uso de la vista 'usuario' del sistema). Es el propietario de su POD._
-| _Administrador_ |  _Se encarga de administrar el sistema (mediante el uso de la vista 'administrador' del sistema)._
-|===
-
 === Level 1
-Caja blanca LoMap::
+Caja blanca de LoMap::
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
-| _Back-end_ |  _Contiene todo lo necesario para que la aplicación funcione adecuadamante. Se comunica con el Front-end para obtener aquellos datos proporcionados por el cliente, los procesa y realiza las operaciones comentadas más adelante._
-| _Front-end_ |  _Contiene las interfaces de usuario. Permite que los clientes finales de la aplicación puedan interactuar con esta. Además, a través de ella se recopilan datos del cliente._
+| _Cliente_ |  _Cliente final de la aplicación._
+| _LoMap_ |  _El sistema como tal. Los clientes interactúan con el._
 | _POD_ | _Almacén de datos para cada cliente de la aplicación. El cliente posee el control absoluto de sus datos privados. Es externo al sistema._
+| _OpenStreetMaps API_ | _Nos permite generar los mapas en la aplicación._
 | _Base de Datos_ | _Utilizamos MongoDB como almacén de datos central para la aplicación._
-| _OpenStreetMaps API_ | _Nos permite generar los mapas._
 |===
 
 === Level 2
-Back-end::
+LoMap::
+En este apartado profundizamos en el sistema LoMap.
+[options="header",cols="1,2"]
+|===
+|Nombre|Responsabilidad
+| _Restapi_ |  _Contiene todo lo necesario para que la aplicación funcione adecuadamante. Se comunica con el Front-end para obtener aquellos datos proporcionados por el cliente, los procesa y realiza las operaciones comentadas más adelante._
+| _Webapp_ |  _Contiene las interfaces de usuario. Permite que los clientes finales de la aplicación puedan interactuar con esta. Además, a través de ella se recopilan datos del cliente._
+|===
+
+=== Level 3
+Restapi::
+En este apartado profundizamos en la restapi del sistema, esta se comunica con la bbdd y los pods de Solid.
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
 | _Api_ |  _Se comunica con la base de datos y los pods._
 |===
 
-=== Level 3
-Front-end::
+=== Level 4
+Webapp::
+En este apartado profundizamos en la webapp del sistema, con la cual el cliente de la aplicación interactúa.
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
-| _Página principal_ |  _Menú principal de la aplicación. En esta se muestran enlaces a otras páginas de la app para redireccionar al cliente {Inicio, Documentación, Sobre Nosotros y Perfil}._
+| _Página inicial_ |  _Menú principal de la aplicación. En esta se muestran enlaces a otras páginas de la app para redireccionar al cliente {Inicio, Documentación, Sobre Nosotros y Perfil}._
 | _Página de bienvenida_ |  _En esta se muestra el mapa del cliente, en el caso de que tenga la sesión iniciada, o información de la aplicación y un enlace a Solid. Además, en el primer caso el usuario puede crear en la vista nuevos marcados y comentarios._
 | _Documentación_ |  _Muestra la documentación de la app._
 | _Sobre Nosotros_ |  _Página en la que le hacemos una breve presentación al cliente de la app._
