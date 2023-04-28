@@ -24,13 +24,13 @@ En este apartado profundizamos en el sistema LoMap.
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
-| _Restapi_ |  _Contiene todo lo necesario para que la aplicación funcione adecuadamante. Se comunica con el Front-end para obtener aquellos datos proporcionados por el cliente, los procesa y realiza las operaciones comentadas más adelante._
-| _Webapp_ |  _Contiene las interfaces de usuario. Permite que los clientes finales de la aplicación puedan interactuar con esta. Además, a través de ella se recopilan datos del cliente._
+| _Back-end_ |  _Contiene todo lo necesario para que la aplicación funcione adecuadamante. Se comunica con el Front-end para obtener aquellos datos proporcionados por el cliente, los procesa y realiza las operaciones comentadas más adelante._
+| _Front-end_ |  _Contiene las interfaces de usuario. Permite que los clientes finales de la aplicación puedan interactuar con esta. Además, a través de ella se recopilan datos del cliente._
 |===
 
 === Level 3
-Restapi::
-En este apartado profundizamos en la restapi del sistema, esta se comunica con la bbdd y los pods de Solid.
+Back-end::
+En este apartado profundizamos en el backend (restapi) del sistema, esta se comunica con la bbdd y los pods de Solid.
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
@@ -38,8 +38,8 @@ En este apartado profundizamos en la restapi del sistema, esta se comunica con l
 |===
 
 === Level 4
-Webapp::
-En este apartado profundizamos en la webapp del sistema, con la cual el cliente de la aplicación interactúa.
+Front-end::
+En este apartado profundizamos en el frontend (webapp) del sistema, con la cual el cliente de la aplicación interactúa.
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
