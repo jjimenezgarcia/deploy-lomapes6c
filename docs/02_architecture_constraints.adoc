@@ -7,8 +7,7 @@
 |Restricción|Explicación
 | _SOLID_ |  _Nos permitirá almacenar los datos de los usuarios de forma segura en almacenes de datos descentralizados llamados Pods. Los usuarios podrán aceptar, o bien rechazar, el acceso a sus datos por parte de otros usuarios._
 | _Github_ |  _En él tendremos un repositorio remoto para el desarrollo del proyecto. Nos facilitará la gestión de las distintas tareas pendientes por realizar, así como llevar un control de versiones._
-| _React_ |  _La utilizaremos para la construcción del front-end del sistema._
-| _Node.js_ |  _Lo utilizaremos para la construcción del back-end del sistema._
+| _Arc42_ | _Seguiremos la plantilla Arc42 para la realización de la documentación del sistema._
 |===
 
 === Organización
@@ -26,11 +25,9 @@
 === Normas
 [options="header",cols="1,2"]
 |===
-|Restricción|Explicación
+|Tecnología|Explicación
 | _Lenguaje_ |  _Todos los integrantes del grupo nos esforzaremos en aprender a utilizar de forma adecuada los diferentes lenguajes de programación citados a utilizar en el desarrollo del sistema._
 | _Código_ | _Nos esforzaremos en mantener el código limpio y bien documentado, de modo que este sea más fácil de entender y mantener._
-| _Arc42_ | _Como decisión impuesta seguiremos la plantilla Arc42 para la realización de la documentación del sistema._
 | _Accesibilidad_ |  _El sistema debe ser usable y accesible por cualquier usuario._
 | _Protección de datos_ |  _Debemos tener especial cuidado en el trato de los datos sensibles de los usuarios de nuestra aplicación._
-| _SOLID_ |  _Como decisión impuesta seguiremos las especificaciones Solid._
 |===
