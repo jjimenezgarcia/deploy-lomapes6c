@@ -4,7 +4,9 @@ import { addMarker } from "../../api/api";
 import { Marker } from "../Map/OSMap";
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 import { writeMarkerToDataSet } from "../Solid/WriteToPod";
-import { Rating } from 'react-simple-star-rating'
+import { Rating } from "react-simple-star-rating";
+import { createAclForMarker } from "../Solid/Permissions";
+
 
 // TODO: ver si se puede eliminar esta funcion
 async function saveMarker(markerData: any) {
@@ -38,16 +40,18 @@ export default function CommentsPage(props: any) {
       return null;
     }
 
-    const podUrl =
+    const markerUrl =
       webId.replace("profile/card#me", "") +
       "public/markers/" +
       markerData.title;
 
     await writeMarkerToDataSet(
-      podUrl,
+      markerUrl,
       markerData,
       "https://schema.org/location"
     );
+
+    createAclForMarker(markerUrl);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -70,17 +74,17 @@ export default function CommentsPage(props: any) {
     props.onSubmit();
   };
 
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState(0);
 
-  const onPointerEnter = () => console.log('Enter')
-  const onPointerLeave = () => console.log('Leave')
-  const onPointerMove = (value: number, index: number) => console.log(value, index)
+  const onPointerEnter = () => console.log("Enter");
+  const onPointerLeave = () => console.log("Leave");
+  const onPointerMove = (value: number, index: number) =>
+    console.log(value, index);
 
-   // Catch Rating value
-   const handleRating = (rate: number) => {
-    setRating(rate)
-  }
-
+  // Catch Rating value
+  const handleRating = (rate: number) => {
+    setRating(rate);
+  };
 
   const cancelMarker = () => {
     props.onChange();
@@ -144,12 +148,11 @@ export default function CommentsPage(props: any) {
             </div>
 
             <div className="form_field">
-            <button type="submit">Enviar</button>
+              <button type="submit">Enviar</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    
   );
 }

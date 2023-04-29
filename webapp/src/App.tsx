@@ -9,6 +9,7 @@ import { OSMap } from "./components/Map/OSMap";
 import { SessionProvider } from "@inrupt/solid-ui-react";
 import RequestFriendship from "./components/Solid/Friends/RequestFriendship";
 import About from "./components/About/About";
+import FriendsPermissions from "./components/Solid/Friends/FriendsPermissions";
 function App() {
   return (
     <div className="App">
@@ -47,7 +48,17 @@ function App() {
               }
             />
             <Route path="/user" element={<UserPage />} />
-            <Route path="/friends" element={<RequestFriendship />} />
+            <Route
+              path="/friends"
+              element={
+                <div>
+                  <RequestFriendship />
+                  <hr />
+                  <hr />
+                  <FriendsPermissions />
+                </div>
+              }
+            />
           </Routes>
         </Router>
       </SessionProvider>
