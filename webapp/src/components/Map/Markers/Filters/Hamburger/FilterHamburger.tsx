@@ -6,7 +6,11 @@ import { FilterMonument } from "../Monument/FilterMonument";
 import { FilterRestaurant } from "../Restaurant/FilterRestaurant";
 import "./FilterHamburger.css"
 
-export default function FilterHamburger(){
+export default function FilterHamburger(props: any){
+
+  const changeFriendFilter = () => {
+    props.changeFriendFilter();
+  };
 
   return (
     <div>
@@ -23,7 +27,7 @@ export default function FilterHamburger(){
   <div className="menu-item-hamburger"> <FilterRestaurant /> </div>
   <div className="menu-item-hamburger"> <FilterMonument /> </div>
   <div className="menu-item-hamburger"> <FilterLandscape /> </div>
-  <div className="menu-item-hamburger"> <GetFriendMarkers /> </div>
+  <div className="menu-item-hamburger"> <GetFriendMarkers changeFriendFilter={changeFriendFilter}/> </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
     <defs>

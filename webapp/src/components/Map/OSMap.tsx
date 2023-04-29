@@ -6,6 +6,7 @@ import { useMapEvents } from "react-leaflet";
 import CommentsPage from "../CommentsPage/CommentsPage";
 import { useState } from "react";
 import FilterHamburger from "./Markers/Filters/Hamburger/FilterHamburger";
+import FriendsPage from "./Markers/Filters/Friend/FriendsPage";
 var map: L.Map;
 
 export interface Marker {
@@ -51,10 +52,15 @@ const markerIcon = L.icon({
 
 export function OSMap() {
   const [markerForm, setMarkerForm] = useState(false);
+  const [friendsFilter, setFriendsFilter] = useState(false);
   const [cords, setCords] = useState<number[]>([0, 0]);
 
   function cancelMarker() {
     setMarkerForm(false);
+  }
+
+  function changeFriendFilter() {
+    setFriendsFilter(!friendsFilter);
   }
 
   function MyComponent() {
@@ -85,7 +91,7 @@ export function OSMap() {
     <div>
       <div className="map">
         <div className="filters">
-         <FilterHamburger />
+         <FilterHamburger changeFriendFilter={changeFriendFilter}/>
         </div>
         <MapContainer
           center={[51.505, -0.09]}
@@ -96,7 +102,7 @@ export function OSMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {!markerForm && <MyComponent />}
+          {!markerForm && !friendsFilter && <MyComponent />}
         </MapContainer>
         {markerForm && (
           <div className="comment">
@@ -106,6 +112,12 @@ export function OSMap() {
               onSubmit={submit}
               onChange={cancelMarker}
             />
+          </div>
+        )}
+
+        {friendsFilter && (
+          <div className="comment">
+            <FriendsPage onChange={changeFriendFilter}/>
           </div>
         )}
       </div>
