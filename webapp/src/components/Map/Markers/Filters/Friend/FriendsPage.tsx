@@ -27,6 +27,7 @@ export default function FriendsPage(props: any){
 
     const clickOnFriend = (friend: string): any => {
         readFromFriend(friend);
+        props.changeMapName(getFriendName(friend));
         cancelFilter();
     }
     

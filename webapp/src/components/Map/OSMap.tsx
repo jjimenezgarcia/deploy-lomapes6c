@@ -54,6 +54,7 @@ export function OSMap() {
   const [markerForm, setMarkerForm] = useState(false);
   const [friendsFilter, setFriendsFilter] = useState(false);
   const [cords, setCords] = useState<number[]>([0, 0]);
+  const [mapName, setMapName] = useState("Mi mapa");
 
   function cancelMarker() {
     setMarkerForm(false);
@@ -87,8 +88,10 @@ export function OSMap() {
     setMarkerForm(false);
   }
 
+  
   return (
     <div>
+      Mapa: {mapName}
       <div className="map">
         <div className="filters">
          <FilterHamburger changeFriendFilter={changeFriendFilter}/>
@@ -117,7 +120,7 @@ export function OSMap() {
 
         {friendsFilter && (
           <div className="comment">
-            <FriendsPage onChange={changeFriendFilter}/>
+            <FriendsPage changeMapName={ (name: string) => {setMapName(name)}} onChange={changeFriendFilter}/>
           </div>
         )}
       </div>
