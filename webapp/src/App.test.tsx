@@ -1,19 +1,11 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import RequestFriendship from './components/Solid/Friends/RequestFriendship';
 import Footer from './components/Footer/Footer';
 import About from './components/About/About';
-import { tileLayer } from 'leaflet';
 import CommentsPage from './components/CommentsPage/CommentsPage';
-import { OSMap } from './components/Map/OSMap';
-import NavBar from './components/NavBar/NavBar';
 import LoginForm from './components/Pages/LoginPage/LoginPage';
-import UserPage from './components/Pages/UserPage/UserPage';
-import WelcomePage from './components/Pages/WelcomePage/WelcomePage';
-import ProfileViewer from './components/Solid/User/ProfileViewer';
 import UserLogin from './components/Solid/User/UserLogin';
 
 /**
@@ -90,7 +82,7 @@ test('aplication starts in correct page', () =>{
   test('requestFriendship renders correctly without athentication', () => {
     render(<RequestFriendship />);
     const friend_text = screen.getByText("Vete al login que no tas autenticado");
-    
+
     expect(friend_text).toBeInTheDocument();
   });
 
