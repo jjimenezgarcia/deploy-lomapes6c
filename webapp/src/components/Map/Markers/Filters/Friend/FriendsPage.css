@@ -1,0 +1,91 @@
+.popupContainer {
+    display: flex;
+    gap: 2rem;
+    padding: 15px;
+    margin-top: 0.5em;
+    z-index: 1050;
+    right: 0;
+    background-color: #333;
+    border: 2px solid white;
+    border-radius: 1em;
+}
+
+.cancel_button {
+    position: absolute;
+    background: none;
+    border: none;
+    right: 4%;
+    top: 8%;
+    width: 30px;
+    height: 30px;
+    margin-left: 35%;
+    align-items: center;
+}
+
+.cancel_button:hover {
+    background: none;
+}
+
+.cancel-button-img {
+    position: relative;
+    margin-top: -12px;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+}
+
+h1 {
+    color: white;
+}
+
+label {
+    font-size: 1em;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    color: #bbb6b6;
+}
+
+textarea {
+	width: 100%;
+	height: calc(100% - 40px); /* Restamos el doble de padding del formulario para que el textarea ocupe todo el alto de la pantalla */
+	resize: both;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 15px;
+}
+
+.friend-button {
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.6X-2CYe7KZsGvf5Jv_sKJwHaHa%26pid%3DApi&f=1&ipt=a69740707746ebf75d6caf51588fe7bd2bb713b9c9a51b3f16cceb4dbcdcf81d&ipo=images');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  .friend-button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .friend-button:active {
+    background-color: #3e8e41;
+    transform: translateY(1px);
+  }
+  
+  .friend-button span {
+    display: inline-block;
+    margin-left: 10px;
+  }

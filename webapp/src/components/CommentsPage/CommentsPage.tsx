@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import "./CommentsPage.css";
-import { addMarker } from "../../api/api";
 import { Marker } from "../Map/OSMap";
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 import { writeMarkerToDataSet } from "../Solid/WriteToPod";
 import { Rating } from "react-simple-star-rating";
 import { createAclForMarker } from "../Solid/Permissions";
-
-
-// TODO: ver si se puede eliminar esta funcion
-async function saveMarker(markerData: any) {
-  await addMarker(markerData);
-}
 
 export default function CommentsPage(props: any) {
   const [title, setTitle] = useState("");
