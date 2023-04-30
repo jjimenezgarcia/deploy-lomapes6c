@@ -1,16 +1,10 @@
 import React from "react";
 import { writeDataToNewDataSet } from "../WriteToPod";
-
-import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
+import { getSessionWebID } from "../Session";
 
 // Esto es un ejemplo de commo escribir en un pod usando la funciond e writeDataToNewDataSet
 const WriteInputToPod = () => {
-  const session = getDefaultSession();
-  const { webId } = session.info;
-
-  if (!webId) {
-    return null;
-  }
+  const { webId } = getSessionWebID();
 
   const podUrl =
     webId.replace("profile/card#me", "") + "private/courses/Person1";

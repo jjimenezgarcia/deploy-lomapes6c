@@ -8,11 +8,12 @@ import {
     saveSolidDatasetAt,
   } from "@inrupt/solid-client";
 import { Marker } from "../../components/Map/OSMap";
+import { getSessionWebID } from "./Session";
 
 // podUrl must be correct for the moment
 export async function writeDataToNewDataSet(podUrl: string, thingName: string, thingTitle: string, rdfType: string) {
 
-    const session = getDefaultSession();
+  const { session } = getSessionWebID();
 
     // Crear un dataset vacío
     let courseSolidDataset = createSolidDataset();
@@ -34,7 +35,7 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
 
 export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfType: string) {
 
-  const session = getDefaultSession();
+  const { session } = getSessionWebID();
 
   // Crear un dataset vacío
   let courseSolidDataset = createSolidDataset();
