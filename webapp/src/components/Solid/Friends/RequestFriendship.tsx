@@ -6,7 +6,11 @@ import { getSessionWebID } from "../Session";
 
 const RequestFriendship = () => {
   const [friendUrl, setfriendUrl] = useState<string>("");
-  const { session } = getSessionWebID();
+  const { session, webId } = getSessionWebID();
+
+  if (webId === null) {
+    return <h1>Vete al login que no tas autenticado</h1>;
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setfriendUrl("https://" + e.target.value + ".inrupt.net/profile/card#me");
