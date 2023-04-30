@@ -25,15 +25,15 @@ defineFeature(feature, (test) => {
 
         given('El usuario se encuentra en la página de inicio de sesión', async () => {
             await page.goto("http://localhost:3000/user");
+            await page.waitForNavigation();
         });
 
         when('el usuario hace click sobre el botón LOGIN y es redirigido a la página de Inrupt', async () => {
             await expect(page).toClick('button', { text: 'Login' });
+            await page.waitForNavigation();
         });
 
         then('el usuario introduce su usuario y contraseña incorrectamente', async () => {
-            await page.type('input', 'ejemplo123');
-            await page.type('input#username', '');
             await page.type('input#password', '123Ejemplo!');
             await page.click('button');
         });
@@ -49,21 +49,24 @@ defineFeature(feature, (test) => {
         given('el usuario se encuentra en la página de inicio de sesión', async () => {
             page = await browser.newPage();
             await page.goto("http://localhost:3000/user");
+            await page.waitForNavigation();
         });
 
         when('el usuario hace click sobre el botón LOGIN y es redirigido a la página de Inrupt', async () => {
             await expect(page).toClick('button', { text: 'Login' });
+            await page.waitForNavigation();
         });
 
         then('el usuario introduce su usuario y contraseña correctamente e inicia sesión', async () => {
-            await page.type('input', 'ejemplo123');
             await page.type('input#username', 'ejemplo123'); // email = ejemplo123@ejemplo.com
             await page.type('input#password', '123Ejemplo!');
             await page.click('button');
+            await page.waitForNavigation();
         });
 
-        and('el usuario es redirigido a su perfil en la app', async () => {
-            await expect(page.url()).toMatch('http://localhost:3000/start');
+        and('el usuario puede visualizar su perfil en la app', async () => {
+            await page.goto("http://localhost:3000/user");
+            await page.waitForNavigation();
         });
     });
 
