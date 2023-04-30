@@ -1,4 +1,3 @@
-import React from "react";
 import "./LoginPage.css";
 import lomap_icon from "../../../images/lomap-icon.png";
 import UserLogin from "../../Solid/User/UserLogin";

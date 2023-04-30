@@ -5,6 +5,7 @@ import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 import { writeMarkerToDataSet } from "../Solid/WriteToPod";
 import { Rating } from "react-simple-star-rating";
 import { createAclForMarker } from "../Solid/Permissions";
+import { getSessionWebID } from "../Solid/Session";
 
 export default function CommentsPage(props: any) {
   const [title, setTitle] = useState("");
@@ -26,17 +27,9 @@ export default function CommentsPage(props: any) {
       score: rating,
     };
 
-    const session = getDefaultSession();
-    const { webId } = session.info;
+    const { session, webId } = getSessionWebID();
 
-    if (!webId) {
-      return null;
-    }
-
-    const markerUrl =
-      webId.replace("profile/card#me", "") +
-      "public/markers/" +
-      markerData.title;
+    const markerUrl = webId + markerData.title;
 
     await writeMarkerToDataSet(
       markerUrl,
@@ -85,13 +78,15 @@ export default function CommentsPage(props: any) {
 
   return (
     <div className="popupContainer">
-       <div>
-            <button className="cancel_button"
-              onClick={cancelMarker}
-            >
-              <img className="cancel-button-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fimg%2Fmatt-icons_cancel.png&f=1&nofb=1&ipt=a1d797bc36ec42f99a52e4084bffc7c616bf0eee54d60f835aa29f7ba578a938&ipo=images" alt="" />
-            </button>
-          </div>
+      <div>
+        <button className="cancel_button" onClick={cancelMarker}>
+          <img
+            className="cancel-button-img"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fimg%2Fmatt-icons_cancel.png&f=1&nofb=1&ipt=a1d797bc36ec42f99a52e4084bffc7c616bf0eee54d60f835aa29f7ba578a938&ipo=images"
+            alt=""
+          />
+        </button>
+      </div>
       <div className="main_form">
         <div className="commentform" id="formulario">
           <form className="form" onSubmit={handleSubmit}>

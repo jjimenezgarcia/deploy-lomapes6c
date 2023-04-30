@@ -2,15 +2,11 @@ import { useSession } from "@inrupt/solid-ui-react";
 
 import React, { useState } from "react";
 import LoginForm from "../../Pages/LoginPage/LoginPage";
+import { getSessionWebID } from "../Session";
 
 const RequestFriendship = () => {
   const [friendUrl, setfriendUrl] = useState<string>("");
-  const { session } = useSession();
-  const { webId } = session.info;
-
-  if (!webId) {
-    return <h1>Vete al login que no tas autenticado</h1>;
-  }
+  const { session } = getSessionWebID();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setfriendUrl("https://" + e.target.value + ".inrupt.net/profile/card#me");

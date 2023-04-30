@@ -20,13 +20,7 @@ function isData(element : any, index : number, array: any) {
 export async function readFromFriendDataSet(friendUrl : string) {
 
   // Obtener la sesion actual y su webId
-  const session = getDefaultSession();
-  const { webId } = session.info;
-
-  // Comprobar que la sesion es válida
-  if (!webId) {
-    return null;
-  }
+  const { session } = getSessionWebID();
 
   // Obtener la url del dataset de marcadores
   const datasetUrl = friendUrl.substring(0, friendUrl.length + 1 - "profile/card#me".length) + "/public/markers/"
@@ -70,13 +64,8 @@ export async function readFromFriendDataSet(friendUrl : string) {
 export async function getAllFriendsFromPod() { 
 
 // Obtener la sesion actual y su webId
-const session = getDefaultSession();
-const { webId } = session.info;
+const { webId } = getSessionWebID();
 
-// Comprobar que la sesion es válida
-if (!webId) {
-  return null;
-}
 const profile = getThing(await getSolidDataset( webId.split("#")[0]), webId)
 if (profile !== null) {
   let friendsURL = getUrlAll(profile, FOAF.knows);
@@ -93,13 +82,7 @@ if (profile !== null) {
 export async function readFromDataSet() {
 
   // Obtener la sesion actual y su webId
-  const session = getDefaultSession();
-  const { webId } = session.info;
-
-  // Comprobar que la sesion es válida
-  if (!webId) {
-    return null;
-  }
+  const { session, webId } = getSessionWebID();
 
   // Obtener la url del dataset de marcadores
   const datasetUrl = webId.replace("profile/card#me", "") + "public/markers/"
@@ -142,13 +125,7 @@ export async function readFromDataSet() {
 
 export async function getFriendsFromPod() {
   // Obtener la sesion actual y su webId
-  const session = getDefaultSession();
-  const { webId } = session.info;
-
-  // Comprobar que la sesion es válida
-  if (!webId) {
-    return null;
-  }
+  const { session, webId } = getSessionWebID();
 
   const fileURL = webId.replace("#me", "")
 
