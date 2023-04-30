@@ -15,7 +15,6 @@ Caja blanca de LoMap::
 | _LoMap_ |  _El sistema como tal. Los clientes interactúan con el._
 | _POD_ | _Almacén de datos para cada cliente de la aplicación. El cliente posee el control absoluto de sus datos privados. Es externo al sistema._
 | _OpenStreetMaps API_ | _Nos permite generar los mapas en la aplicación._
-| _Base de Datos_ | _Utilizamos MongoDB como almacén de datos central para la aplicación._
 |===
 
 === Level 2
