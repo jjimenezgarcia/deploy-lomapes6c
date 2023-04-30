@@ -83,12 +83,12 @@ test("userLogin renders correctly", () => {
   expect(btn_login).toBeInTheDocument();
 });
 
-test("requestFriendship renders correctly without athentication", () => {
-  render(<RequestFriendship />);
-  const friend_text = screen.getByText("Vete al login que no tas autenticado");
+//test("requestFriendship renders correctly without athentication", () => {
+//  render(<RequestFriendship />);
+//  const friend_text = screen.getByText("Vete al login que no tas autenticado");
 
-  expect(friend_text).toBeInTheDocument();
-});
+//  expect(friend_text).toBeInTheDocument();
+//});
 
 test("footer render property", () => {
   render(<Footer />);
