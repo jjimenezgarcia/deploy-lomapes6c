@@ -73,7 +73,7 @@ Tabular or free form text.
 |Accesibilidad|La aplicación se adapta a la vista de los diferentes dispositivos| Alta
 |Usabilidad|El usuario puede funcionar con la aplicación de manera intuitiva y sencilla| Alta
 |Privacidad|Solamente el usuario puede acceder a sus datos personales ya que se almacenan en su Pod personal| Alta
-|Integridad|Los datos guardados siempre serán correctos| Media
+|Integridad|Los datos guardados siempre se manejarán siguiendo las medidas necesarias para que se mantengan completos, precisos y consistentes en todo momento| Media
 |Seguridad|La información sensible de los usuarios será protegida, además, se necesita autorización para acceder a ubicación y demás servicios| Alta
 |Mantenibilidad|Que sea susceptible y flexible a cambios| Media-Alta
 |Descentralización|Los datos de los usuarios no estan en un servidor central, esta fuertemente relacionado con la privacidad| Media

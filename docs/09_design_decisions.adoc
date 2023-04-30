@@ -31,7 +31,9 @@ Various options:
 
 | Uso de Pods | Se utilizarán los Pods para almacenar la información de cada cliente | Seguridad de datos, escalabilidad y alta disponibilidad | Curva de aprendizaje, SetUp complejo
 
-|Base de datos|Usaremos MongoDB para tener una base de datos central para la aplicación | Escalabilidad, flexibilidad y fácil integración | No tiene esquema de datos, pueden existir datos duplicados y no soporta el uso de JOIN
+|React|Usaremos Reac como framework para realizar el frontend | Alta eficiencia, uso de componentes reutilizables y fácil integración | Curva de aprendizaje y no es un framework completo
+
+|TypeScript|Usaremos TypeScript para el desarrollo del frontend | Mejor seguridad debido al tipado estático, mejor calidad de código y amplia compatibilidad | Curva de aprendizaje, mas complejidad en algunos casos y tiempo de desarrollo adicional
 
 |OpenStreetMaps API|Para la generación de mapas utilizaremos esta API|Es gratuita|Curva de aprendizaje
 |===
