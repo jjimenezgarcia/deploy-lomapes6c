@@ -1,0 +1,21 @@
+.friend-item {
+  border: solid 1px #ccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 2em;
+}
+
+.button-access {
+  width: 25%;
+}
+
+.give {
+  background-color: royalblue;
+}
+
+.revoke {
+  background-color: red;
+}

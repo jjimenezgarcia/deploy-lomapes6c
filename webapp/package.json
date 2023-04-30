@@ -26,13 +26,14 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "start-server-and-test": "^2.0.0",
+    "react-simple-star-rating": "^5.1.7",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --coverage --transformIgnorePatterns \"node_modules/(?!react-leaflet)/\"",
     "test:e2e": "start-server-and-test 'npm --prefix ../restapi start' http://localhost:5000/api/users/list prod 3000 'cd e2e && jest",
     "eject": "react-scripts eject",
     "prod": "ts-node-dev ./server.ts"

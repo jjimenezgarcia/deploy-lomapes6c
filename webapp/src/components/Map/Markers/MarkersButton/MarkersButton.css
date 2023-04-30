@@ -1,0 +1,23 @@
+.button-markers {
+  position: relative;
+  background-color: whitesmoke;
+  border: none;
+  padding: 5px 5px;
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+  }
+  
+  /* Estilos de animación al hacer clic */
+  .button-markers:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+  
+  /* Estilos de animación al hacer clic */
+  .button-markers:active {
+    background-color: #e0e0e0;
+    transform: scale(0.95);
+  }

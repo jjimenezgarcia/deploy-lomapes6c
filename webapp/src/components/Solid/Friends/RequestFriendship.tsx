@@ -1,8 +1,7 @@
-import LoginForm from "../../pages/LoginPage/LoginPage";
 import { useSession } from "@inrupt/solid-ui-react";
-import { writeDataToNewDataSet } from "../WriteToPod";
 
 import React, { useState } from "react";
+import LoginForm from "../../Pages/LoginPage/LoginPage";
 
 const RequestFriendship = () => {
   const [friendUrl, setfriendUrl] = useState<string>("");

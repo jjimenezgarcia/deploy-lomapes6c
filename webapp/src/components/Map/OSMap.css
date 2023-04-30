@@ -1,0 +1,23 @@
+.map {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+.comment {
+    position: absolute;
+    top: 17%;
+    left: 23%;
+    width: 50%;
+    height: 50%;
+    z-index: 1000;
+}
+
+.filters {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    width: 5%;
+    height: 5%;
+    z-index: 1000;
+}

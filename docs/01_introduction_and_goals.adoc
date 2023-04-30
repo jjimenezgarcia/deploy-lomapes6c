@@ -59,7 +59,7 @@ Table with role names, person names, and their expectations with respect to the 
 |===
 |Role/Name|Contact|Expectations
 | Equipo de desarrollo | HappySw | Desarrollar la aplicación según las especificaciones y requisitos del cliente
-| Cliente | Ayuntamiento de Bruselas | Se espera que entregue una especificación de los requisitos y que siga el projecto para comprobar que se ajusta a los requisitos especificados
+| Cliente | Ayuntamiento de Bruselas | Se espera que entregue una especificación de los requisitos y que siga el projecto para comprobar que se ajusta a los requisitos especificados. También se espera que pueda añadir sitios, comentarios, valoraciones, etc a la aplicación
 | Cliente Potencial | Ayuntamientos de otras ciudades | No se espera que participe en el proyecto, pero se espera que pueda contratar el servicio para tener la aplicación en el futuro para su ciudad
 | Usuario Final | Ciudadanos | Que pueda utilizar la aplicación sin problemas con una esperada facilidad de uso y fluidez
 |===

@@ -54,3 +54,38 @@ textarea {
 	border: 1px solid #ccc;
 	font-size: 15px;
 }
+
+.friend-button {
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.6X-2CYe7KZsGvf5Jv_sKJwHaHa%26pid%3DApi&f=1&ipt=a69740707746ebf75d6caf51588fe7bd2bb713b9c9a51b3f16cceb4dbcdcf81d&ipo=images');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  .friend-button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .friend-button:active {
+    background-color: #3e8e41;
+    transform: translateY(1px);
+  }
+  
+  .friend-button span {
+    display: inline-block;
+    margin-left: 10px;
+  }

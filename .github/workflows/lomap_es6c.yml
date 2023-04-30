@@ -4,7 +4,7 @@ on:
   release:
     types: [published]
   pull_request:
-    branches: [master]
+    branches: [master, develop]
 
 jobs:
   unit-test-webapp:
@@ -20,7 +20,7 @@ jobs:
       - run: npm ci
       - run: npm test --coverage --watchAll
       - name: Analyze with SonarCloud
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@v1.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -37,7 +37,7 @@ jobs:
       - run: npm ci
       - run: npm test --coverage --watchAll
       - name: Analyze with SonarCloud
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@v1.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
