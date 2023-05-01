@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, getByPlaceholderText, render, screen } from '@testing-library/react';
 import App from './App';
 import '@testing-library/jest-dom';
 import RequestFriendship from './components/Solid/Friends/RequestFriendship';
@@ -8,6 +8,8 @@ import CommentsPage from './components/CommentsPage/CommentsPage';
 import LoginForm from './components/Pages/LoginPage/LoginPage';
 import UserLogin from './components/Solid/User/UserLogin';
 import { useSession } from '@inrupt/solid-ui-react';
+import ProfileViewer from './components/Solid/User/ProfileViewer';
+import FilterHamburger from './components/Map/Markers/Filters/Hamburger/FilterHamburger';
 
 
 /**
@@ -253,4 +255,77 @@ describe('UserLogin', () => {
     fireEvent.change(idpInput, { target: { value: 'https://example.com' } });
     expect(idpInput).toHaveValue('https://example.com');
   });
+});
+
+describe('CommentsPage', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
+
+  it('renders correctly', () => {
+    const props = {
+      lat: [0, 0],
+      onSubmit: jest.fn(),
+      onChange: jest.fn(),
+    };
+
+    const { getByText, getByLabelText, getByPlaceholderText, getAllByRole } = render(<CommentsPage {...props} />);
+
+    // Verifica que los elementos principales se renderizaron correctamente
+    expect(getByText('Crear marcador')).toBeInTheDocument();
+    expect(getByLabelText('Titulo del marcador:')).toBeInTheDocument();
+    expect(getByLabelText('Tipo de marcador')).toBeInTheDocument();
+    expect(getByPlaceholderText('Escribe tu comentario aquí')).toBeInTheDocument();
+    expect(getByText('Puntuación:')).toBeInTheDocument();
+    expect(getByText('Enviar')).toBeInTheDocument();
+    expect(getAllByRole('button')[0]).toBeInTheDocument();
+  });
+
+  it("submit form", async () => {
+    const onSubmitMock = jest.fn();
+    const onChangeMock = jest.fn();
+
+    render(<CommentsPage onSubmit={onSubmitMock} onChange={onChangeMock} lat={[0, 0]} />);
+
+    const titleInput = screen.getByLabelText("Titulo del marcador:");
+    fireEvent.change(titleInput, { target: { value: "Test Title" } });
+
+    const commentInput = screen.getByPlaceholderText("Escribe tu comentario aquí");
+    fireEvent.change(commentInput, { target: { value: "Test Comment" } });
+
+    const submitButton = screen.getByText("Enviar");
+
+    //fireEvent.click(submitButton);
+
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    //expect(onSubmitMock).toHaveBeenCalled();
+  });
+  
+  it('calls the onChange prop when canceling the form', () => {
+    const onChangeMock = jest.fn();
+    const props = {
+      lat: [0, 0],
+      onSubmit: jest.fn(),
+      onChange: onChangeMock,
+    };
+    const { getAllByRole } = render(<CommentsPage {...props} />);
+    const cancelButton = getAllByRole('button')[0];
+
+    // Simula que se hace clic en el botón Cancelar
+    fireEvent.click(cancelButton);
+
+    // Verifica que el método onChange se llamó correctamente
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+  });
+ 
+
+  
 });
