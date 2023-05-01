@@ -113,6 +113,8 @@ test('aplication starts in correct page', () =>{
     const welcome = screen.getByText('Bienvenido a LoMap');
     expect(welcome).toBeInTheDocument();
     expect(screen.getByRole("link", {name:"Comenzar"})).toBeInTheDocument();
+    
+    expect(location.href).toBe('http://localhost/start');
   });
 
   /**
@@ -128,7 +130,8 @@ test('about option works correctly', () => {
     const text = "Bienvenidos a nuestra aplicación, la cual sido diseñada para la asignatura de Arquitectura del Software de la Universidad de Oviedo. Esperamos que les resulte util.";
     const p = screen.getByText(text);
     expect(p).toBeInTheDocument();
-	
+    
+    expect(location.href).toBe('http://localhost/about');
   });
   
 /**
@@ -145,6 +148,8 @@ test('profile link redirects correctly', () => {
     expect(image).toBeInTheDocument();
     expect(title).toBeInTheDocument();
     expect(button).toBeInTheDocument();
+
+    expect(location.href).toBe('http://localhost/user');
   });
 
 /**
@@ -163,6 +168,8 @@ test('start page start-button works correctly', () => {
   
     const login_button = screen.getByText("Login");
     fireEvent.click(login_button);
+    
+    expect(location.href).toBe('http://localhost/user');
   });
 
 /**
@@ -186,6 +193,8 @@ test('navbar shows correctly', () => {
 
   const logo = screen.getByRole("img",{name: "Logo"});
   expect(logo).toBeInTheDocument();
+  
+  expect(location.href).toBe('http://localhost/start');
 });
 
 /**
@@ -200,6 +209,8 @@ test('navbar link to about works correctly', () => {
 
   const heading = screen.getByRole("heading", {name: "Sobre Nosotros - LoMap_ES6C"});
   expect(heading).toBeInTheDocument();
+  
+  expect(location.href).toBe('http://localhost/about');
 });
 
 /**
@@ -221,6 +232,8 @@ test('navbar link to profile works correctly', () => {
   expect(title).toBeInTheDocument();
   expect(button).toBeInTheDocument();
   expect(id_prov).toBeInTheDocument();
+
+  expect(location.href).toBe('http://localhost/user');
 });
 
 
