@@ -8,7 +8,7 @@ import CommentsPage from './components/CommentsPage/CommentsPage';
 import LoginForm from './components/Pages/LoginPage/LoginPage';
 import UserLogin from './components/Solid/User/UserLogin';
 import { useSession } from '@inrupt/solid-ui-react';
-import ProfileViewer from './components/Solid/User/ProfileViewer';
+
 
 /**
  * TESTS PAGES
@@ -236,4 +236,21 @@ test('navbar link to profile works correctly', () => {
   expect(location.href).toBe('http://localhost/user');
 });
 
+describe('UserLogin', () => {
+  test('renders login button', () => {
+    const { getByPlaceholderText, getByText } = render(<UserLogin />);
 
+    const idpInput = getByPlaceholderText('Identity Provider');
+    const loginButton = getByText("Login");
+
+    expect(idpInput).toBeInTheDocument();
+    expect(loginButton).toBeInTheDocument();
+  });
+
+  test('updates identity provider URL when user types', () => {
+    const { getByPlaceholderText } = render(<UserLogin />);
+    const idpInput = getByPlaceholderText(/Identity Provider/i);
+    fireEvent.change(idpInput, { target: { value: 'https://example.com' } });
+    expect(idpInput).toHaveValue('https://example.com');
+  });
+});
