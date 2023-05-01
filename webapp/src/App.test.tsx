@@ -10,6 +10,8 @@ import UserLogin from './components/Solid/User/UserLogin';
 import { useSession } from '@inrupt/solid-ui-react';
 import ProfileViewer from './components/Solid/User/ProfileViewer';
 import FilterHamburger from './components/Map/Markers/Filters/Hamburger/FilterHamburger';
+import ReactDOM from 'react-dom';
+import React from 'react';
 
 
 /**
@@ -325,7 +327,12 @@ describe('CommentsPage', () => {
     // Verifica que el método onChange se llamó correctamente
     expect(onChangeMock).toHaveBeenCalledTimes(1);
   });
- 
+});
 
-  
+describe('App component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
 });
