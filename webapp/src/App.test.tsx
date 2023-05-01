@@ -11,7 +11,7 @@ import { useSession } from '@inrupt/solid-ui-react';
 import ProfileViewer from './components/Solid/User/ProfileViewer';
 import FilterHamburger from './components/Map/Markers/Filters/Hamburger/FilterHamburger';
 import ReactDOM from 'react-dom';
-import React from 'react';
+import { addMarker } from './api/api';
 
 
 /**
@@ -334,5 +334,33 @@ describe('App component', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App />, div);
     ReactDOM.unmountComponentAtNode(div);
+  });
+});
+
+describe('addMarker', () => {
+  let mockFetch: jest.SpyInstance;
+
+  beforeEach(() => {
+    mockFetch = jest.spyOn(global, 'fetch');
+  });
+
+  afterEach(() => {
+    mockFetch.mockRestore();
+  });
+
+  it('should return true if the API call is successful', async () => {
+    mockFetch.mockResolvedValueOnce({ status: 200 });
+
+    const result = await addMarker({ lat: 0, lng: 0, comment: 'test comment' });
+
+    expect(result).toBe(true);
+  });
+
+  it('should return false if the API call is not successful', async () => {
+    mockFetch.mockResolvedValueOnce({ status: 500 });
+
+    const result = await addMarker({ lat: 0, lng: 0, comment: 'test comment' });
+
+    expect(result).toBe(false);
   });
 });
