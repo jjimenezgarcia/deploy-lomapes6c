@@ -1,7 +1,7 @@
 [[section-solution-strategy]]
 == Estrategia de solución
 
-=== 4.1. Decisiones Tecnológicas
+=== Decisiones Tecnológicas
 
 Las diferentes tecnologias utilizadas en nuestra aplicación serán las siguientes:
 
