@@ -32,6 +32,10 @@ test('aplication starts in correct page', () =>{
     const title_txt = screen.getByRole('heading',{name:"Sobre Nosotros - LoMap_ES6C"});
     
     expect(title_txt).toBeInTheDocument();
+
+    const text = "Bienvenidos a nuestra aplicación, la cual sido diseñada para la asignatura de Arquitectura del Software de la Universidad de Oviedo. Esperamos que les resulte util.";
+    const p = screen.getByText(text);
+    expect(p).toBeInTheDocument();
   });
 
   test('commentsPage renders correctly', ()=> {
@@ -117,6 +121,11 @@ test('about option works correctly', () => {
   
     const title = screen.getByText("Sobre Nosotros - LoMap_ES6C");
     expect(title).toBeInTheDocument();
+
+    const text = "Bienvenidos a nuestra aplicación, la cual sido diseñada para la asignatura de Arquitectura del Software de la Universidad de Oviedo. Esperamos que les resulte util.";
+    const p = screen.getByText(text);
+    expect(p).toBeInTheDocument();
+	
   });
   
 /**
