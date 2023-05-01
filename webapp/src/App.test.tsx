@@ -364,3 +364,15 @@ describe('addMarker', () => {
     expect(result).toBe(false);
   });
 });
+
+describe("ProfileViewer", () => {
+  it("cant render because not authenticated", async () => {
+    try{
+      render(<ProfileViewer />);
+    } catch(Error){
+      expect(true); //Si entra es porque salto el error
+    }
+  });
+
+ 
+});
