@@ -1,8 +1,5 @@
 [[section-solution-strategy]]
-== Solution Strategy
-
-
-[role="arc42help"]
+== Estrategia de solución
 
 === 4.1. Decisiones Tecnológicas
 
@@ -20,13 +17,13 @@ Las diferentes tecnologias utilizadas en nuestra aplicación serán las siguient
     * MondoDB: se ha decidido utilizar esta base de datos ya que se trata de una base de datos no relacional que cumple todos los requisitos 
       necesarios para el correcto funcionamiento de la aplicación.
 
-=== 4.2. Decisiones de calidad
-    * Uso de SOLID para asegurar la privacidad de los datos de todos los clientes ya que cada uno de nuestros clientes tendra un POD personal en el que almacenará sus datos personales y del cual tendrá el control absoluto, cediendo a la aplicación los datos que considere oportunos.
+=== Decisiones de calidad
+    * Privacidad -> uso de SOLID para asegurar la privacidad de los datos de todos los clientes ya que cada uno de nuestros clientes tendra un POD personal en el que almacenará sus datos personales y del cual tendrá el control absoluto, cediendo a la aplicación los datos que considere oportunos.
     
-    * Se desea que esta aplicación sea usable, es decir, que todos los usuarios puedan interactuar con la aplicación de forma sencilla. Para ello la aplicación debe tener una interfaz clara, accesible y facil de entender para cualquier tipo de usuario.
+    * Usabilidad -> se desea que esta aplicación sea usable, es decir, que todos los usuarios puedan interactuar con la aplicación de forma sencilla. Para ello la aplicación debe tener una interfaz clara, accesible y facil de entender para cualquier tipo de usuario.
     
 
-=== 4.3. Decisiones organizativas
+=== Decisiones organizativas
     * Uso de ramas en GitHub: para el desarrollo del proyecto hemos decidido crear varias ramas, en principio hay una rama principal master de la
       que salen otra dos que serian las de documentationDevelop (rama utilizada para la creacion y/o modificacion de la documentacion del proyecto)
       y la rama develop (que sera utilizada para el propio desarrollo de la aplicación). En un futuro se crearan otras ramas para que cada integrante
