@@ -8,7 +8,7 @@ on:
 
 jobs:
   unit-test-webapp:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lunar
     defaults:
       run:
         working-directory: webapp
