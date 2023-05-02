@@ -4,7 +4,6 @@ import Footer from "./components/Footer/Footer";
 import WelcomePage from "./components/Pages/WelcomePage/WelcomePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserPage from "./components/Pages/UserPage/UserPage";
-import { OSMap } from "./components/Map/OSMap";
 import { SessionProvider } from "@inrupt/solid-ui-react";
 import RequestFriendship from "./components/Solid/Friends/RequestFriendship";
 import About from "./components/About/About";
@@ -20,16 +19,6 @@ function App() {
                   <WelcomePage />
                   <Footer />
                 </div>} />
-            <Route
-              path="/start/map"
-              element={
-                <div>
-                  <NavBar />
-                  <OSMap />
-                  <Footer />
-                </div>
-              }
-            />
             <Route
               path="/about"
               element={

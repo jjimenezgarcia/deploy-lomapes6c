@@ -1,8 +1,4 @@
-body {
-  background: #3f51b5;
-  color: white;
-  text-align: center;
-}
+
 
 .menu {
   filter: url("#shadowed-goo");
