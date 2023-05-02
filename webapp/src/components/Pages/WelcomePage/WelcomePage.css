@@ -43,6 +43,7 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -55,6 +56,10 @@
   border: 2px solid white;
   border-radius: 1em;
   box-shadow: 0 0 20px #bbb6b6;
+}
+
+.map-identifier{
+  color: #333;
 }
 
 .welcome_left {

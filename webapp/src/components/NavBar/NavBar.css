@@ -8,6 +8,7 @@
 
 nav {
   background-color: whitesmoke;
+  opacity: 0.9;
   color: black;
   max-height: 5em;
   display: flex;

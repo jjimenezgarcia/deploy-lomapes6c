@@ -91,7 +91,6 @@ export function OSMap() {
   
   return (
     <div>
-      Mapa: {mapName}
       <div className="map">
         <div className="filters">
          <FilterHamburger changeFriendFilter={changeFriendFilter}/>
@@ -99,7 +98,7 @@ export function OSMap() {
         <MapContainer
           center={[51.505, -0.09]}
           zoom={13}
-          style={{ height: "700px", borderRadius: "inherit" }}
+          style={{ height: "580px", borderRadius: "inherit" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
