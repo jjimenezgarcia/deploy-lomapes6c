@@ -1,7 +1,6 @@
 import {
   act,
   fireEvent,
-  getByPlaceholderText,
   render,
   screen,
 } from "@testing-library/react";
@@ -13,9 +12,7 @@ import About from "./components/About/About";
 import CommentsPage from "./components/CommentsPage/CommentsPage";
 import LoginForm from "./components/Pages/LoginPage/LoginPage";
 import UserLogin from "./components/Solid/User/UserLogin";
-import { useSession } from "@inrupt/solid-ui-react";
 import ProfileViewer from "./components/Solid/User/ProfileViewer";
-import FilterHamburger from "./components/Map/Markers/Filters/Hamburger/FilterHamburger";
 import ReactDOM from "react-dom";
 import { addMarker } from "./api/api";
 
