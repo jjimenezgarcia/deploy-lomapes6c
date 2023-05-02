@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   webapp:
     image: ghcr.io/arquisoft/lomap_es6c/webapp:latest
