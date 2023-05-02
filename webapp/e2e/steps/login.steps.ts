@@ -24,7 +24,6 @@ defineFeature(feature, (test) => {
     test('El usuario introduce correctamente sus credenciales', ({given, when, then, and}) => {
 
         given('el usuario se encuentra en la página de inicio de sesión', async () => {
-            page = await browser.newPage();
             await page.goto("http://localhost:3000/user");
             await page.waitForNavigation();
         });
