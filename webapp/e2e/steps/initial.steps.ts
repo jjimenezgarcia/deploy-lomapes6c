@@ -46,6 +46,7 @@ defineFeature(feature, test => {
 
     when('Tras hacer click en el botón Sobre Nosotros', async () => {
       await expect(page).toClick('a', { text: 'Sobre Nosotros' });
+      await delay(1000);
     });
 
     then('El usuario es redirigido a la página sobre nosotros', async () => {
@@ -63,6 +64,7 @@ defineFeature(feature, test => {
 
     when('Tras hacer click en el botón Comenzar', async () => {
       await expect(page).toClick('a', { text: 'Comenzar' });
+      await delay(1000);
     });
 
     then('El usuario es redirigido a la página de inicio de sesión', async () => {
@@ -100,7 +102,6 @@ defineFeature(feature, test => {
     });
 
     then('El usuario es redirigido a la página de Solid', async () => {
-      // page.url() === "http://localhost:3000/start"
       await page.goto("https://solidproject.org/");
       await expect(page.url()).toMatch('https://solidproject.org/');
     });
@@ -126,8 +127,83 @@ defineFeature(feature, test => {
 
   });
 
+  test('El usuario añade un comentario', ({given, when, then, and}) => {
+
+    given('Un acceso a la app por un usuario', async () => {
+      await page.goto("http://localhost:3000");
+    });    
+
+    when('Tras iniciar sesión', async () => {
+      await expect(page).toClick('a', { text: 'Profile' });
+      await delay(1000);
+      await expect(page).toClick('button', { text: 'Login' });
+      await delay(1000);
+      await page.type('input#username', 'ejemplo123');
+      await page.type('input#password', '123Ejemplo!');
+      await page.click('button');
+      await delay(1000);
+      await expect(page).toClick('a', { text: 'Profile' });
+      await delay(1000);
+      await expect(page).toClick('a', { text: 'Mi mapa' });
+      await delay(1000);
+    });
+
+    then('El usuario selecciona una posición del mapa', async () => {
+      await expect(page).toClick('div[class="map"]');
+      await delay(1000);
+    });
+
+    and('Añade el comentario', async () => {
+      const text = await page.evaluate(() => document.body.textContent);
+      const name = await page.$('input[id="makerTitle"]');
+      await name?.type("Cervecería");
+      await page.click('button');
+    });
+
+  });
+
+  test('El usuario busca a un amigo', ({given, when, then, and}) => {
+
+    given('Un acceso a la app por un usuario', async () => {
+      await page.goto("http://localhost:3000");
+    });    
+
+    when('Tras iniciar sesión', async () => {
+      await expect(page).toClick('a', { text: 'Profile' });
+      await delay(1000);
+      await expect(page).toClick('button', { text: 'Login' });
+      await delay(1000);
+      /* // Guardaría los datos del inicio de sesión anterior, sino:
+      await page.type('input#username', 'ejemplo123');
+      await page.type('input#password', '123Ejemplo!');
+      await page.click('button');
+      await delay(1000);*/
+      await expect(page).toClick('a', { text: 'Profile' });
+      await delay(1000);
+    });
+
+    then('El usuario hace click en el botón Amigos', async () => {
+      await expect(page).toClick('a', { text: 'Amigos' });
+      await delay(1000);
+    });
+
+    and('Busca un amigo', async () => {
+      const text = await page.evaluate(() => document.body.textContent);
+      const name = await page.$('input[id="friend"]');
+      await name?.type("teresa");
+      await page.click('button');
+    });
+
+  });
+
   afterAll(async () => {
     browser.close();
   });
 
 });
+
+function delay(arg0: number) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, arg0);
+  });
+}
