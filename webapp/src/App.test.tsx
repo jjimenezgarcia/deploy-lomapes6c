@@ -1,18 +1,23 @@
-
-import { act, fireEvent, getByPlaceholderText, render, screen } from '@testing-library/react';
-import App from './App';
-import '@testing-library/jest-dom';
-import RequestFriendship from './components/Solid/Friends/RequestFriendship';
-import Footer from './components/Footer/Footer';
-import About from './components/About/About';
-import CommentsPage from './components/CommentsPage/CommentsPage';
-import LoginForm from './components/Pages/LoginPage/LoginPage';
-import UserLogin from './components/Solid/User/UserLogin';
-import { useSession } from '@inrupt/solid-ui-react';
-import ProfileViewer from './components/Solid/User/ProfileViewer';
-import FilterHamburger from './components/Map/Markers/Filters/Hamburger/FilterHamburger';
-import ReactDOM from 'react-dom';
-import { addMarker } from './api/api';
+import {
+  act,
+  fireEvent,
+  getByPlaceholderText,
+  render,
+  screen,
+} from "@testing-library/react";
+import App from "./App";
+import "@testing-library/jest-dom";
+import RequestFriendship from "./components/Solid/Friends/RequestFriendship";
+import Footer from "./components/Footer/Footer";
+import About from "./components/About/About";
+import CommentsPage from "./components/CommentsPage/CommentsPage";
+import LoginForm from "./components/Pages/LoginPage/LoginPage";
+import UserLogin from "./components/Solid/User/UserLogin";
+import { useSession } from "@inrupt/solid-ui-react";
+import ProfileViewer from "./components/Solid/User/ProfileViewer";
+import FilterHamburger from "./components/Map/Markers/Filters/Hamburger/FilterHamburger";
+import ReactDOM from "react-dom";
+import { addMarker } from "./api/api";
 
 /**
  * TESTS PAGES
@@ -33,19 +38,18 @@ test("aplication starts in correct page", () => {
   expect(profile).toBeInTheDocument();
 });
 
-
-  test('about renders correctly', ()=>{
-    render(<About/>);
-    const title_txt = screen.getByRole('heading',{name:"Sobre Nosotros - LoMap_ES6C"});
-    
-    expect(title_txt).toBeInTheDocument();
-
-    const text = "Bienvenidos a nuestra aplicación, la cual sido diseñada para la asignatura de Arquitectura del Software de la Universidad de Oviedo. Esperamos que les resulte util.";
-    const p = screen.getByText(text);
-    expect(p).toBeInTheDocument();
+test("about renders correctly", () => {
+  render(<About />);
+  const title_txt = screen.getByRole("heading", {
+    name: "Sobre Nosotros - LoMap_ES6C",
   });
 
   expect(title_txt).toBeInTheDocument();
+
+  const text =
+    "Bienvenidos a nuestra aplicación, la cual sido diseñada para la asignatura de Arquitectura del Software de la Universidad de Oviedo. Esperamos que les resulte util.";
+  const p = screen.getByText(text);
+  expect(p).toBeInTheDocument();
 });
 
 test("commentsPage renders correctly", () => {
@@ -95,13 +99,13 @@ test("userLogin renders correctly", () => {
   expect(btn_login).toBeInTheDocument();
 });
 
-  test('requestFriendship render throw exception correctly without athentication', () => {
-    try {
-      render(<RequestFriendship />);
-    } catch (error) {
-      expect(true);
-    }
-  });
+test("requestFriendship render throw exception correctly without athentication", () => {
+  try {
+    render(<RequestFriendship />);
+  } catch (error) {
+    expect(true);
+  }
+});
 
 test("footer render property", () => {
   render(<Footer />);
@@ -113,77 +117,78 @@ test("footer render property", () => {
  * TESTS LINKS
  */
 
-  /**
-   * TESTS LINKS
-   */
-  
-  /**
-  * Test that link to start page works correctly
-  */
-  test('init page shows correctly', () =>{
-    render(<App />);
-    fireEvent.click(screen.getByRole("link", {name:'Inicio'}))
-    const welcome = screen.getByText('Bienvenido a LoMap');
-    expect(welcome).toBeInTheDocument();
-    expect(screen.getByRole("link", {name:"Comenzar"})).toBeInTheDocument();
-    
-    expect(location.href).toBe('http://localhost/start');
-  });
+/**
+ * TESTS LINKS
+ */
+
+/**
+ * Test that link to start page works correctly
+ */
+test("init page shows correctly", () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole("link", { name: "Inicio" }));
+  const welcome = screen.getByText("Bienvenido a LoMap");
+  expect(welcome).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "Comenzar" })).toBeInTheDocument();
+
+  expect(location.href).toBe("http://localhost/start");
+});
 
 /**
  * Test that default page link for about option redirects correctly
  */
-test('about option works correctly', () => {
-    render(<App />);
-    fireEvent.click(screen.getByRole("link",{name:'Sobre Nosotros'}));
-  
-    const title = screen.getByText("Sobre Nosotros - LoMap_ES6C");
-    expect(title).toBeInTheDocument();
+test("about option works correctly", () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole("link", { name: "Sobre Nosotros" }));
 
-    const text = "Bienvenidos a nuestra aplicación, la cual sido diseñada para la asignatura de Arquitectura del Software de la Universidad de Oviedo. Esperamos que les resulte util.";
-    const p = screen.getByText(text);
-    expect(p).toBeInTheDocument();
-    
-    expect(location.href).toBe('http://localhost/about');
-  });
-  
+  const title = screen.getByText("Sobre Nosotros - LoMap_ES6C");
+  expect(title).toBeInTheDocument();
+
+  const text =
+    "Bienvenidos a nuestra aplicación, la cual sido diseñada para la asignatura de Arquitectura del Software de la Universidad de Oviedo. Esperamos que les resulte util.";
+  const p = screen.getByText(text);
+  expect(p).toBeInTheDocument();
+
+  expect(location.href).toBe("http://localhost/about");
+});
+
 /**
  * Test that default page link for profile redirects correctly
  */
-test('profile link redirects correctly', () => {
-    render(<App />);
-    fireEvent.click(screen.getByRole("link", { name: 'Profile' }));
-  
-    const image = screen.getByRole("img", {name:'Logo'});
-    const title = screen.getByText("Log in");
-    const button = screen.getByText('Login');
-    
-    expect(image).toBeInTheDocument();
-    expect(title).toBeInTheDocument();
-    expect(button).toBeInTheDocument();
+test("profile link redirects correctly", () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole("link", { name: "Profile" }));
 
-    expect(location.href).toBe('http://localhost/user');
-  });
+  const image = screen.getByRole("img", { name: "Logo" });
+  const title = screen.getByText("Log in");
+  const button = screen.getByText("Login");
+
+  expect(image).toBeInTheDocument();
+  expect(title).toBeInTheDocument();
+  expect(button).toBeInTheDocument();
+
+  expect(location.href).toBe("http://localhost/user");
+});
 
 /**
-  * Test that start button in start page works correctly
-  * Test too that u can click in LOGIN button and go to inrupt log in 
-  */
-test('start page start-button works correctly', () => {
-    render(<App />);
-    fireEvent.click(screen.getByRole("link",{name: "Inicio"}));
-  
-    const start_button =  screen.getByRole("link",{name: "Comenzar"});
-    fireEvent.click(start_button);
-  
-    const login = screen.getByText('Log in');
-    expect(login).toBeInTheDocument();
-  
-    const login_button = screen.getByText("Login");
-    fireEvent.click(login_button);
-    
-    expect(location.href).toBe('http://localhost/user');
-  });
+ * Test that start button in start page works correctly
+ * Test too that u can click in LOGIN button and go to inrupt log in
+ */
+test("start page start-button works correctly", () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole("link", { name: "Inicio" }));
+
+  const start_button = screen.getByRole("link", { name: "Comenzar" });
+  fireEvent.click(start_button);
+
+  const login = screen.getByText("Log in");
+  expect(login).toBeInTheDocument();
+
+  const login_button = screen.getByText("Login");
+  fireEvent.click(login_button);
+
+  expect(location.href).toBe("http://localhost/user");
+});
 
 /**
  * Test that NavBar shows correctly
@@ -206,8 +211,8 @@ test("navbar shows correctly", () => {
 
   const logo = screen.getByRole("img", { name: "Logo" });
   expect(logo).toBeInTheDocument();
-  
-  expect(location.href).toBe('http://localhost/start');
+
+  expect(location.href).toBe("http://localhost/start");
 });
 
 /**
@@ -224,8 +229,8 @@ test("navbar link to about works correctly", () => {
     name: "Sobre Nosotros - LoMap_ES6C",
   });
   expect(heading).toBeInTheDocument();
-  
-  expect(location.href).toBe('http://localhost/about');
+
+  expect(location.href).toBe("http://localhost/about");
 });
 
 /**
@@ -248,29 +253,29 @@ test("navbar link to profile works correctly", () => {
   expect(button).toBeInTheDocument();
   expect(id_prov).toBeInTheDocument();
 
-  expect(location.href).toBe('http://localhost/user');
+  expect(location.href).toBe("http://localhost/user");
 });
 
-describe('UserLogin', () => {
-  test('renders login button', () => {
+describe("UserLogin", () => {
+  test("renders login button", () => {
     const { getByPlaceholderText, getByText } = render(<UserLogin />);
 
-    const idpInput = getByPlaceholderText('Identity Provider');
+    const idpInput = getByPlaceholderText("Identity Provider");
     const loginButton = getByText("Login");
 
     expect(idpInput).toBeInTheDocument();
     expect(loginButton).toBeInTheDocument();
   });
 
-  test('updates identity provider URL when user types', () => {
+  test("updates identity provider URL when user types", () => {
     const { getByPlaceholderText } = render(<UserLogin />);
     const idpInput = getByPlaceholderText(/Identity Provider/i);
-    fireEvent.change(idpInput, { target: { value: 'https://example.com' } });
-    expect(idpInput).toHaveValue('https://example.com');
+    fireEvent.change(idpInput, { target: { value: "https://example.com" } });
+    expect(idpInput).toHaveValue("https://example.com");
   });
 });
 
-describe('CommentsPage', () => {
+describe("CommentsPage", () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -280,35 +285,46 @@ describe('CommentsPage', () => {
     jest.useRealTimers();
   });
 
-  it('renders correctly', () => {
+  it("renders correctly", () => {
     const props = {
       lat: [0, 0],
       onSubmit: jest.fn(),
       onChange: jest.fn(),
     };
 
-    const { getByText, getByLabelText, getByPlaceholderText, getAllByRole } = render(<CommentsPage {...props} />);
+    const { getByText, getByLabelText, getByPlaceholderText, getAllByRole } =
+      render(<CommentsPage {...props} />);
 
     // Verifica que los elementos principales se renderizaron correctamente
-    expect(getByText('Crear marcador')).toBeInTheDocument();
-    expect(getByLabelText('Titulo del marcador:')).toBeInTheDocument();
-    expect(getByLabelText('Tipo de marcador')).toBeInTheDocument();
-    expect(getByPlaceholderText('Escribe tu comentario aquí')).toBeInTheDocument();
-    expect(getByText('Puntuación:')).toBeInTheDocument();
-    expect(getByText('Enviar')).toBeInTheDocument();
-    expect(getAllByRole('button')[0]).toBeInTheDocument();
+    expect(getByText("Crear marcador")).toBeInTheDocument();
+    expect(getByLabelText("Titulo del marcador:")).toBeInTheDocument();
+    expect(getByLabelText("Tipo de marcador")).toBeInTheDocument();
+    expect(
+      getByPlaceholderText("Escribe tu comentario aquí")
+    ).toBeInTheDocument();
+    expect(getByText("Puntuación:")).toBeInTheDocument();
+    expect(getByText("Enviar")).toBeInTheDocument();
+    expect(getAllByRole("button")[0]).toBeInTheDocument();
   });
 
   it("submit form", async () => {
     const onSubmitMock = jest.fn();
     const onChangeMock = jest.fn();
 
-    render(<CommentsPage onSubmit={onSubmitMock} onChange={onChangeMock} lat={[0, 0]} />);
+    render(
+      <CommentsPage
+        onSubmit={onSubmitMock}
+        onChange={onChangeMock}
+        lat={[0, 0]}
+      />
+    );
 
     const titleInput = screen.getByLabelText("Titulo del marcador:");
     fireEvent.change(titleInput, { target: { value: "Test Title" } });
 
-    const commentInput = screen.getByPlaceholderText("Escribe tu comentario aquí");
+    const commentInput = screen.getByPlaceholderText(
+      "Escribe tu comentario aquí"
+    );
     fireEvent.change(commentInput, { target: { value: "Test Comment" } });
 
     const submitButton = screen.getByText("Enviar");
@@ -321,8 +337,8 @@ describe('CommentsPage', () => {
 
     //expect(onSubmitMock).toHaveBeenCalled();
   });
-  
-  it('calls the onChange prop when canceling the form', () => {
+
+  it("calls the onChange prop when canceling the form", () => {
     const onChangeMock = jest.fn();
     const props = {
       lat: [0, 0],
@@ -330,7 +346,7 @@ describe('CommentsPage', () => {
       onChange: onChangeMock,
     };
     const { getAllByRole } = render(<CommentsPage {...props} />);
-    const cancelButton = getAllByRole('button')[0];
+    const cancelButton = getAllByRole("button")[0];
 
     // Simula que se hace clic en el botón Cancelar
     fireEvent.click(cancelButton);
@@ -340,37 +356,37 @@ describe('CommentsPage', () => {
   });
 });
 
-describe('App component', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
+describe("App component", () => {
+  it("renders without crashing", () => {
+    const div = document.createElement("div");
     ReactDOM.render(<App />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
 
-describe('addMarker', () => {
+describe("addMarker", () => {
   let mockFetch: jest.SpyInstance;
 
   beforeEach(() => {
-    mockFetch = jest.spyOn(global, 'fetch');
+    mockFetch = jest.spyOn(global, "fetch");
   });
 
   afterEach(() => {
     mockFetch.mockRestore();
   });
 
-  it('should return true if the API call is successful', async () => {
+  it("should return true if the API call is successful", async () => {
     mockFetch.mockResolvedValueOnce({ status: 200 });
 
-    const result = await addMarker({ lat: 0, lng: 0, comment: 'test comment' });
+    const result = await addMarker({ lat: 0, lng: 0, comment: "test comment" });
 
     expect(result).toBe(true);
   });
 
-  it('should return false if the API call is not successful', async () => {
+  it("should return false if the API call is not successful", async () => {
     mockFetch.mockResolvedValueOnce({ status: 500 });
 
-    const result = await addMarker({ lat: 0, lng: 0, comment: 'test comment' });
+    const result = await addMarker({ lat: 0, lng: 0, comment: "test comment" });
 
     expect(result).toBe(false);
   });
@@ -378,12 +394,10 @@ describe('addMarker', () => {
 
 describe("ProfileViewer", () => {
   it("cant render because not authenticated", async () => {
-    try{
+    try {
       render(<ProfileViewer />);
-    } catch(Error){
+    } catch (Error) {
       expect(true); //Si entra es porque salto el error
     }
   });
-
- 
 });

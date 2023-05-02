@@ -44,8 +44,7 @@ export async function readFromFriendDataSet(friendUrl : string) {
     return data
   })
 
-
-    // Crear una nueva lista
+    // Crear una nueva lista 
     // eslint-disable-next-line @typescript-eslint/no-array-constructor
     let newMarkers = new Array();
 
@@ -83,9 +82,8 @@ export async function readFromDataSet() {
 
   // Obtener la sesion actual y su webId
   const { session, webId } = getSessionWebID();
-
   // Obtener la url del dataset de marcadores
-  const datasetUrl = webId.replace("profile/card#me", "") + "public/markers/"
+  const datasetUrl = getMarkersUrl(webId)
 
   // Obtenemos la url de cada marcador
   const myDataset = await getSolidDataset(
