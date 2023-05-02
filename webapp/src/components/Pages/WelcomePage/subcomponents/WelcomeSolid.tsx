@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import "./WelcomeSolid.css";
 
 export default function WelcomeSolid() {
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function WelcomeSolid() {
           to="https://solidproject.org/"
           target="_blank"
         >
-          <img
+          <img className="solid_logo_image"
             src="https://solidproject.org/assets/img/solid-emblem.svg"
             alt="Solid logo"
           />
