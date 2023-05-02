@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 
 export default function About() {

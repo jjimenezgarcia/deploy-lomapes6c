@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import "./CommentsPage.css";
-import { addMarker } from "../../api/api";
 import { Marker } from "../Map/OSMap";
-import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 import { writeMarkerToDataSet } from "../Solid/WriteToPod";
-import { Rating } from 'react-simple-star-rating'
-import { Link } from "react-router-dom";
-
-// TODO: ver si se puede eliminar esta funcion
-async function saveMarker(markerData: any) {
-  await addMarker(markerData);
-}
+import { Rating } from "react-simple-star-rating";
+import { createAclForMarker } from "../Solid/Permissions";
+import { getSessionWebID } from "../Solid/Session";
 
 export default function CommentsPage(props: any) {
   const [title, setTitle] = useState("");
@@ -32,23 +26,17 @@ export default function CommentsPage(props: any) {
       score: rating,
     };
 
-    const session = getDefaultSession();
-    const { webId } = session.info;
+    const webId  = getSessionWebID().webId;
 
-    if (!webId) {
-      return null;
-    }
-
-    const podUrl =
-      webId.replace("profile/card#me", "") +
-      "public/markers/" +
-      markerData.title;
+    const markerUrl = webId + markerData.title;
 
     await writeMarkerToDataSet(
-      podUrl,
+      markerUrl,
       markerData,
       "https://schema.org/location"
     );
+
+    createAclForMarker(markerUrl);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -71,17 +59,17 @@ export default function CommentsPage(props: any) {
     props.onSubmit();
   };
 
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState(0);
 
-  const onPointerEnter = () => console.log('Enter')
-  const onPointerLeave = () => console.log('Leave')
-  const onPointerMove = (value: number, index: number) => console.log(value, index)
+  const onPointerEnter = () => console.log("Enter");
+  const onPointerLeave = () => console.log("Leave");
+  const onPointerMove = (value: number, index: number) =>
+    console.log(value, index);
 
-   // Catch Rating value
-   const handleRating = (rate: number) => {
-    setRating(rate)
-  }
-
+  // Catch Rating value
+  const handleRating = (rate: number) => {
+    setRating(rate);
+  };
 
   const cancelMarker = () => {
     props.onChange();
@@ -89,6 +77,15 @@ export default function CommentsPage(props: any) {
 
   return (
     <div className="popupContainer">
+      <div>
+        <button className="cancel_button" onClick={cancelMarker}>
+          <img
+            className="cancel-button-img"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fimg%2Fmatt-icons_cancel.png&f=1&nofb=1&ipt=a1d797bc36ec42f99a52e4084bffc7c616bf0eee54d60f835aa29f7ba578a938&ipo=images"
+            alt=""
+          />
+        </button>
+      </div>
       <div className="main_form">
         <div className="commentform" id="formulario">
           <form className="form" onSubmit={handleSubmit}>
@@ -138,21 +135,11 @@ export default function CommentsPage(props: any) {
             </div>
 
             <div className="form_field">
-            <button type="submit">Enviar</button>
+              <button type="submit">Enviar</button>
             </div>
           </form>
-          <div className="cancel_button">
-            <button
-              type="button"
-              onClick={cancelMarker}
-              style={{ width: "25%" }}
-            >
-              Cancelar marcador
-            </button>
-          </div>
         </div>
       </div>
     </div>
-    
   );
 }

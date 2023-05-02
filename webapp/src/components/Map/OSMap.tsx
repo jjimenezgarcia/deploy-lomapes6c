@@ -5,10 +5,8 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import CommentsPage from "../CommentsPage/CommentsPage";
 import { useState } from "react";
-import MarkersButton from "./Markers/MarkersButton/MarkersButton";
-import { FilterRestaurant } from "./Markers/Filters/Restaurant/FilterRestaurant";
-import { FilterMonument } from "./Markers/Filters/Monument/FilterMonument";
-import { FilterLandscape } from "./Markers/Filters/Landscape/FilterLandscape";
+import FilterHamburger from "./Markers/Filters/Hamburger/FilterHamburger";
+import FriendsPage from "./Markers/Filters/Friend/FriendsPage";
 var map: L.Map;
 
 export interface Marker {
@@ -20,27 +18,28 @@ export interface Marker {
   score: number;
 }
 
-export function ShowMarkers(promise: any) {
+export function ShowMarkersFromPromise(promise: any) {
   promise.then((array: any) => {
     ShowMarkersFulfilledPromise(array);
   });
 }
 
 export function ShowMarkersFulfilledPromise(array: any[] | null) {
-  if(!array) return;
+  if (array === null) return;
   array.forEach((element: any) => {
     let marker = L.marker([element.lat, element.lng], {
       icon: markerIcon,
       draggable: false,
     });
     marker.addTo(map);
-    marker.bindPopup(element.comment).openPopup();
+    marker.bindPopup(element.tile).openPopup();
   });
 }
 
 export function clearMarkers() {
   map.eachLayer(function (layer) {
     if (layer instanceof L.Marker) {
+      console.log(layer);
       map.removeLayer(layer);
     }
   });
@@ -53,10 +52,16 @@ const markerIcon = L.icon({
 
 export function OSMap() {
   const [markerForm, setMarkerForm] = useState(false);
+  const [friendsFilter, setFriendsFilter] = useState(false);
   const [cords, setCords] = useState<number[]>([0, 0]);
+  const [mapName, setMapName] = useState("Mi mapa");
 
   function cancelMarker() {
     setMarkerForm(false);
+  }
+
+  function changeFriendFilter() {
+    setFriendsFilter(!friendsFilter);
   }
 
   function MyComponent() {
@@ -64,35 +69,33 @@ export function OSMap() {
       click: (e) => {
         const { lat, lng } = e.latlng;
         setCords([lat, lng]);
-        let marker = L.marker([lat, lng], {
-          icon: markerIcon,
-          draggable: false,
-        });
 
         setMarkerForm(true);
-
-        marker.addTo(map);
-        marker.bindPopup(marker.getLatLng().toString()).openPopup();
       },
     });
     return null;
   }
 
-  function exitComments() {
+  function submit() {
+    let marker = L.marker([cords[0], cords[1]], {
+      icon: markerIcon,
+      draggable: false,
+    });
+
+    marker.addTo(map);
+    marker.bindPopup(marker.getLatLng().toString()).openPopup();
+
     setMarkerForm(false);
   }
 
+  
   return (
     <div>
+      Mapa: {mapName}
       <div className="map">
-      <div className="filters">
-        <FilterRestaurant />
-        <FilterMonument />
-        <FilterLandscape/>
-      </div>
-      <div className="button_marker">
-        <MarkersButton />
-      </div>
+        <div className="filters">
+         <FilterHamburger changeFriendFilter={changeFriendFilter}/>
+        </div>
         <MapContainer
           center={[51.505, -0.09]}
           zoom={13}
@@ -102,16 +105,22 @@ export function OSMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {!markerForm && <MyComponent />}
+          {!markerForm && !friendsFilter && <MyComponent />}
         </MapContainer>
         {markerForm && (
           <div className="comment">
             <CommentsPage
               key={markerForm}
               lat={cords}
-              onSubmit={exitComments}
+              onSubmit={submit}
               onChange={cancelMarker}
             />
+          </div>
+        )}
+
+        {friendsFilter && (
+          <div className="comment">
+            <FriendsPage changeMapName={ (name: string) => {setMapName(name)}} onChange={changeFriendFilter}/>
           </div>
         )}
       </div>

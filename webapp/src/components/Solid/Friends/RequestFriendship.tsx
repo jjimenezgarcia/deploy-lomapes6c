@@ -1,15 +1,13 @@
-import LoginForm from "../../pages/LoginPage/LoginPage";
-import { useSession } from "@inrupt/solid-ui-react";
-import { writeDataToNewDataSet } from "../WriteToPod";
-
 import React, { useState } from "react";
+import LoginForm from "../../Pages/LoginPage/LoginPage";
+import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 
 const RequestFriendship = () => {
   const [friendUrl, setfriendUrl] = useState<string>("");
-  const { session } = useSession();
-  const { webId } = session.info;
+  const session = getDefaultSession();
+  const webId = session.info.webId;
 
-  if (!webId) {
+  if (webId === null) {
     return <h1>Vete al login que no tas autenticado</h1>;
   }
 

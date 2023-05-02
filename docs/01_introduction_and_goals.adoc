@@ -1,11 +1,10 @@
 [[section-introduction-and-goals]]
-== Introduction and Goals
-
+== Introducción y objetivos
 
 La petición del ayuntamiento de la ciudad de Bruselas es una aplicación que permita a sus ciudadanos tener un mapa donde puedan colocar marcadores en distintos sitios. Actualmente solo permite marcar sitios con diferentes tipos de marcadores dependiendo del lugar, los lugares posibles serán bares, restaurantes, monumentos, paisajes o tiendas. Los ciudadanos podrán crear sus propios mapas personalizados y compartirlos con sus amigos.
 
 
-=== Requirements Overview
+=== Descripción general de los requisitos
 
 ==== Requisitos de alto nivel:
 * La aplicación permitirá a los usuarios visualizar un mapa donde estos podrán añadir diferentes marcadores.
@@ -23,13 +22,13 @@ La petición del ayuntamiento de la ciudad de Bruselas es una aplicación que pe
 * Añadir roles entre los diferentes usuarios, como pueden ser: ciudadano, turista y dueño de negocio.
 
 
-=== Quality Goals
+=== Objetivos de calidad
 [options="header",cols="1,2"]
 |===
 |Objetivos|Descripcion
-| Privacidad | Se utlizará la metodologia SOLID para garantizar la seguridad de los datos del usuario, quien será quien nos de acceso a los datos que considere oportunos a través del uso un POD, que será privado e independiente para cada usuario
-| Usabilidad | La aplicación deberá ser intuitiva y sencilla de usar para el cliente
-| Eficiencia | Se buscara una buena eficiencia de la aplicación, cosa que mejorará a la experiencia del cliente
+| Privacidad | Se utlizará los principios SOLID para garantizar la seguridad de los datos del usuario, quien será quien nos de acceso a los datos que considere oportunos a través del uso un POD, que será privado e independiente para cada usuario.
+| Usabilidad | La aplicación debe ser fácil de usar y entender para el cliente, con el fin de que puedan aprender a utilizarla rápidamente y sin mayores dificultades. De esta manera, se busca mejorar la experiencia del usuario al utilizar la aplicación y reducir el tiempo que requiere para familiarizarse con ella reduciendo la curva de aprendizaje.
+| Eficiencia | Se buscara unos cortos tiempos de respuesta de la aplicación, cosa que mejorará a la experiencia del cliente.
 |===
 
 
@@ -59,7 +58,7 @@ Table with role names, person names, and their expectations with respect to the 
 |===
 |Role/Name|Contact|Expectations
 | Equipo de desarrollo | HappySw | Desarrollar la aplicación según las especificaciones y requisitos del cliente
-| Cliente | Ayuntamiento de Bruselas | Se espera que entregue una especificación de los requisitos y que siga el projecto para comprobar que se ajusta a los requisitos especificados
+| Cliente | Ayuntamiento de Bruselas | Se espera que entregue una especificación de los requisitos y que siga el projecto para comprobar que se ajusta a los requisitos especificados. También se espera que pueda añadir sitios, comentarios, valoraciones, etc a la aplicación
 | Cliente Potencial | Ayuntamientos de otras ciudades | No se espera que participe en el proyecto, pero se espera que pueda contratar el servicio para tener la aplicación en el futuro para su ciudad
 | Usuario Final | Ciudadanos | Que pueda utilizar la aplicación sin problemas con una esperada facilidad de uso y fluidez
 |===

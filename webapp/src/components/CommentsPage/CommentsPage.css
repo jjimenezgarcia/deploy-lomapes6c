@@ -11,8 +11,29 @@
 }
 
 .cancel_button {
-    width: 70%;
+    position: absolute;
+    background: none;
+    border: none;
+    right: 4%;
+    top: 8%;
+    width: 30px;
+    height: 30px;
+    margin-left: 35%;
+    align-items: center;
 }
+
+.cancel_button:hover {
+    background: none;
+}
+
+.cancel-button-img {
+    position: relative;
+    margin-top: -12px;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+}
+
 h1 {
     color: white;
 }

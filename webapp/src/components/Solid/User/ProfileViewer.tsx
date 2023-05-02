@@ -1,5 +1,4 @@
 import {
-  useSession,
   CombinedDataProvider,
   Image,
   LogoutButton,
@@ -15,12 +14,10 @@ import {
 } from "@mui/material";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
 import { Link } from "react-router-dom";
+import { getSessionWebID } from "../Session";
 
 const ProfileViewer = () => {
-  const { session } = useSession();
-  const { webId } = session.info;
-
-  if (!webId) return null;
+  const webId = getSessionWebID().webId;
 
   const buttonStyle = {
     marginTop: "2em",

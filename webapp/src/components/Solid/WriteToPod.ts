@@ -1,5 +1,5 @@
 import { SCHEMA_INRUPT, RDF } from "@inrupt/vocab-common-rdf";
-import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
+
 import {
     createSolidDataset,
     createThing,
@@ -8,11 +8,12 @@ import {
     saveSolidDatasetAt,
   } from "@inrupt/solid-client";
 import { Marker } from "../../components/Map/OSMap";
+import { getSessionWebID } from "./Session";
 
 // podUrl must be correct for the moment
 export async function writeDataToNewDataSet(podUrl: string, thingName: string, thingTitle: string, rdfType: string) {
 
-    const session = getDefaultSession();
+  const { session } = getSessionWebID();
 
     // Crear un dataset vacío
     let courseSolidDataset = createSolidDataset();
@@ -25,7 +26,7 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
   
     courseSolidDataset = setThing(courseSolidDataset, newThing);
   
-    const savedSolidDataset = await saveSolidDatasetAt(
+    await saveSolidDatasetAt(
         podUrl,
         courseSolidDataset,
         { fetch: session.fetch } // fetch from authenticated Session
@@ -34,7 +35,7 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
 
 export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfType: string) {
 
-  const session = getDefaultSession();
+  const { session } = getSessionWebID();
 
   // Crear un dataset vacío
   let courseSolidDataset = createSolidDataset();
@@ -57,7 +58,7 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
 
   courseSolidDataset = setThing(courseSolidDataset, thingToAdd);
 
-  const savedSolidDataset = await saveSolidDatasetAt(
+  await saveSolidDatasetAt(
       podUrl,
       courseSolidDataset,
       { fetch: session.fetch } // fetch from authenticated Session
