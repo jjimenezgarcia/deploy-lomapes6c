@@ -62,7 +62,7 @@ jobs:
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           user: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          key: ${{ secrets.DEPLOY_KEY }} 
           command: |
             wget https://raw.githubusercontent.com/arquisoft/lomap_es6c/master/docker-compose-deploy.yml -O docker-compose.yml
             docker-compose stop
