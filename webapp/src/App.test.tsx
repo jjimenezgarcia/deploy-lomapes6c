@@ -166,16 +166,11 @@ test("cant see profile when not logged in", () => {
 //TODO: no entiendo porque el boton comenzar no redirecciona a inrupt
 test("start page start-button works correctly", () => {
   render(<App />);
- // fireEvent.click(screen.getByRole("link", { name: "Inicio" }));
 
-  const start_button = screen.getByText("Comenzar");
-  const ty = screen.getAllByRole('button',{name:"Comenzar"}); 
-  fireEvent.click(ty[1]);
-  // const login = screen.getByText("Log in");
-  // expect(login).toBeInTheDocument();
-
-  // const login_button = screen.getByText("Login");
-  // fireEvent.click(login_button);
+  const start_buttons = screen.getAllByRole('button',{name:"Comenzar"}); 
+  fireEvent.click(start_buttons[1]);
+   
+  
   expect(location.href).toBe("http://localhost/");
 });
 
