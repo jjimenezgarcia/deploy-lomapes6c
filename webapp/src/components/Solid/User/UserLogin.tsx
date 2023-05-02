@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import Button from "react-bootstrap/Button";
 
 const UserLogin = () => {
-  const [idp, setIdp] = useState("https://inrupt.net");
+  const idp = "https://inrupt.net";
   const [currentUrl, setCurrentUrl] = useState("https://localhost:3000/");
 
   useEffect(() => {
