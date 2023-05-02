@@ -134,11 +134,11 @@ h1 {
 
 .arrow:hover::after {
   transform: rotate(45deg);
-  border-color: rgb(136, 76, 247);
+  border-color: cornflowerblue;
   height: 120%;
 }
 
 .arrow:hover::before {
-  border-color: rgb(136, 76, 247);
+  border-color: cornflowerblue;
   transform: scale(.8);
 }

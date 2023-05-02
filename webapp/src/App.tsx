@@ -2,7 +2,6 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import WelcomePage from "./components/Pages/WelcomePage/WelcomePage";
-import MainMenu from "./components/Pages/MainMenu/MainMenu";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserPage from "./components/Pages/UserPage/UserPage";
 import { OSMap } from "./components/Map/OSMap";
@@ -16,17 +15,11 @@ function App() {
       <SessionProvider sessionId="logIn">
         <Router>
           <Routes>
-            <Route path="/" element={<MainMenu />} />
-            <Route
-              path="/start"
-              element={
-                <div>
+            <Route path="/" element={<div>
                   <NavBar />
                   <WelcomePage />
                   <Footer />
-                </div>
-              }
-            />
+                </div>} />
             <Route
               path="/start/map"
               element={
