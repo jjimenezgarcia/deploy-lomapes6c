@@ -1,6 +1,6 @@
 import * as solid from '@inrupt/solid-client'
 import { getMarkersUrl, getSessionWebID } from './Session';
-import { getMyMarkers, readFromDataSet } from './ReadFromPod';
+import { getMyMarkers } from './ReadFromPod';
 
 // Crear una acl
 export const createAclForMarkers = async () => {

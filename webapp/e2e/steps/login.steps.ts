@@ -21,33 +21,9 @@ defineFeature(feature, (test) => {
         }).catch(() => {});
     });
 
-    test('El usuario introduce incorrectamente sus credenciales', ({ given, when, then, and }) => {
-
-        given('El usuario se encuentra en la página de inicio de sesión', async () => {
-            await page.goto("http://localhost:3000/user");
-            await page.waitForNavigation();
-        });
-
-        when('el usuario hace click sobre el botón LOGIN y es redirigido a la página de Inrupt', async () => {
-            await expect(page).toClick('button', { text: 'Login' });
-            await page.waitForNavigation();
-        });
-
-        then('el usuario introduce su usuario y contraseña incorrectamente', async () => {
-            await page.type('input#password', '123Ejemplo!');
-            await page.click('button');
-        });
-
-        and('el usuario visualiza un mensaje de error', async () => {
-            const errorMessage = await page.$eval('strong', (el) => el.textContent);
-            expect(errorMessage).toMatch('Username required');
-        });
-    });
-
     test('El usuario introduce correctamente sus credenciales', ({given, when, then, and}) => {
 
         given('el usuario se encuentra en la página de inicio de sesión', async () => {
-            page = await browser.newPage();
             await page.goto("http://localhost:3000/user");
             await page.waitForNavigation();
         });

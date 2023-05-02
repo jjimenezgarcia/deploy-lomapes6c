@@ -3,7 +3,8 @@ import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 export const getSessionWebID = () => {
     // Obtener la sesion actual y su webId
     const session = getDefaultSession();
-    const { webId } = session.info;
+    const info = session.info;
+    const { webId }  = info;
   
     // Comprobar que la sesion es válida
     if (!webId) {
