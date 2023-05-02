@@ -88,16 +88,17 @@ export default function CommentsPage(props: any) {
       </div>
       <div className="main_form">
         <div className="commentform" id="formulario">
-          <form className="form" onSubmit={handleSubmit}>
-            <h1>Crear marcador</h1>
+          <form className="form" onSubmit={handleSubmit} >
+            <h1 style={{ color: "black" }}>Crear marcador</h1>
             <div className="form_field">
-              <label htmlFor="markerTitle">Titulo del marcador:</label>
+              <label htmlFor="markerTitle" style={{ color: "black" }}>Titulo del marcador:</label>
               <input
                 id="markerTitle"
                 type="text"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
                 placeholder="Titulo de ejemplo"
+                style={{ color: "grey" }}
               />
             </div>
             <div className="form_field">

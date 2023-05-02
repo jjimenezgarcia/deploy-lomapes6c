@@ -13,10 +13,9 @@ export default function WelcomeText() {
       <div className="welcome_left" data-aos="fade-down">
         <h1>Bienvenido a LoMap</h1>
         <p>
-          LoMap es una aplicación web que permite a los usuarios crear mapas de
-          lugares de interés en una ciudad. Estos mapas pueden ser compartidos
-          con otros usuarios para que puedan añadir nuevos lugares de interés o
-          comentar los ya existentes.
+          LoMap te permite guardar tus lugares favoritos y compartirlos con tus amigos.
+          Para que no olvides dónde has estado.
+          Ni dónde quieres estar.
         </p>
         <UserLogin />
       </div>
