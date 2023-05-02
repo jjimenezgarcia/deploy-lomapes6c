@@ -15,7 +15,7 @@ const UserLogin = () => {
     <Container fixed>
       <LoginButton oidcIssuer={idp} redirectUrl={currentUrl}>
         <Button name="LOGIN" variant="danger" className="login-button">
-          Login
+          Comenzar
         </Button>
       </LoginButton>
     </Container>
