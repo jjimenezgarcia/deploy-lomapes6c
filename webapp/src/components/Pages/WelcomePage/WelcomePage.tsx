@@ -13,7 +13,7 @@ export default function WelcomePage() {
   const { session } = useSession();
 
   return (
-    <>
+    <div className="welcome_page">
     <div className="background-image"></div>
     <div className="welcome_page">
       {!session.info.isLoggedIn ? (
@@ -44,6 +44,6 @@ export default function WelcomePage() {
         </div>
       )}
     </div>
-    </>
+    </div>
   );
 }

@@ -58,10 +58,6 @@
   box-shadow: 0 0 20px #bbb6b6;
 }
 
-.map-identifier{
-  color: #333;
-}
-
 .welcome_left {
   width: 50%;
 }
@@ -164,5 +160,10 @@ h1 {
   background-position: center;
   filter: blur(1px);
   z-index: -1;
-  background-attachment: fixed; /* Hace que la imagen se mantenga fija en su posición mientras se desplaza la página */
+  background-attachment: fixed;
+}
+
+.welcome_page{ 
+  width: 96%;
+  height: 96%;
 }
