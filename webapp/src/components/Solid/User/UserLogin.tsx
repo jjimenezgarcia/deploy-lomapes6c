@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LoginButton } from "@inrupt/solid-ui-react";
-import { TextField, FormGroup, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import Button from "react-bootstrap/Button";
 
 const UserLogin = () => {
