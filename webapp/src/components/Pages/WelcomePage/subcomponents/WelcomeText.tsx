@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import UserLogin from "../../../Solid/User/UserLogin";
 
 export default function WelcomeText() {
   useEffect(() => {
@@ -18,9 +19,7 @@ export default function WelcomeText() {
           con otros usuarios para que puedan añadir nuevos lugares de interés o
           comentar los ya existentes.
         </p>
-        <Link className="comenzar" to="/user">
-          Comenzar
-        </Link>
+        <UserLogin />
       </div>
       
     </div>

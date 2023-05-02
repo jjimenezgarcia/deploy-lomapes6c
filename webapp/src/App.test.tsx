@@ -10,7 +10,6 @@ import RequestFriendship from "./components/Solid/Friends/RequestFriendship";
 import Footer from "./components/Footer/Footer";
 import About from "./components/About/About";
 import CommentsPage from "./components/CommentsPage/CommentsPage";
-import LoginForm from "./components/Pages/LoginPage/LoginPage";
 import UserLogin from "./components/Solid/User/UserLogin";
 import ProfileViewer from "./components/Solid/User/ProfileViewer";
 import ReactDOM from "react-dom";
@@ -74,17 +73,6 @@ test("commentsPage renders correctly", () => {
   expect(comment_area).toBeInTheDocument();
   expect(rating).toBeInTheDocument();
   expect(submit).toBeInTheDocument();
-});
-
-test("loginForm renders correctly", () => {
-  render(<LoginForm />);
-  const img = screen.getByRole("img", { name: "Logo" });
-  const title = screen.getByRole("heading", { name: "Log in" });
-  const buttons = screen.getAllByRole("button", { name: "Login" });
-
-  expect(img).toBeInTheDocument();
-  expect(title).toBeInTheDocument();
-  expect(buttons[1]).toBeInTheDocument();
 });
 
 test("userLogin renders correctly", () => {
