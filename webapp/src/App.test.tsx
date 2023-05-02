@@ -107,50 +107,50 @@ test("footer render property", () => {
 
    const welcome = screen.getByText("Bienvenido a LoMap");
    const solid_logo = screen.getByRole('link',{name:"Solid logo"});
-   const inicio = screen.getByRole('link',{name:"Inicio"});
-   const doc = screen.getByRole('link',{name:"Documentación"});
-   const about = screen.getByRole('link',{name:"Sobre Nosotros"});
-   const profile = screen.getByRole('link',{name:"Profile"});
-   const logo = screen.getByRole('img',{name:"Logo"});
+   const logos = screen.getAllByRole('img');
+   const inicio_logo = logos[0];
+   const doc_logo = logos[1];
+   const about_logo = logos[2];
+   const profile_logo = logos[3];
+   const logo_app = screen.getByRole('img',{name:"Logo"});
 
+   const links = screen.getAllByRole('link');
+   const inicio_link = links[0];
+   const doc_link = links[1];
+   const about_link = links[2];
+   const profile_link = links[3];
+   
+   expect(inicio_logo).toBeInTheDocument();
+   expect(doc_logo).toBeInTheDocument();
+   expect(about_logo).toBeInTheDocument();
+   expect(profile_logo).toBeInTheDocument();
+   expect(solid_logo).toBeInTheDocument();
+   expect(logo_app).toBeInTheDocument();
 
    expect(welcome).toBeInTheDocument();
-   expect(solid_logo).toBeInTheDocument();
-   expect(inicio).toBeInTheDocument();
-   expect(doc).toBeInTheDocument();
-   expect(about).toBeInTheDocument();
-   expect(profile).toBeInTheDocument();
-   expect(logo).toBeInTheDocument();
+   expect(inicio_link).toBeInTheDocument();
+   expect(doc_link).toBeInTheDocument();
+   expect(about_link).toBeInTheDocument();
+   expect(profile_link).toBeInTheDocument();
    
    expect(screen.getAllByRole("button")[1]).toBeInTheDocument();
 
    expect(location.href).toBe("http://localhost/");
  });
 
-/**
- * Test that default page link for about option redirects correctly
- */
-// test("about option works correctly", () => {
-//   render(<App />);
-//   fireEvent.click(screen.getByRole("link", { name: "Sobre Nosotros" }));
-
-//   const title = screen.getByText("Sobre Nosotros - LoMap_ES6C");
-//   expect(title).toBeInTheDocument();
-
-//   const text =
-//     "Bienvenidos a nuestra aplicación, la cual sido diseñada para la asignatura de Arquitectura del Software de la Universidad de Oviedo. Esperamos que les resulte util.";
-//   const p = screen.getByText(text);
-//   expect(p).toBeInTheDocument();
-
-//   expect(location.href).toBe("http://localhost/about");
-// });
+test('documentation link ref to documentation page', () => {
+  render(<App />);
+  const link_doc = screen.getAllByRole('link')[1];
+  expect(link_doc.getAttribute('href')).toBe('https://arquisoft.github.io/lomap_es6c/');
+});
 
 /**
  * Test that default page link for profile redirects correctly
  */
 test("cant see profile when not logged in", () => {
   render(<App />);
-  fireEvent.click(screen.getByRole("link", { name: "Profile" }));
+  const links  = screen.getAllByRole('link');
+  fireEvent.click(links[3]);
 
   const info_text = screen.getByText("Not logged in");
 
@@ -181,10 +181,16 @@ test("navbar shows correctly", () => {
   render(<App />);
 
   const title = screen.getByText("LoMap");
-  const init = screen.getByRole("link", { name: "Inicio" });
-  const documentation = screen.getByRole("link", { name: "Documentación" });
-  const about = screen.getByRole("link", { name: "Sobre Nosotros" });
-  const profile = screen.getByRole("link", { name: "Profile" });
+
+  const logos = screen.getAllByRole('img');
+  const init = logos[0];
+  const documentation = logos[1];
+  const about = logos[2];
+  const profile = logos[3];
+  expect(logos.length).toBe(6);
+
+  const links = screen.getAllByRole('link');
+  expect(links.length).toBe(5);
 
   expect(title).toBeInTheDocument();
   expect(init).toBeInTheDocument();
@@ -206,14 +212,18 @@ test("navbar shows correctly", () => {
 test("navbar link to profile works correctly", () => {
   render(<App />);
 
-  const profile = screen.getByRole("link", { name: "Profile" });
+  const links = screen.getAllByRole('link');
+
+  const profile = links[3];
+
   fireEvent.click(profile);
+  
+  expect(location.href).toBe("http://localhost/user");
 
   const txt = screen.getByText("Not logged in");
 
   expect(txt).toBeInTheDocument();
 
-  expect(location.href).toBe("http://localhost/user");
 });
 
 describe("CommentsPage", () => {
