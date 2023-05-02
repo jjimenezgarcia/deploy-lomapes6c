@@ -121,7 +121,7 @@ test("footer render property", () => {
 /**
  * Test that link to start page works correctly
  */
-test("init page shows correctly", () => {
+test("init page shows correctly", () => { 
   render(<App />);
   fireEvent.click(screen.getByRole("link", { name: "Inicio" }));
   const welcome = screen.getByText("Bienvenido a LoMap");
