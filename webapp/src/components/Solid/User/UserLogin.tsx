@@ -33,7 +33,7 @@ const UserLogin = () => {
           InputProps={{
             readOnly: true,
             endAdornment: (
-              <LoginButton oidcIssuer={idp} redirectUrl={"http://localhost:3000/start"}>
+              <LoginButton oidcIssuer={idp} redirectUrl={"https://arquisoft-lomap-es6c.netlify.app/start"}>
                 <Button name="LOGIN" style={buttonStyle} variant="contained" color="primary">
                   Login
                   </Button>
