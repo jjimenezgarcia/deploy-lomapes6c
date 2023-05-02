@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoginButton } from "@inrupt/solid-ui-react";
 import { Button, TextField, FormGroup, Container } from "@mui/material";
 
 const UserLogin = () => {
   const [idp, setIdp] = useState("https://inrupt.net");
+  const [currentUrl, setCurrentUrl] = useState("https://localhost:3000/");
 
+  useEffect(() => {
+		setCurrentUrl(window.location.href);
+	}, [setCurrentUrl]);
+  
   const styles = {
     fontFamily: 'Roboto, sans-serif',
     color: '#d7dce4',
@@ -33,7 +38,7 @@ const UserLogin = () => {
           InputProps={{
             readOnly: true,
             endAdornment: (
-              <LoginButton oidcIssuer={idp} redirectUrl={"https://arquisoft-lomap-es6c.netlify.app/start"}>
+              <LoginButton oidcIssuer={idp} redirectUrl={currentUrl}>
                 <Button name="LOGIN" style={buttonStyle} variant="contained" color="primary">
                   Login
                   </Button>
