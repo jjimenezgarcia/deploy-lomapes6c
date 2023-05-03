@@ -12,7 +12,7 @@ export default function NavBar() {
       <div>
         <ul className="list">
           <li className="list_item, active">
-            <Link to="/start">
+            <Link to="/">
               <img className="navBarImage" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Fhome-png-icon%2Fhome-png-icon-18.jpg&f=1&nofb=1&ipt=d786087d0f3c425a6bde71cf162b744b640e1af020786a449357301bcaacf599&ipo=images" alt="" />
             </Link>
           </li>
