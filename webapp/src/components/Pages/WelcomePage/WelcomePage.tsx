@@ -7,11 +7,14 @@ import {
 } from "../../Map/OSMap";
 import "aos/dist/aos.css";
 import { useSession } from "@inrupt/solid-ui-react";
+import MapIdentifier from "../../Map/MapIdentifier";
 
 export default function WelcomePage() {
   const { session } = useSession();
 
   return (
+    <div className="welcome_page">
+    <div className="background-image"></div>
     <div className="welcome_page">
       {!session.info.isLoggedIn ? (
         <>
@@ -32,11 +35,15 @@ export default function WelcomePage() {
         </>
       ) : (
         <div className="map-container">
-          <div className="map" data-aos="fade-down">
+          <div className="map-identifier" data-aos="fade-up">
+           <MapIdentifier />
+          </div>
+          <div className="map">
             <OSMap />
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }

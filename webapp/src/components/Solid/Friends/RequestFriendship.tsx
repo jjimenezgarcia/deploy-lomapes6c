@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import LoginForm from "../../Pages/LoginPage/LoginPage";
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 
 const RequestFriendship = () => {
@@ -16,7 +15,7 @@ const RequestFriendship = () => {
   };
 
   return !session.info.isLoggedIn ? (
-    <LoginForm />
+    <h1>Not logged in</h1>
   ) : (
     <div>
       <h1>Request Friendship</h1>
