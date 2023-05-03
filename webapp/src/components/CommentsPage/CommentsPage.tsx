@@ -28,7 +28,7 @@ export default function CommentsPage(props: any) {
 
     const webId  = getSessionWebID().webId;
 
-    const markerUrl = webId + markerData.title;
+    const markerUrl = webId.replace(/\/profile\/card#me/, '/public/markers/') + markerData.title;
 
     await writeMarkerToDataSet(
       markerUrl,

@@ -16,10 +16,9 @@ function isData(element : any, index : number, array: any) {
   return (element !== "No data"); 
 }
 
-export async function readFromFriendDataSet(friendUrl: string) {
-  const { session } = getSessionWebID();
-  const datasetUrl = friendUrl.replace(/\/profile\/card#me/, '/public/markers');
+export async function readFromDataSetUrl(datasetUrl: string) {
 
+  const { session } = getSessionWebID();
   // Obtenemos la url de cada marcador
   const myDataset = await getSolidDataset(datasetUrl, { fetch: session.fetch });
 
@@ -49,6 +48,12 @@ export async function readFromFriendDataSet(friendUrl: string) {
   return newMarkers;
 }
 
+export async function readFromFriendDataSet(friendUrl: string) {
+  
+  const datasetUrl = friendUrl.replace(/\/profile\/card#me/, '/public/markers');
+  return await readFromDataSetUrl(datasetUrl);
+}
+
 
 export async function getAllFriendsFromPod() { 
 
@@ -58,11 +63,11 @@ export async function getAllFriendsFromPod() {
   const userId = webId.split("#")[0]
 
   const profile = getThing(await getSolidDataset(userId), webId)
+  console.log(profile);
   if (profile !== null) {
     let friendsAndUser = getUrlAll(profile, FOAF.knows);
-
     const filteredFriends = friendsAndUser.filter((e: string) => e !== webId);
-  
+    
     return filteredFriends;
   } else {
     return null

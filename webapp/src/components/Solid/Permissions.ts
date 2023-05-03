@@ -28,7 +28,6 @@ export const createAclForMarkers = async () => {
 // Crear un acl con permisos de owner para cada uno de los marcadores del dataset
 export const createAclForMarker = async (markerUrl: string) => {
   const {session, webId} = getSessionWebID()
-  console.log("vamos a crear un acl para el marker: " + markerUrl)
 
   try {
     let file: any = await solid.getFile(markerUrl, { fetch: session.fetch })
@@ -38,8 +37,6 @@ export const createAclForMarker = async (markerUrl: string) => {
     const updatedAcl = solid.setAgentResourceAccess(acl, webId, { read: true, append: true, write: true, control: true })
 
     await solid.saveAclFor(file, updatedAcl, { fetch: session.fetch })
-
-    console.log("acl creado para el marker: " + markerUrl)
 
   } catch (error) {
     console.log(error)
