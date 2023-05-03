@@ -7,6 +7,8 @@ import CommentsPage from "../CommentsPage/CommentsPage";
 import { useState } from "react";
 import FilterHamburger from "./Markers/Filters/Hamburger/FilterHamburger";
 import FriendsPage from "./Markers/Filters/Friend/FriendsPage";
+import { getMarkerIcon } from "./icon";
+import MarkerInfo from "./Markers/Information/MarkerInfo";
 var map: L.Map;
 
 export interface Marker {
@@ -26,44 +28,40 @@ export function ShowMarkersFromPromise(promise: any) {
 
 export function ShowMarkersFulfilledPromise(array: any[] | null) {
   if (array === null) return;
-  console.table(array);
   array.forEach((element: any) => {
-    console.log(element)
     let marker = L.marker([element.lat, element.lng], {
-      icon: markerIcon,
+      icon: getMarkerIcon(element.type),
       draggable: false,
     });
     marker.addTo(map);
-    marker.bindPopup(element.tile).openPopup();
   });
 }
 
 export function clearMarkers() {
   map.eachLayer(function (layer) {
     if (layer instanceof L.Marker) {
-      console.log(layer);
       map.removeLayer(layer);
     }
   });
 }
 
-const markerIcon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png",
-  iconSize: [30, 30],
-});
 
 export function OSMap() {
   const [markerForm, setMarkerForm] = useState(false);
   const [friendsFilter, setFriendsFilter] = useState(false);
   const [cords, setCords] = useState<number[]>([0, 0]);
-  const [, setMapName] = useState("Mi mapa");
-  
+  const [markerInfo, setMarkerInfo] = useState(false);
+
   function cancelMarker() {
     setMarkerForm(false);
   }
 
   function changeFriendFilter() {
     setFriendsFilter(!friendsFilter);
+  }
+  
+  function changeMarkerInfo() {
+    setMarkerInfo(!markerInfo);
   }
 
   function MyComponent() {
@@ -78,14 +76,14 @@ export function OSMap() {
     return null;
   }
 
-  function submit() {
+  function submit(type: string) {
     let marker = L.marker([cords[0], cords[1]], {
-      icon: markerIcon,
+      icon: getMarkerIcon(type),
       draggable: false,
     });
 
     marker.addTo(map);
-    marker.bindPopup(marker.getLatLng().toString()).openPopup();
+    marker.on('click', changeMarkerInfo);
 
     setMarkerForm(false);
   }
@@ -106,7 +104,7 @@ export function OSMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {!markerForm && !friendsFilter && <MyComponent />}
+          {!markerForm && !friendsFilter && !markerInfo && <MyComponent />}
         </MapContainer>
         {markerForm && (
           <div className="comment">
@@ -119,9 +117,19 @@ export function OSMap() {
           </div>
         )}
 
+        {markerInfo && (
+          <div className="comment">
+            <MarkerInfo
+              key={markerForm}
+              lat={cords}
+              onSubmit={submit}
+              onChange={cancelMarker}
+            />
+          </div>
+        )}
         {friendsFilter && (
           <div className="comment">
-            <FriendsPage changeMapName={ (name: string) => {setMapName(name)}} onChange={changeFriendFilter}/>
+            <FriendsPage onChange={changeFriendFilter}/>
           </div>
         )}
       </div>

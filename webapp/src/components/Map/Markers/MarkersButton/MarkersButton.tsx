@@ -1,19 +1,20 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useState } from "react";
-import { readFromDataSet } from "../../../Solid/ReadFromPod";
+import { readFromDataSetUrl } from "../../../Solid/ReadFromPod";
 import { ShowMarkersFromPromise } from "../../OSMap";
 import "./MarkersButton.css";
 import "../Filters/FilterButton.css";
+import { getSessionWebID } from "../../../Solid/Session";
 
 export default function Markers() {
-  const [markers, setMarkers] = useState(readFromDataSet());
+  const [markers, setMarkers] = useState(readFromDataSetUrl(getSessionWebID().webId));
 
   return (
     <div>
       <button 
         className="button-markers"
         onClick={async () => {
-          setMarkers(readFromDataSet());
+          setMarkers(readFromDataSetUrl(getSessionWebID().webId));
           ShowMarkersFromPromise(markers);
         }}
       >

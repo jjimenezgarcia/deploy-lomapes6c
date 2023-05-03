@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { getAllFriendsFromPod, readFromDataSet, readFromFriendDataSet } from "../../../../Solid/ReadFromPod";
-import { ShowMarkersFromPromise, ShowMarkersFulfilledPromise } from "../../../OSMap";
+import { getAllFriendsFromPod, readFromDataSetUrl} from "../../../../Solid/ReadFromPod";
+import { ShowMarkersFulfilledPromise } from "../../../OSMap";
 import "./FriendsPage.css";
 export default function FriendsPage(props: any){
 
-    const [markers, setMarkers] = useState<any[]>([]);
+    const [, setMarkers] = useState<any[]>([]);
     const [friends, setFriends] = useState([]);
 
     var markersToAdd: any[] = [];
     async function readFromFriend(url: string) {
       try {
-        const markersArray = await readFromFriendDataSet(url);
+        const markersArray = await readFromDataSetUrl(url);
         markersToAdd = markersArray;
       } catch (error) {
         console.error(error);
@@ -31,7 +31,6 @@ export default function FriendsPage(props: any){
     const clickOnFriend = async (friend: string) => {
         await readFromFriend(friend);
         ShowMarkersFulfilledPromise(markersToAdd);
-        props.changeMapName(getFriendName(friend));
         cancelFilter();
     }
     

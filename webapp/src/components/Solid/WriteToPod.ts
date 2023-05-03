@@ -40,7 +40,6 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
   // Crear un dataset vacío
   let courseSolidDataset = createSolidDataset();
 
-  // Create a new Thing type Person
   const newThing = buildThing(createThing({ name: marker.title }))
     .addStringNoLocale(SCHEMA_INRUPT.name, marker.title)
     .addStringNoLocale(SCHEMA_INRUPT.latitude, marker.lat.toString())
@@ -48,15 +47,11 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
     .addStringNoLocale(SCHEMA_INRUPT.text, marker.comment)
     .addStringNoLocale(SCHEMA_INRUPT.model, marker.type) // TODO: es el tipo de marker, camiarlo a un atributo apropiado
     .addStringNoLocale(SCHEMA_INRUPT.description, JSON.stringify(marker))
+    .addStringNoLocale(SCHEMA_INRUPT.value, marker.score.toString())
     .addUrl(RDF.type, rdfType)
-    
-  if (marker.score <= 10 && marker.score >= 0) {
-    newThing.addStringNoLocale(SCHEMA_INRUPT.value, marker.score.toString())
-  }
+    .build();
 
-  const thingToAdd = newThing.build()
-
-  courseSolidDataset = setThing(courseSolidDataset, thingToAdd);
+  courseSolidDataset = setThing(courseSolidDataset, newThing);
 
   await saveSolidDatasetAt(
       podUrl,

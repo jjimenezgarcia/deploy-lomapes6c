@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import "./CommentsPage.css";
-import { Marker } from "../Map/OSMap";
-import { writeMarkerToDataSet } from "../Solid/WriteToPod";
+import { useState } from "react";
+import { createAclForMarker } from "../../../Solid/Permissions";
+import { writeMarkerToDataSet } from "../../../Solid/WriteToPod";
+import { getSessionWebID } from "../../../Solid/Session";
+import { Marker } from "../../OSMap";
 import { Rating } from "react-simple-star-rating";
-import { createAclForMarker } from "../Solid/Permissions";
-import { getSessionWebID } from "../Solid/Session";
 
-export default function CommentsPage(props: any) {
+export default function MarkerInfo(props: any) {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const [markerType, setMarkerType] = useState("restaurant");

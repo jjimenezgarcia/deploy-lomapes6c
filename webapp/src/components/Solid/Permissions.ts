@@ -1,6 +1,6 @@
 import * as solid from '@inrupt/solid-client'
 import { getMarkersUrl, getSessionWebID } from './Session';
-import { getMyMarkers } from './ReadFromPod';
+import { readFromDataSetUrl } from './ReadFromPod';
 
 // Crear una acl
 export const createAclForMarkers = async () => {
@@ -126,7 +126,7 @@ export const removeFriendPermissionsToMarkers = async (friendWebId: string, data
 }
 
 export const removeFriendPermissionsForAllMarkers = async (friendWebId: string) => {
-  const markers = await getMyMarkers()
+  const markers = await readFromDataSetUrl(getSessionWebID().webId)
 
   if (markers !== undefined) {
     markers.forEach(async (marker) => {
@@ -136,9 +136,7 @@ export const removeFriendPermissionsForAllMarkers = async (friendWebId: string) 
 }
 
 export const addFriendPermissionsForAllMarkers = async (friendWebId: string) => {
-  const markers = await getMyMarkers()
-
-  
+  const markers = await readFromDataSetUrl(getSessionWebID().webId)
 
   if (markers !== undefined) {
     markers.forEach(async (marker) => {
