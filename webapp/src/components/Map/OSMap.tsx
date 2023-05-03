@@ -26,7 +26,9 @@ export function ShowMarkersFromPromise(promise: any) {
 
 export function ShowMarkersFulfilledPromise(array: any[] | null) {
   if (array === null) return;
+  console.table(array);
   array.forEach((element: any) => {
+    console.log(element)
     let marker = L.marker([element.lat, element.lng], {
       icon: markerIcon,
       draggable: false,
