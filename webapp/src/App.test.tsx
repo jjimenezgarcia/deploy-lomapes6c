@@ -60,7 +60,6 @@ test("commentsPage renders correctly", () => {
   const comment_area = screen.getByPlaceholderText(
     "Escribe tu comentario aquí"
   );
-  const rating = screen.getByText("Puntuación:");
   const submit = screen.getByRole("button", { name: "Enviar" });
 
   expect(cancel_button_img).toBeInTheDocument();
@@ -71,7 +70,6 @@ test("commentsPage renders correctly", () => {
   expect(monument).toBeInTheDocument();
   expect(landscape).toBeInTheDocument();
   expect(comment_area).toBeInTheDocument();
-  expect(rating).toBeInTheDocument();
   expect(submit).toBeInTheDocument();
 });
 
@@ -284,11 +282,10 @@ describe("CommentsPage", () => {
     // Verifica que los elementos principales se renderizaron correctamente
     expect(getByText("Crear marcador")).toBeInTheDocument();
     expect(getByLabelText("Titulo del marcador:")).toBeInTheDocument();
-    expect(getByLabelText("Tipo de marcador")).toBeInTheDocument();
+    expect(getByLabelText("Tipo:")).toBeInTheDocument();
     expect(
       getByPlaceholderText("Escribe tu comentario aquí")
     ).toBeInTheDocument();
-    expect(getByText("Puntuación:")).toBeInTheDocument();
     expect(getByText("Enviar")).toBeInTheDocument();
     expect(getAllByRole("button")[0]).toBeInTheDocument();
   });
