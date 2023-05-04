@@ -1,7 +1,7 @@
 // Test if the component renders correctly
 
 import { render, screen } from "@testing-library/react";
-import { FilterRestaurant } from "./FilterRestaurant";
+import { FilterMonument } from "./FilterMonument";
 
 jest.mock("@inrupt/solid-client-authn-browser", () => ({
 	getDefaultSession: () => ({
@@ -22,13 +22,13 @@ const dbMarkers = [
 ];
 
 jest.mock("@inrupt/solid-client", () => ({
-	getSolidDataset: (datasetUrl, fetch) => ({
+	getSolidDataset: (datasetUrl: any, fetch: any) => ({
 		dbMarkers
 	}),
-  getThingAll: (dataset) => ([{
+  getThingAll: (dataset: any) => ([{
     dbMarkers
   }]),
-  getStringNoLocale: (thing, field) => {
+  getStringNoLocale: (thing: any, field: string) => {
     if (field === "name") {
       return "Marker 1";
     }
@@ -37,14 +37,14 @@ jest.mock("@inrupt/solid-client", () => ({
 
 describe("FilterRestaurant component", () => {
   it("should render the button with the correct image", () => {
-    const { getByRole } = render(<FilterRestaurant />);
+    const { getByRole } = render(<FilterMonument />);
     const button = getByRole("button");
     const image = getByRole("img");
     expect(button).toBeInTheDocument();
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute(
       "src",
-      "https://img.icons8.com/color/512/restaurant-.png"
+      "https://cdn-icons-png.flaticon.com/512/1321/1321018.png"
     );
   });
 
