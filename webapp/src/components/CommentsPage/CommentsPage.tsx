@@ -24,11 +24,14 @@ export default function CommentsPage(props: any) {
       title: title.replace(" ", "_"),
       type: markerType,
       score: rating,
+      image: undefined,
     };
 
-    const webId  = getSessionWebID().webId;
+    const webId = getSessionWebID().webId;
 
-    const markerUrl = webId.replace(/\/profile\/card#me/, '/public/markers/') + markerData.title;
+    const markerUrl =
+      webId.replace(/\/profile\/card#me/, "/public/markers/") +
+      markerData.title;
 
     await writeMarkerToDataSet(
       markerUrl,
@@ -83,10 +86,12 @@ export default function CommentsPage(props: any) {
       </div>
       <div className="main_form">
         <div className="commentform" id="formulario">
-          <form className="form" onSubmit={handleSubmit} >
+          <form className="form" onSubmit={handleSubmit}>
             <h1 style={{ color: "black" }}>Crear marcador</h1>
             <div className="form_field">
-              <label htmlFor="markerTitle" style={{ color: "black" }}>Titulo del marcador:</label>
+              <label htmlFor="markerTitle" style={{ color: "black" }}>
+                Titulo del marcador:
+              </label>
               <input
                 id="markerTitle"
                 type="text"
@@ -122,9 +127,7 @@ export default function CommentsPage(props: any) {
 
             <div>
               <label htmlFor="score"></label>
-              <Rating
-                onClick={handleRating}
-              />
+              <Rating onClick={handleRating} />
             </div>
 
             <div className="form_field">

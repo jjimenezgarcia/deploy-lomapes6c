@@ -6,6 +6,7 @@ import {
     buildThing,
     setThing,
     saveSolidDatasetAt,
+    saveFileInContainer,
   } from "@inrupt/solid-client";
 import { Marker } from "../../components/Map/OSMap";
 import { getSessionWebID } from "./Session";
@@ -60,23 +61,35 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
   );
 } 
 
-export async function uploadFileToPod(file: File, imageUrl: string) {
+async function createImagesContainer() {
+  const {session, webId} = getSessionWebID();
+  if (!session) {
+    throw new Error("User is not logged in");
+  }
+  try {
+    const podUrl = webId.replace(/\/profile\/card#me/, '/public/images');
+    const imagesContainerUrl = createSolidDataset();
+    await saveSolidDatasetAt(
+      podUrl,
+      imagesContainerUrl,
+      { fetch: session.fetch } // fetch from authenticated Session
+  );
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+export async function writeImageToDataSet(imageFile : File) {
   const {session} = getSessionWebID();
   if (!session) {
     throw new Error("User is not logged in");
   }
-
-  const headers = new Headers();
-  headers.append("Content-Type", file.type);
-
-  const response = await fetch(imageUrl, {
-    method: "POST",
-    headers: headers,
-    body: file,
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to upload file: ${response.status}`);
-  }
-  
+  try {
+    const fileUrl = "https://campa2.inrupt.net/public/images"
+    let savedFile = await saveFileInContainer(fileUrl, imageFile, { slug: imageFile.name, contentType: imageFile.type, fetch: session.fetch })
+  } catch(error) {
+    console.log(error)
+    // await createImagesContainer()
+    // await writeImageToDataSet(imageFile);
+  } 
 }

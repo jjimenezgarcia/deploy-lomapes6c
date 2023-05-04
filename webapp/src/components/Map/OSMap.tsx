@@ -19,15 +19,24 @@ export interface Marker {
   title: string;
   type: string;
   score: number;
+  image: any;
 }
 
-export function ShowMarkersFromPromise(promise: any, changeMarkerInfo: () => void, changeLoading: () => void) {
+export function ShowMarkersFromPromise(
+  promise: any,
+  changeMarkerInfo: () => void,
+  changeLoading: () => void
+) {
   promise.then((array: any) => {
     ShowMarkersFulfilledPromise(array, changeMarkerInfo, changeLoading);
   });
 }
 
-export function ShowMarkersFulfilledPromise(array: any[] | null, changeMarkerInfo: () => void, changeLoading: () => void) {
+export function ShowMarkersFulfilledPromise(
+  array: any[] | null,
+  changeMarkerInfo: () => void,
+  changeLoading: () => void
+) {
   if (array === null) return;
   array.forEach((element: any) => {
     let marker = L.marker([element.lat, element.lng], {
@@ -36,7 +45,7 @@ export function ShowMarkersFulfilledPromise(array: any[] | null, changeMarkerInf
       title: element.title,
     });
     marker.addTo(map);
-    marker.on('click', changeMarkerInfo);
+    marker.on("click", changeMarkerInfo);
   });
   changeLoading();
 }
@@ -57,7 +66,6 @@ export function OSMap() {
   const [marker, setMarker] = useState<Marker>();
   const [isLoading, setIsLoading] = useState(false);
 
-
   function cancelMarker() {
     setMarkerForm(false);
   }
@@ -65,8 +73,8 @@ export function OSMap() {
   function changeFriendFilter() {
     setFriendsFilter(!friendsFilter);
   }
-  
-  function invertMarkerInfo(){
+
+  function invertMarkerInfo() {
     setMarkerInfo(!markerInfo);
   }
 
@@ -75,7 +83,7 @@ export function OSMap() {
     invertMarkerInfo();
   }
 
-  function changeLoading(){
+  function changeLoading() {
     setIsLoading((prevIsLoading) => {
       const newIsLoading = !prevIsLoading;
       return newIsLoading;
@@ -101,21 +109,25 @@ export function OSMap() {
     });
 
     marker.addTo(map);
-    marker.on('click', changeMarkerInfo);
+    marker.on("click", changeMarkerInfo);
 
     setMarkerForm(false);
   }
 
   return (
     <div className="map" style={{ position: "relative", height: "65vh" }}>
-    {isLoading && (
-      <div className="loading">
-        <ReactLoading type="spin" color="#000" height={50} width={50} />
-      </div>
-    )}
-    <div>
+      {isLoading && (
+        <div className="loading">
+          <ReactLoading type="spin" color="#000" height={50} width={50} />
+        </div>
+      )}
+      <div>
         <div className="filters">
-         <FilterHamburger changeLoading={changeLoading} changeFriendFilter={changeFriendFilter} changeMarkerInfo={changeMarkerInfo}/>
+          <FilterHamburger
+            changeLoading={changeLoading}
+            changeFriendFilter={changeFriendFilter}
+            changeMarkerInfo={changeMarkerInfo}
+          />
         </div>
         <MapContainer
           center={[51.505, -0.09]}
@@ -149,12 +161,14 @@ export function OSMap() {
         )}
         {friendsFilter && (
           <div className="comment">
-            <FriendsPage changeLoading={changeLoading} changeMarkerInfo={changeMarkerInfo} onChange={changeFriendFilter}/>
+            <FriendsPage
+              changeLoading={changeLoading}
+              changeMarkerInfo={changeMarkerInfo}
+              onChange={changeFriendFilter}
+            />
           </div>
         )}
       </div>
     </div>
   );
 }
-
-
