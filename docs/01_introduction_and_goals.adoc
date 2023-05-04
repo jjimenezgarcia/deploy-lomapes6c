@@ -6,7 +6,7 @@ La petición del ayuntamiento de la ciudad de Bruselas es una aplicación que pe
 
 === Descripción general de los requisitos
 
-==== Requisitos de alto nivel:
+==== Requisitos de alto nivel
 * La aplicación permitirá a los usuarios visualizar un mapa donde estos podrán añadir diferentes marcadores.
 * Permitirá añadir diferentes tipos de marcadores dependiendo de si este se trata de un restaurante, un bar, un monumento, un paisaje o una tienda.
 * En la creacion de estos marcadores se permitirá añadir comentarios o valoraciones, puntuaciones, fotos de estos lugares.
@@ -32,31 +32,10 @@ La petición del ayuntamiento de la ciudad de Bruselas es una aplicación que pe
 |===
 
 
-=== Stakeholders
-
-[role="arc42help"]
-****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
-
+=== Stakeholders / Personas interesadas
 [options="header",cols="1,2,2"]
 |===
-|Role/Name|Contact|Expectations
+|Role/Nombre|Contacto|Expectativas
 | Equipo de desarrollo | HappySw | Desarrollar la aplicación según las especificaciones y requisitos del cliente
 | Cliente | Ayuntamiento de Bruselas | Se espera que entregue una especificación de los requisitos y que siga el projecto para comprobar que se ajusta a los requisitos especificados. También se espera que pueda añadir sitios, comentarios, valoraciones, etc a la aplicación
 | Cliente Potencial | Ayuntamientos de otras ciudades | No se espera que participe en el proyecto, pero se espera que pueda contratar el servicio para tener la aplicación en el futuro para su ciudad

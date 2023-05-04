@@ -1,17 +1,26 @@
 [[section-runtime-view]]
-== Runtime View
+== Vista de tiempo de ejecución
 
-=== Login
-image::login.png["Login"]
+=== Inicio de sesión
+:imagesdir: images/
+image:login.png["Login"]
 
-=== Add Marker
-image::addMarker.png["Add marker"]
+=== Añadir marcador
+Partiendo del inicio correcto en sesión (primera imagen).
+:imagesdir: images/
+image:addMarker.png["Add marker"]
 
-=== Remove Marker
-image::removeMarker.png["Remove marker"]
+=== Eliminar marcador
+Partiendo del inicio correcto en sesión (primera imagen).
+:imagesdir: images/
+image:removeMarker.png["Remove marker"]
 
-=== Share Marker
-image::shareMarker.png["Share marker"]
+=== Compartir marcador
+Partiendo del inicio correcto en sesión (primera imagen).
+:imagesdir: images/
+image:shareMarker.png["Share marker"]
 
-=== Filter
-image::filter.png["Filter"]
+=== Filtrar
+Partiendo del inicio correcto en sesión (primera imagen).
+:imagesdir: images/
+image:filter.png["Filter"]

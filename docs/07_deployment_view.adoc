@@ -1,16 +1,14 @@
 [[section-deployment-view]]
 
 
-== Deployment View
-
-image::technical_context.png["Deployment View"]
-
-Previamente mencionado en el diagrama de contexto técnico:
+== Vista de implementación
+:imagesdir: images/
+image:technical_context.png["Deployment View"]
 
 *Funcionamiento*
 
-El usuario accederá a una aplicación web dockerizada tanto en front como en back. Existe conexión entre el back-end y los almacenes persistentes, de donde extrae información tanto del usuario actual como de los marcadores de todos los usuarios.
+El usuario accederá a una aplicación web dockerizada en webapp. Existe conexión entre el webapp y el pod provider, de donde extrae información de los usuarios.
 
-Las peticiones se realizan por HTTP al front-end, que se comunica con el back-end esperando respuestas en JSON.
+Las peticiones se realizan por HTTP al webapp.
 
 La aplicación sigue un esquema cliente-servidor, con la inclusión de los PODs personales.
