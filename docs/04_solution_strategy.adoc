@@ -12,8 +12,7 @@ Las diferentes tecnologias utilizadas en nuestra aplicación serán las siguient
     * NodeJS: se escogió este entorno para desarrollar el backend de la aplicación , ya que permitira que esta sea facilmente escalable y rápida.
     
     * React: se utilizara esta biblioteca para crear las interfaces de usuario para la aplicación, ya que permite hacer interfaces mas complejas al ser sus componentes independientes y, por tanto, reusables. 
-      
-    * MondoDB: se ha decidido utilizar esta base de datos ya que se trata de una base de datos no relacional que cumple todos los requisitos necesarios para el correcto funcionamiento de la aplicación.
+
 
 === Decisiones de calidad
     * Privacidad -> uso de SOLID para asegurar la privacidad de los datos de todos los clientes ya que cada uno de nuestros clientes tendra un POD personal en el que almacenará sus datos personales y del cual tendrá el control absoluto, cediendo a la aplicación los datos que considere oportunos.
