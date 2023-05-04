@@ -7,8 +7,8 @@ image:technical_context.png["Deployment View"]
 
 *Funcionamiento*
 
-El usuario accederá a una aplicación web dockerizada en front. Existe conexión entre el front-end y los PODs, de donde extrae información tanto de los usuarios.
+El usuario accederá a una aplicación web dockerizada en webapp. Existe conexión entre el webapp y el pod provider, de donde extrae información de los usuarios.
 
-Las peticiones se realizan por HTTP al front-end.
+Las peticiones se realizan por HTTP al webapp.
 
 La aplicación sigue un esquema cliente-servidor, con la inclusión de los PODs personales.

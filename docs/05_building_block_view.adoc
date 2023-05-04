@@ -24,12 +24,12 @@ En este apartado profundizamos en el sistema LoMap.
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
-| _Front-end_ |  _Contiene las interfaces de usuario. Permite que los clientes finales de la aplicación puedan interactuar con esta. Además, a través de ella se recopilan datos del cliente._
+| _webapp_ |  _Contiene las interfaces de usuario. Permite que los clientes finales de la aplicación puedan interactuar con esta. Además, a través de ella se recopilan datos del cliente._
 |===
 
 === Level 3
-Front-end::
-En este apartado profundizamos en el frontend (webapp) del sistema, con la cual el cliente de la aplicación interactúa.
+Webapp::
+En este apartado profundizamos en el webapp del sistema, con la cual el cliente de la aplicación interactúa.
 [options="header",cols="1,2"]
 |===
 |Nombre|Responsabilidad
