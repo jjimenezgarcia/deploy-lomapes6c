@@ -275,7 +275,7 @@ describe("CommentsPage", () => {
       onSubmit: jest.fn(),
       onChange: jest.fn(),
     };
-
+ 
     const { getByText, getByLabelText, getByPlaceholderText, getAllByRole } =
       render(<CommentsPage {...props} />);
 
