@@ -4,7 +4,7 @@ import L, { LeafletMouseEvent } from "leaflet";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import CommentsPage from "../CommentsPage/CommentsPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterHamburger from "./Markers/Filters/Hamburger/FilterHamburger";
 import FriendsPage from "./Markers/Filters/Friend/FriendsPage";
 import { getMarkerIcon } from "./icon";
@@ -38,6 +38,7 @@ export function ShowMarkersFulfilledPromise(array: any[] | null, changeMarkerInf
     marker.addTo(map);
     marker.on('click', changeMarkerInfo);
   });
+  changeLoading();
 }
 
 export function clearMarkers() {
@@ -75,7 +76,10 @@ export function OSMap() {
   }
 
   function changeLoading(){
-    setIsLoading(!isLoading);
+    setIsLoading((prevIsLoading) => {
+      const newIsLoading = !prevIsLoading;
+      return newIsLoading;
+    });
   }
 
   function MyComponent() {
