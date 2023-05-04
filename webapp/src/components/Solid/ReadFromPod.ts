@@ -3,7 +3,8 @@ import {
     getSolidDataset,
     getStringNoLocale,
     getThingAll,
-    getUrlAll
+    getUrlAll,
+    getFile
   } from "@inrupt/solid-client";
 import { SCHEMA_INRUPT } from "@inrupt/vocab-common-rdf";
 import { FOAF } from "@inrupt/vocab-common-rdf";
@@ -66,4 +67,37 @@ export async function getAllFriendsFromPod() {
     return null
   }
   
+  }
+
+  export async function getImageFromMarker(imageTitle: string) {
+    const {session, webId} = getSessionWebID();
+    if (!session) {
+      throw new Error("User is not logged in");
+    }
+
+    try {
+      const podUrl = webId.replace(/\/profile\/card#me/, '/public/images');
+      let blob = await getFile(
+        podUrl + imageTitle + ".png",
+        { fetch: session.fetch }
+  
+      );
+
+
+      var name = ""
+
+      if (blob.internal_resourceInfo.sourceIri.split("/").pop() === undefined) {
+        name = "image.png"
+      }
+      else {
+        name = blob.internal_resourceInfo.sourceIri.split("/").pop()!
+      }
+
+      var file = new File([blob], name, {type: blob.type});
+
+      console.log(file)
+      return file
+    } catch (error) {
+      return undefined
+    }
   }

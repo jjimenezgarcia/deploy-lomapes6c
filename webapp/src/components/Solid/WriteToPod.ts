@@ -6,9 +6,11 @@ import {
     buildThing,
     setThing,
     saveSolidDatasetAt,
+    saveFileInContainer,
   } from "@inrupt/solid-client";
 import { Marker } from "../../components/Map/OSMap";
 import { getSessionWebID } from "./Session";
+import { createAclForMarker } from "./Permissions";
 
 // podUrl must be correct for the moment
 export async function writeDataToNewDataSet(podUrl: string, thingName: string, thingTitle: string, rdfType: string) {
@@ -31,6 +33,23 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
         courseSolidDataset,
         { fetch: session.fetch } // fetch from authenticated Session
     );
+  }
+
+  export function writeCommentToDataSet(marker : Marker) {
+    const { webId } = getSessionWebID();
+    const markerUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + marker.title;
+    
+    writeMarkerToDataSet(
+      markerUrl,
+      marker,
+      "https://schema.org/location"
+    ).catch((error) => {
+      console.log(error);
+    });
+
+    createAclForMarker(markerUrl).catch((error) => {
+      console.log(error);
+    });
   }
 
 export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfType: string) {
@@ -58,25 +77,30 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
       courseSolidDataset,
       { fetch: session.fetch } // fetch from authenticated Session
   );
-} 
+}
 
-export async function uploadFileToPod(file: File, imageUrl: string) {
-  const {session} = getSessionWebID();
+export async function writeImageToDataSet(imageFile : File, markerTitle : string) {
+  const {session, webId} = getSessionWebID();
   if (!session) {
     throw new Error("User is not logged in");
   }
+  try {
 
-  const headers = new Headers();
-  headers.append("Content-Type", file.type);
+    const dataset = createSolidDataset();
+    
+    const podUrl = webId.replace(/\/profile\/card#me/, '/public/images/');
 
-  const response = await fetch(imageUrl, {
-    method: "POST",
-    headers: headers,
-    body: file,
-  });
+    await saveSolidDatasetAt(
+      podUrl,
+      dataset,
+      { fetch: session.fetch } // fetch from authenticated Session
+  );
 
-  if (!response.ok) {
-    throw new Error(`Failed to upload file: ${response.status}`);
-  }
-  
+
+    const fileUrl = webId.replace(/\/profile\/card#me/, '/public/images/');
+    let savedFile = await saveFileInContainer(fileUrl, imageFile, { slug: imageFile.name, contentType: imageFile.type, fetch: session.fetch })
+    console.log(savedFile)
+  } catch(error) {
+    console.log(error)
+  } 
 }
