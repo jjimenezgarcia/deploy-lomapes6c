@@ -26,4 +26,4 @@ export const getMarkerIcon = (type: string) => {
       default:
         return markerIcon;
     }
-    };
+};

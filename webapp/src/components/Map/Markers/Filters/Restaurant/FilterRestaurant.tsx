@@ -1,22 +1,27 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useState } from "react";
 import { readFromDataSetUrl } from "../../../../Solid/ReadFromPod";
-import { clearMarkers, ShowMarkersFromPromise } from "../../../OSMap";
+import { clearMarkers, ShowMarkersFulfilledPromise } from "../../../OSMap";
 import { filterByType } from "../Filter";
 import "../FilterButton.css";
 import { getSessionWebID } from "../../../../Solid/Session";
 
-export function FilterRestaurant() {
-  const [markers, setMarkers] = useState(readFromDataSetUrl(getSessionWebID().webId));
+export function FilterRestaurant(props: any) {
+  const [markers,] = useState(readFromDataSetUrl(getSessionWebID().webId));
+
+  const loadRestaurants = async () => {
+    clearMarkers();
+    ShowMarkersFulfilledPromise(await filterByType(markers, "restaurant"), props.changeMarkerInfo, props.changeLoading);
+  };
+  
   return (
     <div>
       <button
         name="boton-restaurante"
         className="filter-button"
-        onClick={async () => {
-          clearMarkers();
-          setMarkers(readFromDataSetUrl(getSessionWebID().webId));
-          ShowMarkersFromPromise(filterByType(markers, "restaurant"));
+        onClick={() => {
+          props.changeLoading();
+          loadRestaurants();
         }}
       >
         <img

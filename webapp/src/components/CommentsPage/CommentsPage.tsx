@@ -97,7 +97,7 @@ export default function CommentsPage(props: any) {
               />
             </div>
             <div className="form_field">
-              <label htmlFor="marker-options">Tipo de marcador</label>
+              <label htmlFor="marker-options">Tipo: </label>
               <select
                 name="marker-options"
                 id="marker-options"
@@ -121,7 +121,7 @@ export default function CommentsPage(props: any) {
             </div>
 
             <div>
-              <label htmlFor="score">Puntuación:</label>
+              <label htmlFor="score"></label>
               <Rating
                 onClick={handleRating}
               />

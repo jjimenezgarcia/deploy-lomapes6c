@@ -29,8 +29,10 @@ export default function FriendsPage(props: any){
     }
 
     const clickOnFriend = async (friend: string) => {
+        props.changeLoading();
         await readFromFriend(friend);
-        ShowMarkersFulfilledPromise(markersToAdd);
+        ShowMarkersFulfilledPromise(markersToAdd, props.changeMarkerInfo, props.changeLoading);
+        props.changeLoading();
         cancelFilter();
     }
     
