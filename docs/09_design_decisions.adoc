@@ -1,5 +1,5 @@
 [[section-design-decisions]]
-== Design Decisions
+== Decisiones de diseño
 
 
 [role="arc42help"]
@@ -29,9 +29,9 @@ Various options:
 |===
 |Decisión|Detalles|Pros|Cons
 
-| Uso de Pods | Se utilizarán los Pods para almacenar la información de cada cliente | Seguridad de datos, escalabilidad y alta disponibilidad | Curva de aprendizaje, SetUp complejo
+|Uso de Pods|Se utilizarán los Pods para almacenar la información de cada cliente | Seguridad de datos, escalabilidad y alta disponibilidad | Curva de aprendizaje, SetUp complejo
 
-|React|Usaremos Reac como framework para realizar el frontend | Alta eficiencia, uso de componentes reutilizables y fácil integración | Curva de aprendizaje y no es un framework completo
+|React|Usaremos React como framework para realizar el frontend | Alta eficiencia, uso de componentes reutilizables y fácil integración | Curva de aprendizaje y no es un framework completo
 
 |TypeScript|Usaremos TypeScript para el desarrollo del frontend | Mejor seguridad debido al tipado estático, mejor calidad de código y amplia compatibilidad | Curva de aprendizaje, mas complejidad en algunos casos y tiempo de desarrollo adicional
 

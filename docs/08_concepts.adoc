@@ -50,9 +50,9 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 ****
 
 
-=== Domain model
-
-image::domain_model.png["Domain model diagram"]
+=== Modelo del dominio
+:imagesdir: images/
+image:domain_model.png["Domain model diagram"]
 
 
 
@@ -60,6 +60,6 @@ image::domain_model.png["Domain model diagram"]
 
 * Seguridad -> la seguridad de la aplicación es una caracteristica muy importante de la que se hay de preocupar, sobre todo en cuanto lo que se refiere a la información sensible de los usuarios. En este caso, serán ellos mismos quienes tengan el control de todos sus datos mediante los pods, llevando a que la aplicación no guarde datos privados del usuario. 
 
-* Persistencia -> se utilizara la base de datos no relacional MongoDB para ciertos datos que haya que guardar, que puedan ser comunes.
+* Persistencia -> no se utilizará ninguna base de datos, pues los datos a guardar se encontrarán en los PODs de los usuarios finales.
 
 * Testeabilidad -> la aplicación será testeada para comprobar y asegurar su correcto funcionamiento y ante cualquier nueva implementación se deberán realizar una serie de funcionalidad y rendiminto.
