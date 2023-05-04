@@ -149,7 +149,7 @@ export function OSMap() {
         )}
         {friendsFilter && (
           <div className="comment">
-            <FriendsPage onChange={changeFriendFilter}/>
+            <FriendsPage changeLoading={changeLoading} changeMarkerInfo={changeMarkerInfo} onChange={changeFriendFilter}/>
           </div>
         )}
       </div>

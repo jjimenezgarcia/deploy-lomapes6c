@@ -10,6 +10,7 @@ export const createAclForMarkers = async () => {
   // Obtener la url del dataset de marcadores
   const datasetUrl = getMarkersUrl(webId)
 
+  console.log(datasetUrl);
   try {
     let file: any = await solid.getFile(datasetUrl, { fetch: session.fetch })
 
@@ -78,14 +79,16 @@ export const deleteAclForMarker = async (datasetUrl : string) => {
 }
 
 // Darle permisos de escritura y lectura a un amigo
-export const addFriendPermissionsToMarker = async (friendWebId: string, datasetUrl : string) => {
+export const addFriendPermissionsToMarker = async (friendWebId: string, marker: any) => {
   
-  const {session} = getSessionWebID()
+  const {session, webId} = getSessionWebID()
+  const markerUrl = webId.replace(/\/profile\/card#me/, '/public/markers/' + marker.title);
 
   console.log("vamos a darle permisos de escritura y lectura a un amigo")
-  
-    try {
-      let datasetWithAcl: any = await solid.getSolidDatasetWithAcl(datasetUrl, { fetch: session.fetch })
+  console.log(friendWebId);
+  console.log(markerUrl);
+  try {
+      let datasetWithAcl: any = await solid.getSolidDatasetWithAcl(markerUrl, { fetch: session.fetch })
   
       let acl = solid.getResourceAcl(datasetWithAcl)
   
@@ -96,20 +99,19 @@ export const addFriendPermissionsToMarker = async (friendWebId: string, datasetU
       console.log("Permisos de escritura y lectura dados a un amigo")
 
     } catch (error) {
-      createAclForMarker(datasetUrl)
+      createAclForMarker(markerUrl)
     }
   
   }
 
 // Quitar los permisos de lectura y escritura a un amigo
-export const removeFriendPermissionsToMarkers = async (friendWebId: string, datasetUrl : string) => {
+export const removeFriendPermissionsToMarkers = async (friendWebId: string, marker : any) => {
     
-  const {session} = getSessionWebID()
+  const {session, webId} = getSessionWebID()
+  const markerUrl = webId.replace(/\/profile\/card#me/, '/public/markers/' + marker.title);
 
-  console.log("vamos a quitarle permisos de escritura y lectura a un amigo")
-  
     try {
-      let datasetWithAcl: any = await solid.getSolidDatasetWithAcl(datasetUrl, { fetch: session.fetch })
+      let datasetWithAcl: any = await solid.getSolidDatasetWithAcl(markerUrl, { fetch: session.fetch })
   
       let acl = solid.getResourceAcl(datasetWithAcl)
   
@@ -139,8 +141,8 @@ export const addFriendPermissionsForAllMarkers = async (friendWebId: string) => 
   const markers = await readFromDataSetUrl(getSessionWebID().webId)
 
   if (markers !== undefined) {
-    markers.forEach(async (marker) => {
+    for (const marker of markers) {
       await addFriendPermissionsToMarker(friendWebId, marker)
-    })
+    }
   }
 }

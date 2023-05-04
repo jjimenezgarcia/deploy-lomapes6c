@@ -58,7 +58,6 @@ export async function getAllFriendsFromPod() {
 
   const profile = getThing(await getSolidDataset(userId), webId)
   if (profile !== null) {
-    console.log(profile)
     let friendsAndUser = getUrlAll(profile, FOAF.knows);
     const filteredFriends = friendsAndUser.filter((e: string) => e !== webId);
     

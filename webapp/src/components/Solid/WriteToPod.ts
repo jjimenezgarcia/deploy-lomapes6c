@@ -6,6 +6,7 @@ import {
     buildThing,
     setThing,
     saveSolidDatasetAt,
+    getFile,
   } from "@inrupt/solid-client";
 import { Marker } from "../../components/Map/OSMap";
 import { getSessionWebID } from "./Session";
@@ -59,3 +60,24 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
       { fetch: session.fetch } // fetch from authenticated Session
   );
 } 
+
+export async function uploadFileToPod(file: File, imageUrl: string) {
+  const {session} = getSessionWebID();
+  if (!session) {
+    throw new Error("User is not logged in");
+  }
+
+  const headers = new Headers();
+  headers.append("Content-Type", file.type);
+
+  const response = await fetch(imageUrl, {
+    method: "POST",
+    headers: headers,
+    body: file,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to upload file: ${response.status}`);
+  }
+  
+}
