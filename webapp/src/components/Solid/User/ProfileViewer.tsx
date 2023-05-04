@@ -28,7 +28,29 @@ const ProfileViewer = () => {
 
   return (
     <Container fixed>
-      <Link to="/" style={{ color: "#ee7e51", fontWeight: "bold" }}>
+      <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
+        <Card
+          style={{ padding: "1.5em", marginTop: "3em", marginBottom: "2em" }}
+        >
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              <Text property={FOAF.name.iri.value} />
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <Text property={VCARD.role.iri.value} />
+            </Typography>
+          </CardContent>
+          <CardActionArea style={{ justifyContent: "center", display: "flex" }}>
+            <Image property={VCARD.hasPhoto.iri.value} width={480} />
+          </CardActionArea>
+        </Card>
+      </CombinedDataProvider>
+      <Link to="/start" style={{ color: "#ee7e51", fontWeight: "bold" }}>
         Mi mapa
       </Link>
       <LogoutButton>
