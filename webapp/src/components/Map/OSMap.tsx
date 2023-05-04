@@ -4,7 +4,7 @@ import L, { LeafletMouseEvent } from "leaflet";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useMapEvents } from "react-leaflet";
 import CommentsPage from "../CommentsPage/CommentsPage";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FilterHamburger from "./Markers/Filters/Hamburger/FilterHamburger";
 import FriendsPage from "./Markers/Filters/Friend/FriendsPage";
 import { getMarkerIcon } from "./icon";

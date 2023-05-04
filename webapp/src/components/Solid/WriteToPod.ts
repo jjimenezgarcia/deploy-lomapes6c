@@ -6,7 +6,6 @@ import {
     buildThing,
     setThing,
     saveSolidDatasetAt,
-    getFile,
   } from "@inrupt/solid-client";
 import { Marker } from "../../components/Map/OSMap";
 import { getSessionWebID } from "./Session";
