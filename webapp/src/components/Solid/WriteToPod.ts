@@ -10,6 +10,7 @@ import {
   } from "@inrupt/solid-client";
 import { Marker } from "../../components/Map/OSMap";
 import { getSessionWebID } from "./Session";
+import { createAclForMarker } from "./Permissions";
 
 // podUrl must be correct for the moment
 export async function writeDataToNewDataSet(podUrl: string, thingName: string, thingTitle: string, rdfType: string) {
@@ -32,6 +33,19 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
         courseSolidDataset,
         { fetch: session.fetch } // fetch from authenticated Session
     );
+  }
+
+  export function writeCommentToDataSet(marker : Marker) {
+    const { session, webId } = getSessionWebID();
+    const markerUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + marker.title;
+    
+    writeMarkerToDataSet(
+      markerUrl,
+      marker,
+      "https://schema.org/location"
+    )
+
+    createAclForMarker(markerUrl);
   }
 
 export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfType: string) {

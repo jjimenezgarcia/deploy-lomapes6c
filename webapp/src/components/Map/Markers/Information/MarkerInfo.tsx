@@ -9,7 +9,11 @@ import {
   readFromDataSetUrl,
 } from "../../../Solid/ReadFromPod";
 import ReactLoading from "react-loading";
-import { writeImageToDataSet } from "../../../Solid/WriteToPod";
+import {
+  writeCommentToDataSet,
+  writeImageToDataSet,
+  writeMarkerToDataSet,
+} from "../../../Solid/WriteToPod";
 
 export default function MarkerInfo(props: any) {
   const [comment, setComment] = useState("");
@@ -32,8 +36,8 @@ export default function MarkerInfo(props: any) {
     const onlyMarker = markers[0];
 
     const markerData: Marker = {
-      lat: onlyMarker.lat[0],
-      lng: onlyMarker.lat[1],
+      lat: onlyMarker.lat,
+      lng: onlyMarker.lng,
       comment: onlyMarker.comment,
       title: onlyMarker.title,
       type: onlyMarker.type,
@@ -132,6 +136,14 @@ export default function MarkerInfo(props: any) {
                       e.preventDefault();
                       if (imageFile != undefined) {
                         writeImageToDataSet(imageFile);
+                      }
+                      if (comment != "") {
+                        if (marker == undefined) {
+                          throw new Error("Marker is undefined");
+                        } else {
+                          marker.comment += "\n" + comment;
+                          writeCommentToDataSet(marker);
+                        }
                       }
                     }}
                   >
