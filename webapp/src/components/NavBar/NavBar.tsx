@@ -22,7 +22,7 @@ export default function NavBar() {
             </Link>
           </li>
           <li className="list_item">
-            <Link to="/about" target="_blank">
+            <Link to="/about">
               <img className="navBarImage" src="https://cdn.onlinewebfonts.com/svg/img_51582.png" alt="" />
             </Link>
           </li>
