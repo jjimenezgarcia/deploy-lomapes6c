@@ -56,9 +56,13 @@ export default function MarkerInfo(props: any) {
   }, [props.marker.options.title]);
 
   useEffect(() => {
-    getImageFromMarker(markerTitle).then((image) => {
-      setImage(URL.createObjectURL(image!));
-    });
+    getImageFromMarker(markerTitle)
+      .then((image) => {
+        setImage(URL.createObjectURL(image!));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [markerTitle]);
 
   const handleImageChange = (event: any) => {
@@ -135,7 +139,11 @@ export default function MarkerInfo(props: any) {
                     onClick={(e) => {
                       e.preventDefault();
                       if (imageFile != undefined) {
-                        writeImageToDataSet(imageFile, markerTitle);
+                        writeImageToDataSet(imageFile, markerTitle).catch(
+                          () => {
+                            console.log("Error writing image to dataset");
+                          }
+                        );
                       }
                       if (comment != "") {
                         if (marker == undefined) {

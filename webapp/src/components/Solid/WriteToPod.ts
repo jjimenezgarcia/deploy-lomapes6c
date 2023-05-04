@@ -43,9 +43,13 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
       markerUrl,
       marker,
       "https://schema.org/location"
-    )
+    ).catch((error) => {
+      console.log(error);
+    });
 
-    createAclForMarker(markerUrl);
+    createAclForMarker(markerUrl).catch((error) => {
+      console.log(error);
+    });
   }
 
 export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfType: string) {
@@ -73,24 +77,6 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
       courseSolidDataset,
       { fetch: session.fetch } // fetch from authenticated Session
   );
-} 
-
-async function createImagesContainer() {
-  const {session, webId} = getSessionWebID();
-  if (!session) {
-    throw new Error("User is not logged in");
-  }
-  try {
-    const podUrl = webId.replace(/\/profile\/card#me/, '/public/images');
-    const imagesContainerUrl = createSolidDataset();
-    await saveSolidDatasetAt(
-      podUrl,
-      imagesContainerUrl,
-      { fetch: session.fetch } // fetch from authenticated Session
-  );
-  } catch(error) {
-    console.log(error)
-  }
 }
 
 export async function writeImageToDataSet(imageFile : File, markerTitle : string) {
