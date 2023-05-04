@@ -17,8 +17,10 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
 
   const { session } = getSessionWebID();
 
+    // Crear un dataset vacío
     let courseSolidDataset = createSolidDataset();
   
+    // Create a new Thing type Person
     const newThing = buildThing(createThing({ name: thingName }))
       .addStringNoLocale(SCHEMA_INRUPT.name, thingTitle)
       .addUrl(RDF.type, rdfType)
@@ -34,7 +36,7 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
   }
 
   export function writeCommentToDataSet(marker : Marker) {
-    const { webId } = getSessionWebID();
+    const { session, webId } = getSessionWebID();
     const markerUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + marker.title;
     
     writeMarkerToDataSet(
@@ -73,13 +75,13 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
   );
 } 
 
-export async function createImagesContainer(markerTitle: string) {
+async function createImagesContainer() {
   const {session, webId} = getSessionWebID();
   if (!session) {
     throw new Error("User is not logged in");
   }
   try {
-    const podUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + markerTitle + "/images";
+    const podUrl = webId.replace(/\/profile\/card#me/, '/public/images');
     const imagesContainerUrl = createSolidDataset();
     await saveSolidDatasetAt(
       podUrl,
@@ -91,17 +93,27 @@ export async function createImagesContainer(markerTitle: string) {
   }
 }
 
-export async function writeImageToDataSet(imageFile : File, markerTitle: string) {
-  const { session, webId } = getSessionWebID();
-  const markerUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + markerTitle + "/images";
+export async function writeImageToDataSet(imageFile : File, markerTitle : string) {
+  const {session, webId} = getSessionWebID();
   if (!session) {
     throw new Error("User is not logged in");
   }
   try {
-    await saveFileInContainer(markerUrl, imageFile, { slug: imageFile.name, contentType: imageFile.type, fetch: session.fetch })
+
+    const dataset = createSolidDataset();
+    
+    const podUrl = webId.replace(/\/profile\/card#me/, '/public/images/');
+
+    await saveSolidDatasetAt(
+      podUrl,
+      dataset,
+      { fetch: session.fetch } // fetch from authenticated Session
+  );
+
+
+    const fileUrl = webId.replace(/\/profile\/card#me/, '/public/images/');
+    let savedFile = await saveFileInContainer(fileUrl, imageFile, { slug: imageFile.name, contentType: imageFile.type, fetch: session.fetch })
   } catch(error) {
     console.log(error)
-    // await createImagesContainer()
-    // await writeImageToDataSet(imageFile);
   } 
 }
