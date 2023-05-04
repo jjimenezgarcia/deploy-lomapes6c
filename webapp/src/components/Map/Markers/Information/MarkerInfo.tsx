@@ -12,7 +12,6 @@ import ReactLoading from "react-loading";
 import {
   writeCommentToDataSet,
   writeImageToDataSet,
-  writeMarkerToDataSet,
 } from "../../../Solid/WriteToPod";
 
 export default function MarkerInfo(props: any) {
@@ -57,7 +56,7 @@ export default function MarkerInfo(props: any) {
 
   useEffect(() => {
     getImageFromMarker(markerTitle).then((image) => {
-      setImage(URL.createObjectURL(image!));
+      setImage(URL.createObjectURL(image ? image : new Blob()));
     });
   }, [markerTitle]);
 
@@ -110,8 +109,7 @@ export default function MarkerInfo(props: any) {
                 </div>
 
                 <div className="form_field">
-                  <label>Image</label>
-                  {image != undefined && <img src={image} alt="" />}
+                  {image !== undefined && <img src={image} alt="" />}
                   <input
                     type="file"
                     name="image"
@@ -134,11 +132,11 @@ export default function MarkerInfo(props: any) {
                     className="submit_button"
                     onClick={(e) => {
                       e.preventDefault();
-                      if (imageFile != undefined) {
-                        writeImageToDataSet(imageFile);
+                      if (imageFile !== undefined) {
+                        writeImageToDataSet(imageFile, marker?.title?.toString()!);
                       }
-                      if (comment != "") {
-                        if (marker == undefined) {
+                      if (comment !== "") {
+                        if (marker === undefined) {
                           throw new Error("Marker is undefined");
                         } else {
                           marker.comment += "\n" + comment;

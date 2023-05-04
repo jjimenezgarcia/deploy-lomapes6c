@@ -17,10 +17,8 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
 
   const { session } = getSessionWebID();
 
-    // Crear un dataset vacío
     let courseSolidDataset = createSolidDataset();
   
-    // Create a new Thing type Person
     const newThing = buildThing(createThing({ name: thingName }))
       .addStringNoLocale(SCHEMA_INRUPT.name, thingTitle)
       .addUrl(RDF.type, rdfType)
@@ -36,7 +34,7 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
   }
 
   export function writeCommentToDataSet(marker : Marker) {
-    const { session, webId } = getSessionWebID();
+    const { webId } = getSessionWebID();
     const markerUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + marker.title;
     
     writeMarkerToDataSet(
@@ -75,13 +73,13 @@ export async function writeMarkerToDataSet(podUrl: string, marker: Marker, rdfTy
   );
 } 
 
-async function createImagesContainer() {
+export async function createImagesContainer(markerTitle: string) {
   const {session, webId} = getSessionWebID();
   if (!session) {
     throw new Error("User is not logged in");
   }
   try {
-    const podUrl = webId.replace(/\/profile\/card#me/, '/public/images');
+    const podUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + markerTitle + "/images";
     const imagesContainerUrl = createSolidDataset();
     await saveSolidDatasetAt(
       podUrl,
@@ -93,14 +91,14 @@ async function createImagesContainer() {
   }
 }
 
-export async function writeImageToDataSet(imageFile : File) {
-  const {session} = getSessionWebID();
+export async function writeImageToDataSet(imageFile : File, markerTitle: string) {
+  const { session, webId } = getSessionWebID();
+  const markerUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + markerTitle + "/images";
   if (!session) {
     throw new Error("User is not logged in");
   }
   try {
-    const fileUrl = "https://campa2.inrupt.net/public/images"
-    let savedFile = await saveFileInContainer(fileUrl, imageFile, { slug: imageFile.name, contentType: imageFile.type, fetch: session.fetch })
+    await saveFileInContainer(markerUrl, imageFile, { slug: imageFile.name, contentType: imageFile.type, fetch: session.fetch })
   } catch(error) {
     console.log(error)
     // await createImagesContainer()
