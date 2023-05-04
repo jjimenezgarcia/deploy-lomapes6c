@@ -1,0 +1,42 @@
+.about {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+    height: 86vh;
+  }
+  
+  .about h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+  
+  .about p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #666;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .about {
+      padding: 30px;
+    }
+  
+    .about h1 {
+      font-size: 2rem;
+    }
+  
+    .about p {
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+    }
+  }
+
+.githubImage{
+    height: 10vh;
+    width: 10vh;
+}
+
+.githubImage:hover{
+    scale: 1.2;
+}
