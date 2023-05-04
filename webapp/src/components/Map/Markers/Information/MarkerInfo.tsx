@@ -115,7 +115,7 @@ export default function MarkerInfo(props: any) {
 
                 <div className="form_field">
                   <label>Image</label>
-                  {image != undefined && <img src={image} alt="" />}
+                  {image !== undefined && <img src={image} alt="" />}
                   <input
                     type="file"
                     name="image"
@@ -138,15 +138,15 @@ export default function MarkerInfo(props: any) {
                     className="submit_button"
                     onClick={(e) => {
                       e.preventDefault();
-                      if (imageFile != undefined) {
+                      if (imageFile !== undefined) {
                         writeImageToDataSet(imageFile, markerTitle).catch(
                           () => {
                             console.log("Error writing image to dataset");
                           }
                         );
                       }
-                      if (comment != "") {
-                        if (marker == undefined) {
+                      if (comment !== "") {
+                        if (marker === undefined) {
                           throw new Error("Marker is undefined");
                         } else {
                           marker.comment += "\n" + comment;

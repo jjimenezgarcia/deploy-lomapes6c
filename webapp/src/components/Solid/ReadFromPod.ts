@@ -78,7 +78,7 @@ export async function getAllFriendsFromPod() {
     try {
       const podUrl = webId.replace(/\/profile\/card#me/, '/public/images');
       let blob = await getFile(
-        "https://campa2.inrupt.net/public/images/" + imageTitle + ".png",
+        podUrl + imageTitle + ".png",
         { fetch: session.fetch }
   
       );
