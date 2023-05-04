@@ -12,7 +12,6 @@ import ReactLoading from "react-loading";
 import {
   writeCommentToDataSet,
   writeImageToDataSet,
-  writeMarkerToDataSet,
 } from "../../../Solid/WriteToPod";
 
 export default function MarkerInfo(props: any) {
