@@ -36,7 +36,7 @@ export async function writeDataToNewDataSet(podUrl: string, thingName: string, t
   }
 
   export function writeCommentToDataSet(marker : Marker) {
-    const { session, webId } = getSessionWebID();
+    const { webId } = getSessionWebID();
     const markerUrl = webId.replace(/\/profile\/card#me/, "/public/markers/") + marker.title;
     
     writeMarkerToDataSet(
@@ -99,6 +99,7 @@ export async function writeImageToDataSet(imageFile : File, markerTitle : string
 
     const fileUrl = webId.replace(/\/profile\/card#me/, '/public/images/');
     let savedFile = await saveFileInContainer(fileUrl, imageFile, { slug: imageFile.name, contentType: imageFile.type, fetch: session.fetch })
+    console.log(savedFile)
   } catch(error) {
     console.log(error)
   } 
