@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6c3f1d2a.css",
+    "main.js": "/static/js/main.2eff8f4c.js",
+    "static/js/670.9a4b2a02.chunk.js": "/static/js/670.9a4b2a02.chunk.js",
+    "static/js/787.f19d49e4.chunk.js": "/static/js/787.f19d49e4.chunk.js",
+    "static/js/180.6cbadc24.chunk.js": "/static/js/180.6cbadc24.chunk.js",
+    "static/media/lomap-icon.png": "/static/media/lomap-icon.d3c9a10da06aae45d210.png",
+    "index.html": "/index.html",
+    "main.6c3f1d2a.css.map": "/static/css/main.6c3f1d2a.css.map",
+    "main.2eff8f4c.js.map": "/static/js/main.2eff8f4c.js.map",
+    "787.f19d49e4.chunk.js.map": "/static/js/787.f19d49e4.chunk.js.map",
+    "180.6cbadc24.chunk.js.map": "/static/js/180.6cbadc24.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c3f1d2a.css",
+    "static/js/main.2eff8f4c.js"
+  ]
+}
