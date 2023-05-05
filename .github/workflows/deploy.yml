@@ -7,18 +7,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm --prefix webapp install --force
+          npm --prefix webapp run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          node-version: '16.x'
-      - name: Install Dependencies
-        run: npm --prefix webapp install --force
-      - name: Build
-        run: npm run build --prefix webapp
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.2
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          branch: gh-pages
-          folder: webapp/build/
+          folder: ./webapp/build # The folder the action should deploy.
