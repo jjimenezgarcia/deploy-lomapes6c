@@ -5,17 +5,14 @@ import { Marker } from "../../OSMap";
 import { Rating } from "react-simple-star-rating";
 import "./MarkerInfo.css";
 import {
-  getImageFromMarker,
   readFromDataSetUrl,
 } from "../../../Solid/ReadFromPod";
 import ReactLoading from "react-loading";
 import {
-  writeCommentToDataSet,
   writeImageToDataSet,
 } from "../../../Solid/WriteToPod";
 
 export default function MarkerInfo(props: any) {
-  const [comment, setComment] = useState("");
   const [imageFile, setImageFile] = useState<File>();
   const [image, setImage] = useState("");
   const [marker, setMarker] = useState<Marker>();
@@ -55,13 +52,7 @@ export default function MarkerInfo(props: any) {
   }, [props.marker.options.title]);
 
   useEffect(() => {
-    getImageFromMarker(markerTitle)
-      .then((image) => {
-        setImage(URL.createObjectURL(image!));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setImage(getSessionWebID().webId.replace(/\/profile\/card#me/, "/public/images/") + markerTitle + ".png")
   }, [markerTitle]);
 
   const handleImageChange = (event: any) => {
@@ -113,7 +104,6 @@ export default function MarkerInfo(props: any) {
                 </div>
 
                 <div className="form_field">
-                  <label>Image</label>
                   {image !== undefined && <img src={image} alt="" />}
                   <input
                     type="file"
@@ -121,15 +111,6 @@ export default function MarkerInfo(props: any) {
                     accept="image/png"
                     onChange={handleImageChange}
                   />
-                </div>
-
-                <div className="form_field">
-                  <textarea
-                    id="comment"
-                    value={comment}
-                    onChange={(event) => setComment(event.target.value)}
-                    placeholder="Comment"
-                  ></textarea>
                 </div>
 
                 <div className="form_field">
@@ -143,14 +124,6 @@ export default function MarkerInfo(props: any) {
                             console.log("Error writing image to dataset");
                           }
                         );
-                      }
-                      if (comment !== "") {
-                        if (marker === undefined) {
-                          throw new Error("Marker is undefined");
-                        } else {
-                          marker.comment += "\n" + comment;
-                          writeCommentToDataSet(marker);
-                        }
                       }
                     }}
                   >
