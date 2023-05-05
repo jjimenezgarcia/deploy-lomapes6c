@@ -1,11 +1,17 @@
 .friend-item {
   border: solid 1px #ccc;
+  border-radius: 10px;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   padding: 10px;
   margin-bottom: 2em;
+}
+
+.friend-name{
+  color: black;
 }
 
 .button-access {
@@ -18,4 +24,23 @@
 
 .revoke {
   background-color: red;
+}
+
+.handler-friends {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-component,
+.right-component {
+  overflow: hidden;
+  margin-top: 15%;
+}
+
+.left-component {
+  margin-right: 2%;
+}
+
+.right-component {
+  margin-left: 2%;
 }

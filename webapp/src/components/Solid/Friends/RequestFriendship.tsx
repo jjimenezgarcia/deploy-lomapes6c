@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
+import "./FriendsStyles.css";
 
 const RequestFriendship = () => {
   const [friendUrl, setfriendUrl] = useState<string>("");
@@ -17,14 +18,13 @@ const RequestFriendship = () => {
   return !session.info.isLoggedIn ? (
     <h1>Not logged in</h1>
   ) : (
-    <div>
-      <h1>Request Friendship</h1>
-      <label htmlFor="friend">¿A quién quieres agregar?</label>
+    <div className="addFriend">
+      <h2>Buscar amigos</h2>
       <input
         type="text"
         onChange={handleChange}
         id="friend"
-        placeholder="username"
+        placeholder="usuario"
         required
       />
       <button>
@@ -34,7 +34,7 @@ const RequestFriendship = () => {
           rel="noreferrer"
           style={{ color: "white", textDecoration: "none" }}
         >
-          Submit
+          Buscar
         </a>
       </button>
     </div>

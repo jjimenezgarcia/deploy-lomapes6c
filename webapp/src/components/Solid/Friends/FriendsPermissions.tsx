@@ -20,9 +20,10 @@ export default function FriendsPermissions() {
 
   return (
     <div>
+      <h2>Amigos</h2>
       {friendsUrl.map((friend) => (
         <div className="friend-item">
-          <p>{getName(friend)}</p>
+          <p className="friend-name">{getName(friend)}</p>
           <button
             className="button-access give"
             onClick={() => {

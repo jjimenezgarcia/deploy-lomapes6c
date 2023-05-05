@@ -5,10 +5,16 @@ import WelcomePage from "./components/Pages/WelcomePage/WelcomePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserPage from "./components/Pages/UserPage/UserPage";
 import { SessionProvider } from "@inrupt/solid-ui-react";
-import RequestFriendship from "./components/Solid/Friends/RequestFriendship";
 import About from "./components/About/About";
-import FriendsPermissions from "./components/Solid/Friends/FriendsPermissions";
+import { FriendHandler } from "./components/Solid/Friends/FriendHandler";
+import { useEffect } from "react";
+
 function App() {
+
+  useEffect(() => {
+    document.title = "LoMap_es6c";
+  }, []);
+
   return (
     <div className="App">
       <SessionProvider sessionId="logIn">
@@ -29,15 +35,13 @@ function App() {
                 </div>
               }
             />
-            <Route path="/user" element={<UserPage />} />
+            <Route path="/user" element={<div> <NavBar /> <UserPage /> </div>} />
             <Route
               path="/friends"
               element={
                 <div>
-                  <RequestFriendship />
-                  <hr />
-                  <hr />
-                  <FriendsPermissions />
+                  <NavBar />
+                  <FriendHandler />
                 </div>
               }
             />

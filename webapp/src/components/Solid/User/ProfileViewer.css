@@ -1,0 +1,52 @@
+.image-map {
+    position: absolute;
+    width: 10%;
+    height: 20%;
+    top: 1vh;
+    right: 8vh;
+  }
+  .image-map:hover {
+    scale: 1.2;
+  }
+  .button-style {
+    margin-top: 2em;
+    font-weight: bold;
+  }
+  
+  .logout-button {
+    background-color: crimson;
+    color: white;
+    width: 25vh;
+    margin-top: 5vh;
+  }
+  
+  .logout-button:hover {
+    background-color: crimson;
+    color: white;
+  }
+
+  .friends-button {
+    background: none;
+    color: black;
+    width: 50vh;
+    margin-top: 15vh;
+    border-radius: 20px;
+    border: 2px solid black;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .image-map {
+      display: none;
+    }
+  }
+
+  
+  .container > * {
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
